@@ -1,0 +1,64 @@
+{
+  "Disciplina": [
+    {
+      "id": 1,
+      "nome": "Matemática",
+      "professor": "Não atribuido",
+      "cargaHoraria": 60
+    },
+    {
+      "id": 2,
+      "nome": "Português",
+      "professor": "Edileia",
+      "cargaHoraria": 50
+    },
+    {
+      "id": 3,
+      "nome": "Ciências",
+      "professor": "Não atribuido",
+      "cargaHoraria": 45
+    },
+    {
+      "id": 4,
+      "nome": "História",
+      "professor": "Não atribuido",
+      "cargaHoraria": 55
+    },
+    {
+      "id": 5,
+      "nome": "Geografia",
+      "professor": "Não atribuido",
+      "cargaHoraria": 40
+    },
+    {
+      "id": 6,
+      "nome": "Física",
+      "professor": "Não atribuido",
+      "cargaHoraria": 60
+    },
+    {
+      "id": 7,
+      "nome": "Química",
+      "professor": "Não atribuido",
+      "cargaHoraria": 50
+    },
+    {
+      "id": 8,
+      "nome": "Angles",
+      "professor": "Não atribuido",
+      "cargaHoraria": 45
+    },
+    {
+      "id": 9,
+      "nome": "Artes",
+      "professor": "Não atribuido",
+      "cargaHoraria": 55
+    },
+    {
+      "id": 10,
+      "nome": "Educação Física",
+      "professor": "Não atribuido",
+      "cargaHoraria": 40
+    }
+  ]
+}

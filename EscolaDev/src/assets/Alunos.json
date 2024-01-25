@@ -1,0 +1,64 @@
+{
+  "Alunos": [
+    {
+      "id": 1,
+      "nome": "João Silva",
+      "formação": "9º Ano",
+      "idade": 14
+    },
+    {
+      "id": 2,
+      "nome": "Maria Oliveira",
+      "formação": "11º Ano",
+      "idade": 17
+    },
+    {
+      "id": 3,
+      "nome": "Lucas Santos",
+      "formação": "8º Ano",
+      "idade": 13
+    },
+    {
+      "id": 4,
+      "nome": "Ana Pereira",
+      "formação": "10º Ano",
+      "idade": 16
+    },
+    {
+      "id": 5,
+      "nome": "Pedro Almeida",
+      "formação": "12º Ano",
+      "idade": 18
+    },
+    {
+      "id": 6,
+      "nome": "Mariana Costa",
+      "formação": "7º Ano",
+      "idade": 12
+    },
+    {
+      "id": 7,
+      "nome": "Gustavo Oliveira",
+      "formação": "11º Ano",
+      "idade": 17
+    },
+    {
+      "id": 8,
+      "nome": "Laura Mendes",
+      "formação": "9º Ano",
+      "idade": 14
+    },
+    {
+      "id": 9,
+      "nome": "Rafaela Santos",
+      "formação": "10º Ano",
+      "idade": 16
+    },
+    {
+      "id": 10,
+      "nome": "Bruno Costa",
+      "formação": "8º Ano",
+      "idade": 13
+    }
+  ]
+}

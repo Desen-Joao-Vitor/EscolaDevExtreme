@@ -1,0 +1,47 @@
+<div class="container mt-4">
+  <h2>Disciplinas</h2>
+
+  <dx-data-grid [dataSource]="disciplinas" [showBorders]="true" [allowColumnResizing]="true" [columnAutoWidth]="true">
+    <dxi-column dataField="id" caption="ID"></dxi-column>
+
+    <dxi-column dataField="nome" caption="Nome"></dxi-column>
+    <dxi-column dataField="professor" caption="Professor"></dxi-column>
+    <dxi-column dataField="cargaHoraria" caption="Carga Horária"></dxi-column>
+
+
+    <dxo-form [colCount]="2">
+      <div class="actions-container">
+        <div class="action-btn">
+          <dx-button text="Editar" (onClick)="editarDisciplina(data)"></dx-button>
+        </div>
+        <div class="action-btn">
+          <dx-button text="Excluir" (onClick)="excluirDisciplina(data.id)"></dx-button>
+        </div>
+      </div>
+    </dxo-form>
+  </dx-data-grid>
+
+  <h2>Cadastrar/Editar Disciplina</h2>
+  <form ()ngSubmit="adicionarDisciplina()" #AdcDis="ngForm">
+
+    <dx-form [formData]="disciplinaForm" [showColonAfterLabel]="true">
+      <dxi-item itemType="group" [caption]="''">
+        <dxi-item dataField="nome" [editorOptions]="{ placeholder: 'Nome' }"></dxi-item>
+        <dxi-item dataField="professor" [editorOptions]="{ placeholder: 'Professor' }"></dxi-item>
+        <dxi-item dataField="cargaHoraria" [editorOptions]="{ placeholder: 'carga-Horária' }">
+        </dxi-item>
+        <dxi-item dataField="disciplinaSelecionada" [editorType]="'dxSelectBox'" [editorOptions]="{
+        dataSource: disciplinas,
+        displayExpr: 'nome',
+        valueExpr: 'id',
+        placeholder: 'Selecione uma disciplina'
+      }"></dxi-item>
+      </dxi-item>
+      <dxi-item>
+        <dx-button text="Cadastrar/Editar"></dx-button>
+      </dxi-item>
+    </dx-form>
+
+  </form>
+
+</div>

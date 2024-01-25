@@ -1,0 +1,28 @@
+{
+  "Professores": [
+    {
+      "id": 1,
+      "nome": "Lurdes de Freitas",
+      "formação": "Pedagogia",
+      "Idade": 57
+    },
+    {
+      "id": 2,
+      "nome": "João Vitor Santos",
+      "formação": "Engenharia de Software",
+      "Idade": 26
+    },
+    {
+      "id": 3,
+      "nome": "Carlos Silveira",
+      "formação": "Engenharia Mecanica ",
+      "Idade": 45
+    },
+    {
+      "id": 4,
+      "nome": " Roberta Valente",
+      "formação": "Pedagogia e Matemática",
+      "Idade": 29
+    }
+  ]
+}

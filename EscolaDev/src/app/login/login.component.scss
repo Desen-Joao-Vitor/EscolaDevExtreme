@@ -1,0 +1,31 @@
+.inicio {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.466);
+  display: flex;
+  align-items: center;
+  background-image: url(./../../assets/Imagens/Escola.jpeg);
+  background-repeat: no-repeat;
+  background-size: 100vw 100vh;
+}
+.container {
+  width: 50%;
+  height: 60%;
+  background-color: rgba(255, 255, 255, 0.226);
+  background-image: url(../../assets/Imagens/Professor.jpg);
+
+  background-repeat: no-repeat;
+  background-size: 478px 570px;
+}
+.formulario {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  left: 474px;
+  align-items: center;
+}
+.formulario button {
+  width: 25%;
+}

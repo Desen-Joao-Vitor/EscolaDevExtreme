@@ -1,13 +1,20 @@
-<div class="inicio" style="width:100vw ; height: 100vh; background-color: rgb(83, 134, 134);">
-  <div class="container" style="width: 50%; height: 50%;">
-    <form action="">
-      <div>
-        <label for="usuario">Usuário:</label>
-        <input type="text" name="usuario" usuario="ngModel" ngModel="usuario.nome" />
-      </div>
-      <div>
-        <label for="senha">Senha: </label>
-        <input type="password" name="senha" ngModel="usuario.senha">
+<div class="inicio">
+  <div class=" container">
+    <form ()ngSubmit="login()" #loginForm="ngForm">
+      <div class="formulario">
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required [(ngModel)]="usuario.email">
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required [(ngModel)]="usuario.senha">
+
+        <div *ngIf="errorMessage" style="color: red; margin-top: 10px;">{{ errorMessage }}</div>
+        <div *ngIf="Sussesso" style="color: rgb(0, 225, 255); margin-top: 10px;">{{ Sussesso }}</div>
+
+        <button type="submit">Login</button>
+
+
       </div>
     </form>
   </div>
