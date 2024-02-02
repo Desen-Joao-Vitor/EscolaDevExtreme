@@ -10,6 +10,7 @@ import {
 } from 'devextreme-angular';
 import { DisciplinaRoutes } from './disciplina.routes';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
@@ -21,6 +22,7 @@ import { FormsModule } from '@angular/forms';
     DxTabsModule,
     DxToolbarModule,
     FormsModule,
+    HttpClientModule,
   ],
   declarations: [DisciplinasComponent],
   exports: [DisciplinasComponent],

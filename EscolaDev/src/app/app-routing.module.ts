@@ -5,7 +5,7 @@ const routes: Routes = [
   {
     path: ' ',
     pathMatch: 'full',
-    redirectTo: 'Menu',
+    redirectTo: 'Disciplina',
   },
   {
     path: 'Login',

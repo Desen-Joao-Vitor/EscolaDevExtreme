@@ -59,6 +59,18 @@
       "nome": "Educação Física",
       "professor": "Não atribuido",
       "cargaHoraria": 40
+    },
+    {
+      "id": 11,
+      "nome": "Educação Física",
+      "professor": "Não atribuido",
+      "cargaHoraria": 40
+    },
+    {
+      "id": 12,
+      "nome": "Educação Física",
+      "professor": "Não atribuido",
+      "cargaHoraria": 40
     }
   ]
 }

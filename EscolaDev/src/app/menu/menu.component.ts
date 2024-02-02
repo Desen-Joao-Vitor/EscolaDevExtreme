@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DisciplinasService } from '../Disciplinas/disciplinas.service';
+import DataSource from 'devextreme/data/data_source';
 
 @Component({
   selector: 'app-menu',
@@ -7,14 +8,6 @@ import { DisciplinasService } from '../Disciplinas/disciplinas.service';
   styleUrl: './menu.component.scss',
 })
 export class MenuComponent implements OnInit {
-  disciplina: any = [];
-
-  constructor(private ServiceDisciplina: DisciplinasService) {}
-
-  ngOnInit(): void {
-    this.ServiceDisciplina.getDisciplinas().subscribe((data) => {
-      console.log(data);
-      this.disciplina = data.Disciplina;
-    });
-  }
+  constructor() {}
+  ngOnInit(): void {}
 }

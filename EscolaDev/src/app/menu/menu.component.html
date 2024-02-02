@@ -16,15 +16,6 @@
     <div class="card">
       <div class="card-header">Disciplinas</div>
       <div class="card-body">
-        <dx-data-grid [dataSource]="disciplina" keyExpr="id" [showBorders]="true" [allowColumnResizing]="true"
-          [columnAutoWidth]="true">
-          <dxo-paging [pageSize]="10"></dxo-paging>
-          <dxi-column dataField="id" caption="ID"></dxi-column>
-          <dxi-column dataField="nome" caption="Nome"></dxi-column>
-          <dxi-column dataField="professor" caption="Professor"></dxi-column>
-          <dxi-column dataField="carga-Horaria" caption="Carga Horária"></dxi-column>
-          <dxi-column dataField="ano" caption="Ano"></dxi-column>
-        </dx-data-grid>
       </div>
     </div>
   </div>

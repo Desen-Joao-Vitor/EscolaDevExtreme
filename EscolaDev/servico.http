@@ -1,0 +1,14 @@
+http://localhost:3000/Disciplina
+###
+
+POST http://localhost:3000/Disciplina HTTP/1.1
+Content-Type: application/json
+
+
+{
+
+      "nome": "Engenharia Mecanico",
+      "professor": "Elisvaldo",
+      "cargaHoraria":45
+
+}
