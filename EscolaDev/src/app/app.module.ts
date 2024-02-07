@@ -9,6 +9,9 @@ import { LoginModule } from './login/login.module';
 import { DxSchedulerModule } from 'devextreme-angular';
 import { HttpClientModule } from '@angular/common/http';
 import { DisciplinasService } from './Disciplinas/disciplinas.service';
+import { CadastroService } from './cadastro/cadastro.service';
+
+import { ValidarCpfModule } from './cadastro/validar-cpf/validar-cpf.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,8 +23,9 @@ import { DisciplinasService } from './Disciplinas/disciplinas.service';
     MenuModule,
     LoginModule,
     DxSchedulerModule,
+    ValidarCpfModule,
   ],
-  providers: [DisciplinasService],
+  providers: [DisciplinasService, CadastroService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

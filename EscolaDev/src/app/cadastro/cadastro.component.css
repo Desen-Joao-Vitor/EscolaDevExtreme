@@ -1,0 +1,49 @@
+::ng-deep .form-group {
+  padding: 20px;
+}
+::ng-deep .form-avatar {
+  height: 128px;
+  width: 128px;
+  margin-right: 10px;
+  border: 1px solid #d2d3d5;
+  border-radius: 50%;
+  background-image: url("../../assets/Imagens/Professor.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+input#cpfInput {
+  width: 100%;
+  font-size: 23px;
+  margin-top: 2px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+input#cpfInput:hover {
+  border: 1px solid #5c95c5c4;
+}
+input#numeroInput {
+  width: 100%;
+  font-size: 24px;
+  margin-top: 2px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+input#numeroInput:hover {
+  border: 1px solid #5c95c5c4;
+}
+.left {
+  width: 13%;
+  height: 93.9vh;
+  background-color: #3e7070;
+  position: absolute;
+  top: 58px;
+}
+.rigth {
+  width: 13%;
+  height: 93.9vh;
+  background-color: #3e7070;
+  position: absolute;
+  top: 58px;
+  right: 0px;
+}
