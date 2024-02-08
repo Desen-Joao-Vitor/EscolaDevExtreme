@@ -12,4 +12,8 @@ export class AppComponent {
   redirectToLogin() {
     this.router.navigate(['/login']);
   }
+  navega(event: any) {
+    const selectedRoute = event.target.value;
+    this.router.navigate([selectedRoute]);
+  }
 }

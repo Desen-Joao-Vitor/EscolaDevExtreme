@@ -1,3 +1,5 @@
+<div class="left"></div>
+<div class="rigth"></div>
 <div class="container-fluid">
   <!-- Barra de navegação -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -13,12 +15,18 @@
         <li class="nav-item">
           <a class="nav-link" routerLinkActive="Active" [routerLink]="['/Login']">Login</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLinkActive="Active" routerLink="['professores']">Professores</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="['alunos']">Alunos</a>
-        </li>
+        <select class="nav-link" (change)="navega($event)">
+          <option value="/professores">Professores</option>
+          <option value="/professores/cadastrado">Cadastrar professores</option>
+          <option value="/professores/Disciplina">Cadastrar em disciplina
+          </option>
+        </select>
+        <select class="nav-link" (change)="navega($event)">
+          <option value="">Alunos</option>
+          <option value="/aluno/listar">Alunos cadastrados</option>
+          <option value="/aluno/cadastro">Cadastrar</option>
+          <option value="/aluno/nota">Inserir nota</option>
+        </select>
         <li class="nav-item">
           <a class="nav-link" routerLinkActive="Active" [routerLink]="['/Disciplina']">Disciplinas</a>
         </li>

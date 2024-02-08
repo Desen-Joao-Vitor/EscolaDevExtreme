@@ -7,6 +7,9 @@ import { CadastroService, Employee } from './cadastro.service';
   styleUrls: ['./cadastro.component.css'],
 })
 export class CadastroComponent {
+  InserirFoto() {
+    console.log('Foto');
+  }
   Enviar() {
     console.log('ola');
   }

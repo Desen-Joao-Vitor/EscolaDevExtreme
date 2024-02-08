@@ -5,12 +5,7 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'cadastro',
-  },
-  {
-    path: 'cadastro',
-    loadChildren: () =>
-      import('./cadastro/cadastro.module').then((m) => m.CadastroModule),
+    redirectTo: '/aluno',
   },
   {
     path: 'Login',
@@ -27,6 +22,11 @@ const routes: Routes = [
       import('./Disciplinas/disciplinas-pag/disciplinas.module').then(
         (m) => m.DisciplinasModule
       ),
+  },
+  {
+    path: 'aluno',
+    loadChildren: () =>
+      import('./aluno/aluno.module').then((m) => m.AlunoModule),
   },
 ];
 

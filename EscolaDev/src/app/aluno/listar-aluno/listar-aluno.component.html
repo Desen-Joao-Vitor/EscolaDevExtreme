@@ -1,0 +1,21 @@
+<div class="container">
+  <dx-data-grid id="gridContainer" [dataSource]="matriculas" keyExpr="ID" [showBorders]="true">
+    <dxi-column dataField="Picture" [width]="70" [allowFiltering]="false" [allowSorting]="false"
+      cellTemplate="cellTemplate"></dxi-column>
+    <dxi-column dataField="Prefix" [width]="70" caption="matricula"></dxi-column>
+    <dxi-column dataField="nome_aluno"></dxi-column>
+    <dxi-column dataField="turma"></dxi-column>
+    <dxi-column dataField="Cpf" dataType="date"></dxi-column>
+
+    <div *dxTemplate="let data of 'cellTemplate'">
+      <img [src]="data.value" />
+    </div>
+  </dx-data-grid>
+
+  <!--  <dx-data-grid id="gridContainer" [dataSource]="matriculas" keyExpr="matriculas" [showBorders]="true">
+    <dxi-column dataField="matricula" [width]="70" caption="Matrícula"></dxi-column>
+    <dxi-column dataField="nome_aluno" caption="Nome do Aluno"></dxi-column>
+    <dxi-column dataField="cpf" caption="CPF"></dxi-column>
+    <dxi-column dataField="nome_turmas" caption="Nome da Turma"></dxi-column>
+  </dx-data-grid>-->
+</div>

@@ -22,6 +22,9 @@ input#cpfInput {
 input#cpfInput:hover {
   border: 1px solid #5c95c5c4;
 }
+input#cpfInput::after {
+  border: 1px solid #5c95c5c4;
+}
 input#numeroInput {
   width: 100%;
   font-size: 24px;
@@ -46,4 +49,8 @@ input#numeroInput:hover {
   position: absolute;
   top: 58px;
   right: 0px;
+}
+.dx-show-invalid-badge.dx-textarea.dx-textbox.dx-texteditor.dx-editor-outlined.dx-texteditor-empty.dx-widget.dx-visibility-change-handler {
+  width: 91%;
+  margin-left: 51px;
 }
