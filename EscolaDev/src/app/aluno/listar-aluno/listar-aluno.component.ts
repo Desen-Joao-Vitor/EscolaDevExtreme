@@ -1,25 +1,26 @@
-import { Component } from '@angular/core';
-import { Employee, ListarService } from './listar-aluno.service';
-import { MatriculaService } from '../matricula-service';
+import { Component, OnInit } from '@angular/core';
+import { AlunosService } from '../alunos-service';
+import { __asyncValues } from 'tslib';
 
 @Component({
   selector: 'app-listar-aluno',
   templateUrl: './listar-aluno.component.html',
   styleUrl: './listar-aluno.component.scss',
 })
-export class ListarAlunoComponent {
-  matriculas: any[] = [];
+export class ListarAlunoComponent implements OnInit {
+  aluno: any[] = [];
 
-  constructor(private matriculaService: MatriculaService) {}
+  constructor(private alunosService: AlunosService) {}
 
   ngOnInit(): void {
-    this.getMatriculas();
+    this.getalunos();
   }
 
-  getMatriculas(): void {
-    this.matriculaService.getMatriculas().subscribe(
+  getalunos(): void {
+    this.alunosService.getAlunos().subscribe(
       (data: any) => {
-        this.matriculas = data.data;
+        this.aluno = data.data;
+        console.log(this.alunosService);
       },
       (error: any) => {
         console.error('Erro ao obter matrículas:', error);

@@ -12,27 +12,27 @@
   background-repeat: no-repeat;
   background-position: center;
 }
-input#cpfInput {
+input#cpf {
   width: 100%;
   font-size: 23px;
   margin-top: 2px;
   border-radius: 5px;
   border: 1px solid #ddd;
 }
-input#cpfInput:hover {
+input#cpf:hover {
   border: 1px solid #5c95c5c4;
 }
-input#cpfInput::after {
+input#cpf::after {
   border: 1px solid #5c95c5c4;
 }
-input#numeroInput {
+input#numero {
   width: 100%;
   font-size: 24px;
   margin-top: 2px;
   border-radius: 5px;
   border: 1px solid #ddd;
 }
-input#numeroInput:hover {
+input#numero:hover {
   border: 1px solid #5c95c5c4;
 }
 .left {
@@ -53,4 +53,25 @@ input#numeroInput:hover {
 .dx-show-invalid-badge.dx-textarea.dx-textbox.dx-texteditor.dx-editor-outlined.dx-texteditor-empty.dx-widget.dx-visibility-change-handler {
   width: 91%;
   margin-left: 51px;
+}
+@media screen and (max-width: 920px) {
+  ::ng-deep .form-group {
+    flex-direction: column;
+  }
+
+  ::ng-deep .right {
+    display: none; /* Esconda o elemento right em telas menores */
+  }
+
+  ::ng-deep .dx-show-invalid-badge {
+    width: 80%;
+    margin-left: 0;
+  }
+
+  input#numero {
+    width: 80%;
+  }
+  input#cpf {
+    width: 80%;
+  }
 }

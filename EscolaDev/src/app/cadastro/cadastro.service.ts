@@ -1,65 +1,6 @@
 import { Injectable } from '@angular/core';
-
-export class Employee {
-  ID!: number;
-
-  FirstName!: string;
-
-  LastName!: string;
-
-  Position!: string;
-
-  BirthDate!: string;
-
-  HireDate!: string;
-
-  Notes!: string;
-
-  Address!: string;
-
-  City!: string;
-
-  State!: string;
-
-  ZipCode!: string;
-
-  Mobile!: string;
-
-  Home!: string;
-
-  Email!: string;
-
-  Skype!: string;
-}
-
-const employee: Employee = {
-  ID: 1,
-  FirstName: 'John',
-  LastName: 'Heart',
-  Position: 'CEO',
-  BirthDate: '1964/03/16',
-  HireDate: '1995/01/15',
-  Notes:
-    'John has been in the Audio/Video industry since 1990. He has led DevAV as its CEO since 2003.\r\nWhen not working hard as the CEO, John loves to golf and bowl. He once bowled a perfect game of 300.',
-  Address: '351 S Hill St.',
-  City: 'Los Angeles',
-  State: 'CA',
-  ZipCode: '90013',
-  Home: '555-684-1334',
-  Mobile: '555-684-1335',
-  Email: 'jheart@dx-email.com',
-  Skype: 'jheart_DX_skype',
-};
-
-const positions: string[] = [
-  'HR Manager',
-  'IT Manager',
-  'CEO',
-  'Controller',
-  'Sales Manager',
-  'Support Manager',
-  'Shipping Manager',
-];
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 const states: string[] = [
   'AL',
@@ -114,17 +55,20 @@ const states: string[] = [
   'WY',
 ];
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class CadastroService {
-  getEmployee() {
-    return employee;
-  }
-
-  getPositions() {
-    return positions;
-  }
-
-  getStates() {
+  State!: string;
+  getState() {
     return states;
+  }
+  private apiUrl =
+    'http://localhost/API-Universidade/universidade-api/alunos.php';
+
+  constructor(private http: HttpClient) {}
+
+  inserirEmployee(employeeData: any): Observable<any> {
+    return this.http.post(this.apiUrl, employeeData);
   }
 }

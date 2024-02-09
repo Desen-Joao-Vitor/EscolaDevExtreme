@@ -12,24 +12,26 @@ import { DisciplinasService } from './Disciplinas/disciplinas.service';
 import { CadastroService } from './cadastro/cadastro.service';
 
 import { ValidarCpfModule } from './cadastro/validar-cpf/validar-cpf.module';
-import { CadastroModule } from './cadastro/cadastro.module';
+import { AlunosService } from './aluno/alunos-service';
 import { AlunoModule } from './aluno/aluno.module';
-import { ListarService } from './aluno/listar-aluno/listar-aluno.service';
-import { MatriculaService } from './aluno/matricula-service';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
-    BrowserModule,
     AppRoutingModule,
+    //Aplicação
+    BrowserModule,
     HttpClientModule,
     FormsModule,
+    //DevExtreme
+    DxSchedulerModule,
+    //Modulos aplicação
+    ValidarCpfModule,
     MenuModule,
     LoginModule,
-    DxSchedulerModule,
-    ValidarCpfModule,
+    AlunoModule,
   ],
-  providers: [DisciplinasService, CadastroService, MatriculaService],
+  providers: [DisciplinasService, CadastroService, AlunosService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

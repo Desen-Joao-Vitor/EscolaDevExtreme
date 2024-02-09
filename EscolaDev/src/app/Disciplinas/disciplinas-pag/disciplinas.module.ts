@@ -11,18 +11,22 @@ import {
 import { DisciplinaRoutes } from './disciplina.routes';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { AlunosRoutesModule } from '../../aluno/aluno.routes';
 
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
+    HttpClientModule,
+    //Aplicação
+    DisciplinaRoutes,
+    AlunosRoutesModule,
+    //DevExtreme
     DxDataGridModule,
     DxButtonModule,
     DxFormModule,
-    DisciplinaRoutes,
     DxTabsModule,
     DxToolbarModule,
-    FormsModule,
-    HttpClientModule,
   ],
   declarations: [DisciplinasComponent],
   exports: [DisciplinasComponent],

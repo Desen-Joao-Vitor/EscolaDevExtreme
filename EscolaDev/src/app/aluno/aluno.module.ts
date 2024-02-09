@@ -1,23 +1,24 @@
-import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-
+import { CommonModule } from '@angular/common';
 import { AlunosRoutesModule } from './aluno.routes';
 import { CadastroAlunoComponent } from './cadastro/cadastro.component';
-import { CadastroModule } from '../cadastro/cadastro.module';
 import { ListarAlunoComponent } from './listar-aluno/listar-aluno.component';
-import { DxDataGridModule, DxTemplateModule } from 'devextreme-angular';
-import { MatriculaService } from './matricula-service';
+import { CadastroModule } from '../cadastro/cadastro.module';
+import { DxiItemModule } from 'devextreme-angular/ui/nested';
+import { DxButtonModule, DxDataGridModule } from 'devextreme-angular';
 
 @NgModule({
+  declarations: [CadastroAlunoComponent, ListarAlunoComponent],
   imports: [
     CommonModule,
+    //Alicação
     AlunosRoutesModule,
     CadastroModule,
+    // DevExtreme
+    DxiItemModule,
+    DxButtonModule,
     DxDataGridModule,
-    DxTemplateModule,
   ],
-  declarations: [CadastroAlunoComponent, ListarAlunoComponent],
   exports: [CadastroAlunoComponent, ListarAlunoComponent],
-  providers: [MatriculaService],
 })
 export class AlunoModule {}

@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AlunoModule } from './aluno/aluno.module';
+import { ListarAlunoComponent } from './aluno/listar-aluno/listar-aluno.component';
+import { CadastroAlunoComponent } from './aluno/cadastro/cadastro.component';
 
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: '/aluno',
+    redirectTo: 'aluno/listar',
   },
   {
     path: 'Login',
@@ -24,9 +27,12 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'aluno',
-    loadChildren: () =>
-      import('./aluno/aluno.module').then((m) => m.AlunoModule),
+    path: 'aluno/listar',
+    component: ListarAlunoComponent,
+  },
+  {
+    path: 'aluno/cadastro',
+    component: CadastroAlunoComponent,
   },
 ];
 

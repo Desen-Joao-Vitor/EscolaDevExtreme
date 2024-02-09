@@ -1,7 +1,7 @@
 <div class="left"></div>
 <div class="rigth"></div>
 <div class="container">
-  <dx-form class="formulario" style="margin-top: 25px;" id=" form" [formData]="employee">
+  <dx-form class="formulario" style="margin-top: 25px;" id=" form" [formData]="">
     <dxi-item itemType="group" cssClass="form-group" [colCount]="4">
       <dxi-item>
         <div class="form-avatar">
@@ -9,33 +9,32 @@
         </div>
       </dxi-item>
       <dxi-item itemType="group" [colSpan]="3">
-        <dxi-item dataField="Nome Completo"></dxi-item>
+        <dxi-item dataField="Nome Completo" id="nome"></dxi-item>
         <dxi-item dataField="Informe o Cpf">
-          <input class="CampoCPF" type="text" id="cpfInput" [(ngModel)]="cpf" (input)="formatarCPF()" maxlength="14">
+          <input class="CampoCPF" type="text" id="cpf" [(ngModel)]="cpf" (input)="formatarCPF()" maxlength="14">
         </dxi-item>
-        <dxi-item dataField="Data de nascimento" editorType="text" [editorOptions]=" { width: '100%' }">
-          <input type="date"></dxi-item>
       </dxi-item>
     </dxi-item>
     <dxi-item itemType="group" cssClass="form-group" [colCount]="2">
       <dxi-item itemType="group">
-        <dxi-item dataField="Cidade"></dxi-item>
+        <dxi-item dataField="Cidade" id="cidade"></dxi-item>
         <dxi-item dataField="Numero">
-          <input type="text" class="CampoNumero" id="numeroInput" minlength="3" width="100%">
+          <input type="text" class="CampoNumero" id="numero" minlength="3" width="100%">
         </dxi-item>
-        <dxi-item dataField="Bairro"></dxi-item>
+        <dxi-item dataField="bairro"></dxi-item>
       </dxi-item>
       <dxi-item itemType="group">
-        <dxi-item dataField="Estado" editorType="dxSelectBox" [editorOptions]="{ items: states }"></dxi-item>
-        <dxi-item dataField="Rua"></dxi-item>
-        <dxi-item dataField="Completo"></dxi-item>
+        <dxi-item id="estado" dataField="Estado" editorType="dxSelectBox"
+          [editorOptions]="{ items: states }"></dxi-item>
+        <dxi-item dataField="rua" id="Rua"></dxi-item>
+        <dxi-item dataField="Completo" id="complemento"></dxi-item>
       </dxi-item>
       <dxi-item dataField="Foto"><input type="file" (onclick)="InserirFoto()"></dxi-item>
       <dxi-item dataField="Observação" id="observacao" [colSpan]="2" editorType="dxTextArea"
         [editorOptions]="{ height: 140}"></dxi-item>
     </dxi-item>
     <dxi-item>
-      <dx-button class="btn btn-primary" (onclick)="Enviar()">Enviar</dx-button>
+      <button class="btn btn-primary" (onclick)="Enviar()">Enviar</button>
     </dxi-item>
   </dx-form>
 </div>
