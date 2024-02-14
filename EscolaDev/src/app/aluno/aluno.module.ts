@@ -15,9 +15,9 @@ import { DxButtonModule, DxDataGridModule } from 'devextreme-angular';
     AlunosRoutesModule,
     CadastroModule,
     // DevExtreme
-    DxiItemModule,
     DxButtonModule,
     DxDataGridModule,
+    DxiItemModule,
   ],
   exports: [CadastroAlunoComponent, ListarAlunoComponent],
 })

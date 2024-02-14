@@ -1,12 +1,29 @@
 <div class="container">
 
   <h4 style="margin-top: 15px;">Alunos cadastrado </h4>
-  <dx-data-grid [dataSource]="aluno" [showBorders]="true" [allowColumnResizing]="true" [columnAutoWidth]="true">
+  <dx-data-grid [dataSource]="aluno" [showBorders]="true" [allowColumnResizing]="true" [columnAutoWidth]="true"
+    keyExpr="id_aluno">
     <dxi-column dataField="id_aluno" caption="id"></dxi-column>
     <dxi-column dataField="nome" caption="nome"></dxi-column>
     <dxi-column dataField="cpf"></dxi-column>
     <dxi-column dataField="cidade"></dxi-column>
     <dxi-column dataField="bairro"></dxi-column>
+    <!--Delete e Editar-->
+
+    <dxi-column caption="Editar" dataType="button" width=" 80" [cellTemplate]="editarRegistro"></dxi-column>
+
+    <!-- Coluna para Excluir -->
+    <dxi-column caption="Excluir" dataType="Delete" width="80" [cellTemplate]="excluirRegistro"></dxi-column>
   </dx-data-grid>
 
+  <!-- Template para Editar
+  <ng-template #editarTemplate let-data>
+    <button (click)="editarRegistro(data)" class="btn btn-info">Editar</button>
+  </ng-template>
+
+   Template para Excluir
+  <ng-template #excluirTemplate let-data>
+    <button (click)="excluirRegistro(data)" class="btn btn-danger">Excluir</button>
+  </ng-template>
+  -->
 </div>

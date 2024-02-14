@@ -15,22 +15,17 @@ export class AlunosService {
     return this.http.get(this.apiUrl);
   }
 
-  /* getAlunos(filtro?: string): Observable<any> {
-    const url = filtro ? `${this.apiUrl}?filtro=${filtro}` : this.apiUrl;
-    return this.http.get(url);
-  }*/
-
-  /* addalunos(alunosData: any): Observable<any> {
-    return this.http.post(this.apiUrl, alunosData);
+  addAluno(alunoData: any): Observable<any> {
+    return this.http.post(this.apiUrl, alunoData);
   }
 
-  updatealunos(id: number, alunosData: any): Observable<any> {
-    const url = `${this.apiUrl}?id=${id}`;
-    return this.http.put(url, alunosData);
+  updateAluno(id: number, alunoData: any): Observable<any> {
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.put(url, alunoData);
   }
 
-  deletealunos(id: number): Observable<any> {
-    const url = `${this.apiUrl}?id=${id}`;
+  deleteAluno(id: number): Observable<any> {
+    const url = `${this.apiUrl}/${id}`;
     return this.http.delete(url);
-  }*/
+  }
 }
