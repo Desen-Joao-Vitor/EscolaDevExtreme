@@ -8,7 +8,7 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'aluno/listar',
+    redirectTo: 'aluno/cadastro',
   },
   {
     path: 'Login',

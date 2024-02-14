@@ -1,40 +1,44 @@
 <div class="left"></div>
 <div class="rigth"></div>
 <div class="container">
-  <dx-form class="formulario" style="margin-top: 25px;" id=" form" [formData]="">
-    <dxi-item itemType="group" cssClass="form-group" [colCount]="4">
-      <dxi-item>
-        <div class="form-avatar">
+  <form #form="ngForm">
 
-        </div>
-      </dxi-item>
-      <dxi-item itemType="group" [colSpan]="3">
-        <dxi-item dataField="Nome Completo" id="nome"></dxi-item>
-        <dxi-item dataField="Informe o Cpf">
-          <input class="CampoCPF" type="text" id="cpf" [(ngModel)]="cpf" (input)="formatarCPF()" maxlength="14">
+    <dx-form class="formulario" style="margin-top: 25px;" id="form" [formData]="employee">
+      <dxi-item itemType="group" cssClass="form-group" [colCount]="4">
+        <dxi-item>
+          <div class="form-avatar">
+            <!-- Content for the form-avatar goes here if needed -->
+          </div>
+        </dxi-item>
+        <dxi-item itemType="group" [colSpan]="3">
+          <dxi-item dataField="nome"></dxi-item>
+          <dxi-item dataField="cpf">
+            <input class="CampoCPF" type="text" id="cpf" [(ngModel)]="employee.cpf" (input)="formatarCPF()"
+              maxlength="14" name="cpf">
+          </dxi-item>
         </dxi-item>
       </dxi-item>
-    </dxi-item>
-    <dxi-item itemType="group" cssClass="form-group" [colCount]="2">
-      <dxi-item itemType="group">
-        <dxi-item dataField="Cidade" id="cidade"></dxi-item>
-        <dxi-item dataField="Numero">
-          <input type="text" class="CampoNumero" id="numero" minlength="3" width="100%">
+      <dxi-item itemType="group" cssClass="form-group" [colCount]="2">
+        <dxi-item itemType="group">
+          <dxi-item dataField="cidade"></dxi-item>
+          <dxi-item dataField="numero">
+            <input type="text" class="CampoNumero" id="numero" minlength="3" width="100%" [(ngModel)]="employee.numero"
+              name="numero">
+          </dxi-item>
+          <dxi-item dataField="bairro"></dxi-item>
         </dxi-item>
-        <dxi-item dataField="bairro"></dxi-item>
+        <dxi-item itemType="group">
+          <dxi-item dataField="estado" editorType="dxSelectBox" [editorOptions]="{ items: states }"></dxi-item>
+          <dxi-item dataField="Rua"></dxi-item>
+          <dxi-item dataField="complemento"></dxi-item>
+        </dxi-item>
+        <dxi-item dataField="Foto"><input type="file" (click)="InserirFoto()"></dxi-item>
+        <dxi-item dataField="observacao" [colSpan]="2" editorType="dxTextArea"
+          [editorOptions]="{ height: 140}"></dxi-item>
       </dxi-item>
-      <dxi-item itemType="group">
-        <dxi-item id="estado" dataField="Estado" editorType="dxSelectBox"
-          [editorOptions]="{ items: states }"></dxi-item>
-        <dxi-item dataField="rua" id="Rua"></dxi-item>
-        <dxi-item dataField="Completo" id="complemento"></dxi-item>
+      <dxi-item>
+        <button class="btn btn-primary" (click)="Enviar()">Enviar</button>
       </dxi-item>
-      <dxi-item dataField="Foto"><input type="file" (onclick)="InserirFoto()"></dxi-item>
-      <dxi-item dataField="Observação" id="observacao" [colSpan]="2" editorType="dxTextArea"
-        [editorOptions]="{ height: 140}"></dxi-item>
-    </dxi-item>
-    <dxi-item>
-      <button class="btn btn-primary" (onclick)="Enviar()">Enviar</button>
-    </dxi-item>
-  </dx-form>
+    </dx-form>
+  </form>
 </div>

@@ -7,10 +7,10 @@ import {
   DxFormModule,
   DxSelectBoxModule,
   DxTextBoxModule,
+  NestedOptionHost,
 } from 'devextreme-angular';
-import { FormsModule } from '@angular/forms';
-import { ValidarCpfComponent } from './validar-cpf/validar-cpf.component';
 import { ValidarCpfModule } from './validar-cpf/validar-cpf.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
