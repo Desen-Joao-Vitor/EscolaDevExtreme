@@ -1,12 +1,11 @@
 <div class="container">
   <div id="data-grid-demo">
     <dx-data-grid [dataSource]="aluno" [showBorders]="true" [allowColumnResizing]="true" [columnAutoWidth]="true"
-      (onSelectionChanged)="onSelectionChanged($event)">
+      #alunoId>
 
-      <dxo-paging [enabled]=" false"></dxo-paging>
+      <dxo-paging [enabled]="false"></dxo-paging>
 
-      <dxo-editing mode="cell" [allowUpdating]="true" [allowAdding]="false" [allowDeleting]="true">
-      </dxo-editing>
+      <dxo-editing mode="cell" [allowUpdating]="true" [allowAdding]="false" [allowDeleting]="true"></dxo-editing>
 
       <dxo-selection id="select" mode="multiple"></dxo-selection>
 
@@ -20,17 +19,14 @@
 
       <dxi-column dataField="observacao" [allowFiltering]="false"></dxi-column>
 
-      <dxo-lookup [dataSource]="aluno" displayExpr="nome" valueExpr="id_aluno">
+      <dxo-lookup [dataSource]="aluno" displayExpr="nome" valueExpr="id_aluno"></dxo-lookup>
 
-      </dxo-lookup>
       <dxo-toolbar>
         <dxi-item location="after">
-          <dx-button value="id_aluno" icon="trash" text="Deletar registro de aluno" (click)="deleteSelectedRecords()">
-          </dx-button>
+          <dx-button icon="trash" text="Deletar registro de aluno" (click)="deleteSelectedRecords()"></dx-button>
         </dxi-item>
       </dxo-toolbar>
 
     </dx-data-grid>
-
   </div>
 </div>
