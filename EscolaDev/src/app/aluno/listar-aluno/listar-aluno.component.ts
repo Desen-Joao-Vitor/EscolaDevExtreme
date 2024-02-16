@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AlunosService } from '../alunos-service';
+import { DxDataGridComponent } from 'devextreme-angular';
 
 @Component({
   selector: 'app-listar-aluno',
@@ -7,7 +8,10 @@ import { AlunosService } from '../alunos-service';
   styleUrls: ['./listar-aluno.component.scss'],
 })
 export class ListarAlunoComponent implements OnInit {
+  @ViewChild(DxDataGridComponent, { static: false })
+  dataGrid!: DxDataGridComponent;
   aluno: any[] = [];
+  editedRow: any = {};
 
   constructor(private alunosService: AlunosService) {}
 
@@ -22,25 +26,6 @@ export class ListarAlunoComponent implements OnInit {
       },
       (error: any) => {
         console.error('Erro ao obter alunos:', error);
-      }
-    );
-  }
-
-  editarRegistro(aluno: any): void {
-    // Implemente sua lógica para editar o registro do aluno
-    console.log('Editar:', aluno);
-  }
-
-  excluirRegistro(aluno: any): void {
-    // Implemente sua lógica para excluir o registro do aluno
-    this.alunosService.deleteAluno(aluno.id).subscribe(
-      () => {
-        console.log('Aluno excluído com sucesso');
-        // Atualize a lista de alunos após a exclusão
-        this.getAlunos();
-      },
-      (error: any) => {
-        console.error('Erro ao excluir aluno:', error);
       }
     );
   }

@@ -1,0 +1,27 @@
+::ng-deep #data-grid-demo {
+  min-height: 700px;
+}
+
+::ng-deep #gridDeleteSelected {
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  margin: 1px;
+  top: 0;
+}
+
+::ng-deep #gridDeleteSelected .dx-button-text {
+  line-height: 0;
+}
+::ng-deep #select {
+  height: 16px;
+  width: 16px;
+  background-color: #94939366;
+}
+.dx-checkbox-checked .dx-checkbox-icon {
+  color: #002bff;
+}
+
+.dx-datagrid-checkbox-size.dx-checkbox-checked .dx-checkbox-icon {
+  font-size: 12px;
+}

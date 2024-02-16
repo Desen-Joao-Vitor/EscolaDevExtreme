@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { MenuModule } from './menu/menu.module';
 import { LoginModule } from './login/login.module';
-import { DxSchedulerModule } from 'devextreme-angular';
+import { DxDataGridModule, DxSchedulerModule } from 'devextreme-angular';
 import { HttpClientModule } from '@angular/common/http';
 import { DisciplinasService } from './Disciplinas/disciplinas.service';
 import { CadastroService } from './cadastro/cadastro.service';
@@ -25,6 +25,7 @@ import { AlunoModule } from './aluno/aluno.module';
     FormsModule,
     //DevExtreme
     DxSchedulerModule,
+    DxDataGridModule,
     //Modulos aplicação
     ValidarCpfModule,
     MenuModule,

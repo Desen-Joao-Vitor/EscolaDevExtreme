@@ -1,29 +1,21 @@
 <div class="container">
+  <h4 style="margin-top: 15px;">Alunos cadastrados</h4>
 
-  <h4 style="margin-top: 15px;">Alunos cadastrado </h4>
-  <dx-data-grid [dataSource]="aluno" [showBorders]="true" [allowColumnResizing]="true" [columnAutoWidth]="true"
-    keyExpr="id_aluno">
-    <dxi-column dataField="id_aluno" caption="id"></dxi-column>
-    <dxi-column dataField="nome" caption="nome"></dxi-column>
+  <dx-data-grid [dataSource]="aluno" [showBorders]="true" [allowColumnResizing]="true" [columnAutoWidth]="true">
+
+    <dxo-filter-row visible="true"></dxo-filter-row>
+
+    <dxi-column dataField="id_aluno" caption="ID"></dxi-column>
+    <dxi-column dataField="nome"></dxi-column>
     <dxi-column dataField="cpf"></dxi-column>
-    <dxi-column dataField="cidade"></dxi-column>
-    <dxi-column dataField="bairro"></dxi-column>
-    <!--Delete e Editar-->
 
-    <dxi-column caption="Editar" dataType="button" width=" 80" [cellTemplate]="editarRegistro"></dxi-column>
+    <dxi-column dataField="bairro" [allowFiltering]="false"></dxi-column>
+    <dxi-column dataField="Rua" [allowFiltering]="false"></dxi-column>
+    <dxi-column dataField="numero" [allowFiltering]="false"></dxi-column>
+    <dxi-column dataField="complemento" [allowFiltering]="false"></dxi-column>
 
-    <!-- Coluna para Excluir -->
-    <dxi-column caption="Excluir" dataType="Delete" width="80" [cellTemplate]="excluirRegistro"></dxi-column>
+    <dxi-column dataField="estado" [allowFiltering]="false"></dxi-column>
+    <dxi-column dataField="cidade" [allowFiltering]="false"></dxi-column>
+    <dxi-column dataField="observacao" [allowFiltering]="false"></dxi-column>
   </dx-data-grid>
-
-  <!-- Template para Editar
-  <ng-template #editarTemplate let-data>
-    <button (click)="editarRegistro(data)" class="btn btn-info">Editar</button>
-  </ng-template>
-
-   Template para Excluir
-  <ng-template #excluirTemplate let-data>
-    <button (click)="excluirRegistro(data)" class="btn btn-danger">Excluir</button>
-  </ng-template>
-  -->
 </div>

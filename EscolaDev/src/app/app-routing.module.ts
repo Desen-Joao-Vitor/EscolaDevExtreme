@@ -3,12 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { AlunoModule } from './aluno/aluno.module';
 import { ListarAlunoComponent } from './aluno/listar-aluno/listar-aluno.component';
 import { CadastroAlunoComponent } from './aluno/cadastro/cadastro.component';
+import { AlunoDeleteComponent } from './aluno/aluno-delete/aluno-delete.component';
 
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'aluno/cadastro',
+    redirectTo: 'aluno/delete',
   },
   {
     path: 'Login',
@@ -33,6 +34,10 @@ const routes: Routes = [
   {
     path: 'aluno/cadastro',
     component: CadastroAlunoComponent,
+  },
+  {
+    path: 'aluno/delete',
+    component: AlunoDeleteComponent,
   },
 ];
 
