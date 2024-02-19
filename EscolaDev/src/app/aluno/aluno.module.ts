@@ -8,21 +8,19 @@ import { DxiItemModule } from 'devextreme-angular/ui/nested';
 import {
   DxButtonModule,
   DxDataGridModule,
+  DxDropDownBoxModule,
   DxFormModule,
   DxSelectBoxModule,
   DxTemplateModule,
 } from 'devextreme-angular';
 import { AlunoDeleteComponent } from './aluno-delete/aluno-delete.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [
-    CadastroAlunoComponent,
-    ListarAlunoComponent,
-    AlunoDeleteComponent,
-  ],
+  declarations: [ListarAlunoComponent, AlunoDeleteComponent],
   imports: [
     CommonModule,
-
+    FormsModule,
     //Alicação
     AlunosRoutesModule,
     CadastroModule,
@@ -32,9 +30,10 @@ import { AlunoDeleteComponent } from './aluno-delete/aluno-delete.component';
     DxiItemModule,
     DxSelectBoxModule,
     DxFormModule,
-
+    DxDataGridModule,
     DxTemplateModule,
+    DxDropDownBoxModule,
   ],
-  exports: [CadastroAlunoComponent, ListarAlunoComponent, AlunoDeleteComponent],
+  exports: [ListarAlunoComponent, AlunoDeleteComponent],
 })
 export class AlunoModule {}

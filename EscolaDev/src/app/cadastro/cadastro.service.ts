@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-const states: string[] = [
+const estados: string[] = [
   'AC',
   'AL',
   'AP',
@@ -37,7 +37,7 @@ const states: string[] = [
 export class CadastroService {
   State!: string;
   getState() {
-    return states;
+    return estados;
   }
   private apiUrl =
     'http://localhost/API-Universidade/universidade-api/alunos.php';

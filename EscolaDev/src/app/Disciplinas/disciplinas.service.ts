@@ -8,6 +8,9 @@ import { Observable } from 'rxjs';
 export class DisciplinasService {
   private apiUrl =
     'http://localhost/API-Universidade/universidade-api/disciplina.php';
+  private apiDelet =
+    'http://localhost/API-Universidade/universidade-api/disciplina.php?id=';
+
   constructor(private http: HttpClient) {}
 
   getDisciplinas(): Observable<any> {
@@ -29,7 +32,7 @@ export class DisciplinasService {
   }
 
   deletedisciplinas(id: number): Observable<any> {
-    const url = `${this.apiUrl}?id=${id}`;
+    const url = `${this.apiDelet}${id}`;
     return this.http.delete(url);
   }
 }

@@ -9,11 +9,11 @@ import { LoginModule } from './login/login.module';
 import { DxDataGridModule, DxSchedulerModule } from 'devextreme-angular';
 import { HttpClientModule } from '@angular/common/http';
 import { DisciplinasService } from './Disciplinas/disciplinas.service';
-import { CadastroService } from './cadastro/cadastro.service';
 
 import { ValidarCpfModule } from './cadastro/validar-cpf/validar-cpf.module';
 import { AlunosService } from './aluno/alunos-service';
 import { AlunoModule } from './aluno/aluno.module';
+import { CadastroService } from './cadastro/cadastro.service';
 
 @NgModule({
   declarations: [AppComponent],

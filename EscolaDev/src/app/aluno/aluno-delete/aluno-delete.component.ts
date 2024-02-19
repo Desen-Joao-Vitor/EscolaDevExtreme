@@ -1,8 +1,8 @@
-import { Observable, forkJoin, of } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
 import { AlunosService } from './../alunos-service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DxDataGridComponent } from 'devextreme-angular';
+import { SelectionChangedEvent } from 'devextreme/ui/data_grid';
+import ArrayStore from 'devextreme/data/array_store';
 
 @Component({
   selector: 'app-aluno-delete',
@@ -12,17 +12,32 @@ import { DxDataGridComponent } from 'devextreme-angular';
 export class AlunoDeleteComponent implements OnInit {
   @ViewChild('alunoId', { static: false }) alunoId!: DxDataGridComponent;
 
+  //dataSource
   aluno: any = {
     id_aluno: '',
     nome: '',
     cpf: '',
   };
+  states: any = {
+    id_aluno: '',
+    nome: '',
+  };
+  key: any;
+  idSelecionado!: number;
+  dataSource!: ArrayStore;
+  data: any;
 
-  constructor(private alunosService: AlunosService) {}
+  constructor(private alunosService: AlunosService) {
+    this.dataSource = new ArrayStore({
+      key: 'id_aluno',
+      data: this.data,
+    });
+  }
 
   ngOnInit(): void {
-    console.log(this.getAlunos());
-    console.log(this.alunoId);
+    this.getAlunos();
+    console.log('id selecionado', this.idSelecionado);
+    console.log('id states aluno', this.states.id_aluno);
   }
 
   getAlunos() {
@@ -35,34 +50,33 @@ export class AlunoDeleteComponent implements OnInit {
       }
     );
   }
-
-  deleteSelectedRecords(): Observable<number> {
-    const selectedRows = this.alunoId.instance?.getSelectedRowsData();
-
-    if (selectedRows && selectedRows.length > 0) {
-      const deleteObservables: Observable<Object>[] = selectedRows.map(
-        (row: any) => this.deleteRecord(row.id_aluno)
-      );
-
-      return forkJoin(deleteObservables).pipe(
-        map(() => {
-          // Todos os registros foram deletados com sucesso
-          // Se necessário, atualize a lista de alunos após a exclusão
-          this.getAlunos();
-          return 0;
-        }),
-        catchError((error: any) => {
-          console.log('Erro ao deletar registros', error);
-          return of(-1);
-        })
-      );
-    } else {
-      console.log('Nenhum registro selecionado para deletar');
-      return of(-1);
+  deleteIdSelecionado() {
+    if (Array.isArray(this.idSelecionado)) {
+      this.idSelecionado.forEach((row: any) => {
+        this.deleteAluno(row.id_aluno);
+      });
     }
   }
 
-  private deleteRecord(id: number): Observable<Object> {
-    return this.alunosService.deleteAluno(id);
+  deleteAluno(id: number) {
+    this.alunosService.deleteAluno(id).subscribe(
+      () => {
+        // Atualize o dataSource ou faça outras ações necessárias após a exclusão
+        console.log(`Aluno com ID ${id} excluído com sucesso.`);
+      },
+      (error: any) => {
+        console.error(`Erro ao excluir aluno com ID ${id}:`, error);
+      }
+    );
+  }
+  onSelectionChanged(data: any) {
+    this.idSelecionado = data.selectedRowKeys;
+    console.log(data);
+    console.log(this.idSelecionado);
+  }
+  // Salvar e Editar
+
+  onValueChanged(t: any, y: any) {
+    throw new Error('Method not implemented.');
   }
 }

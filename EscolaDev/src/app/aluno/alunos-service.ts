@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, catchError, throwError } from 'rxjs';
+import { Observable, catchError, map, throwError } from 'rxjs';
+import { response } from 'express';
+import { AnyObject } from 'mongoose';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +16,7 @@ export class AlunosService {
   constructor(private http: HttpClient) {}
 
   getAlunos(): Observable<any> {
-    return this.http.get(this.apiUrl);
+    return this.http.get<any>(this.apiUrl);
   }
 
   /* updateAluno(id: number, alunoData: any): Observable<any> {
@@ -26,7 +28,7 @@ export class AlunosService {
     const url = `${this.apiDelet}${id}`;
     return this.http.delete(url).pipe(
       catchError((error: HttpErrorResponse) => {
-        console.error('Erro na requisição:', error);
+        console.log(`Erro ao excluir aluno com ID ${id}:`, error);
         return throwError(
           'Erro na requisição. Verifique o console para mais detalhes.'
         );

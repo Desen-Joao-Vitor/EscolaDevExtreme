@@ -4,10 +4,9 @@ import { CadastroService } from './cadastro.service';
 @Component({
   selector: 'app-cadastro',
   templateUrl: './cadastro.component.html',
-  styleUrls: ['./cadastro.component.css'],
 })
 export class CadastroComponent implements OnInit {
-  states!: string[];
+  estados!: string[];
 
   employee: any = {
     nome: '',
@@ -24,7 +23,7 @@ export class CadastroComponent implements OnInit {
   cpf: string = '';
 
   constructor(private cadastroService: CadastroService) {
-    this.states = cadastroService.getState();
+    this.estados = cadastroService.getState();
   }
 
   InserirFoto() {
@@ -47,7 +46,7 @@ export class CadastroComponent implements OnInit {
           observacao: '',
         };
       },
-      (error) => {
+      (error: any) => {
         console.error('Erro ao inserir dados:', error);
       }
     );
