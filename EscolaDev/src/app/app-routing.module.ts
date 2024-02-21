@@ -1,9 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AlunoModule } from './aluno/aluno.module';
 import { ListarAlunoComponent } from './aluno/listar-aluno/listar-aluno.component';
-import { CadastroAlunoComponent } from './aluno/cadastro/cadastro.component';
-import { AlunoDeleteComponent } from './aluno/aluno-delete/aluno-delete.component';
 
 const routes: Routes = [
   {
@@ -28,16 +25,8 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'aluno/listar',
+    path: 'aluno',
     component: ListarAlunoComponent,
-  },
-  {
-    path: 'aluno/cadastro',
-    component: CadastroAlunoComponent,
-  },
-  {
-    path: 'aluno/delete',
-    component: AlunoDeleteComponent,
   },
 ];
 

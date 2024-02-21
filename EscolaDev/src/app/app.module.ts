@@ -10,10 +10,8 @@ import { DxDataGridModule, DxSchedulerModule } from 'devextreme-angular';
 import { HttpClientModule } from '@angular/common/http';
 import { DisciplinasService } from './Disciplinas/disciplinas.service';
 
-import { ValidarCpfModule } from './cadastro/validar-cpf/validar-cpf.module';
 import { AlunosService } from './aluno/alunos-service';
 import { AlunoModule } from './aluno/aluno.module';
-import { CadastroService } from './cadastro/cadastro.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,12 +25,11 @@ import { CadastroService } from './cadastro/cadastro.service';
     DxSchedulerModule,
     DxDataGridModule,
     //Modulos aplicação
-    ValidarCpfModule,
     MenuModule,
     LoginModule,
     AlunoModule,
   ],
-  providers: [DisciplinasService, CadastroService, AlunosService],
+  providers: [DisciplinasService, AlunosService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,8 +1,18 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, catchError, map, throwError } from 'rxjs';
-import { response } from 'express';
-import { AnyObject } from 'mongoose';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import {
+  Observable,
+  catchError,
+  lastValueFrom,
+  map,
+  of,
+  throwError,
+} from 'rxjs';
+import CustomStore from 'devextreme/data/custom_store';
+import DevExpress from 'devextreme';
+
+// Estados
+const estados: string[] = [];
 
 @Injectable({
   providedIn: 'root',
@@ -10,29 +20,88 @@ import { AnyObject } from 'mongoose';
 export class AlunosService {
   private apiUrl =
     'http://localhost/API-Universidade/universidade-api/alunos.php';
-  private apiDelet =
-    'http://localhost/API-Universidade/universidade-api/alunos.php?id=';
+  protected dataSource: CustomStore;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    const that = this;
+    const isNotEmpty = (value: any) =>
+      value !== undefined && value !== null && value !== '';
 
-  getAlunos(): Observable<any> {
-    return this.http.get<any>(this.apiUrl);
+    this.dataSource = new CustomStore({
+      key: 'id',
+      byKey: (key) => {
+        return lastValueFrom(that.http.get(this.apiUrl + '?id=' + key));
+      },
+      async load(loadOptions: any) {
+        const url = that.apiUrl;
+        const paramNames = [
+          'skip',
+          'take',
+          'requireTotalCount',
+          'requireGroupCount',
+          'sort',
+          'filter',
+          'totalSummary',
+          'group',
+          'groupSummary',
+        ];
+
+        let params = new HttpParams();
+
+        paramNames
+          .filter((paramName) => isNotEmpty(loadOptions[paramName]))
+          .forEach((paramName) => {
+            params = params.set(
+              paramName,
+              JSON.stringify(loadOptions[paramName])
+            );
+          });
+
+        try {
+          const result: any = await lastValueFrom(
+            that.http.get(url, { params })
+          );
+
+          return {
+            data: result.data,
+            totalCount: result.totalCount,
+            summary: result.summary,
+            groupCount: result.groupCount,
+          };
+        } catch (err) {
+          throw new Error('Data Loading Error');
+        }
+      },
+      insert(values) {
+        return lastValueFrom(that.http.post(that.apiUrl, values));
+      },
+      update(key, values) {
+        return lastValueFrom(that.http.put(that.apiUrl + '?id=' + key, values));
+      },
+      remove: (key: any) => {
+        return new Promise<void>((resolve, reject) => {
+          that.http.delete(that.apiUrl + '?id=' + key).subscribe(
+            (response) => {
+              resolve();
+            },
+            (error) => {
+              reject(error);
+            }
+          );
+        });
+      },
+    });
   }
 
-  /* updateAluno(id: number, alunoData: any): Observable<any> {
-    const url = `${this.apiUrl}/${id}`;
-    return this.http.put(url, alunoData);
-  }*/
+  getDataSource() {
+    return this.dataSource;
+  }
 
-  deleteAluno(id: number) {
-    const url = `${this.apiDelet}${id}`;
-    return this.http.delete(url).pipe(
-      catchError((error: HttpErrorResponse) => {
-        console.log(`Erro ao excluir aluno com ID ${id}:`, error);
-        return throwError(
-          'Erro na requisição. Verifique o console para mais detalhes.'
-        );
-      })
-    );
+  getState() {
+    return estados;
+  }
+
+  ConsultarCep(cep: any): Observable<any> {
+    return this.http.get(`//viacep.com.br/ws/${cep}/json`);
   }
 }
