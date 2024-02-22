@@ -5,11 +5,11 @@
     <dxo-selection mode="multiple"></dxo-selection>
 
     <dxo-paging [enabled]="false"></dxo-paging>
-    <dxo-editing mode="popup" [allowUpdating]="false" [allowAdding]="true" [allowDeleting]="true"></dxo-editing>
+    <dxo-editing mode="popup" [allowUpdating]="true" [allowAdding]="true" [allowDeleting]="true"></dxo-editing>
 
     <dxi-column dataField="nome" caption="Nome"></dxi-column>
-    <dxi-column dataField="cpf" caption="CPF"></dxi-column>
-    <dxi-column dataField="cep" caption="CEP"></dxi-column>
+    <dxi-column (onClick)="formatarCPF(data)" dataField="cpf" caption="CPF"></dxi-column>
+
     <dxi-column dataField="estado" caption="UF"></dxi-column>
     <dxi-column dataField="cidade"></dxi-column>
 
@@ -21,15 +21,14 @@
     <dxi-column dataField="complemento"></dxi-column>
     <dxi-column dataField="observacao" caption="Observação"></dxi-column>
 
-    <dxo-lookup [dataSource]="" displayExpr="nome" valueExpr="id_aluno">
-    </dxo-lookup>
+    <dxo-lookup [dataSource]="dataSource" displayExpr="nome" valueExpr="id_aluno"></dxo-lookup>
 
     <dxo-toolbar>
+
       <dxi-item name="addRowButton" showText="always">
-        <!-- <dx-button (onClick)="Enviar()" icon="add"></dx-button>-->
       </dxi-item>
       <dxi-item location="after">
-        <dx-button (click)="delete($event)" icon="trash" [disabled]="!selectedRows" text="Excluir registro do aluno">
+        <dx-button (click)="delete()" icon="trash" [disabled]="!selectedRows" text="Excluir registro do aluno">
         </dx-button>
       </dxi-item>
     </dxo-toolbar>

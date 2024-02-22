@@ -1,15 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import {
-  Observable,
-  catchError,
-  lastValueFrom,
-  map,
-  of,
-  throwError,
-} from 'rxjs';
+import { Observable, lastValueFrom } from 'rxjs';
 import CustomStore from 'devextreme/data/custom_store';
-import DevExpress from 'devextreme';
 
 // Estados
 const estados: string[] = [];
@@ -24,14 +16,13 @@ export class AlunosService {
 
   constructor(private http: HttpClient) {
     const that = this;
-    const isNotEmpty = (value: any) =>
-      value !== undefined && value !== null && value !== '';
-
+    const isNotEmpty = (value: any[]) => value !== undefined && value !== null;
     this.dataSource = new CustomStore({
       key: 'id',
       byKey: (key) => {
         return lastValueFrom(that.http.get(this.apiUrl + '?id=' + key));
       },
+
       async load(loadOptions: any) {
         const url = that.apiUrl;
         const paramNames = [
@@ -77,6 +68,11 @@ export class AlunosService {
       },
       update(key, values) {
         return lastValueFrom(that.http.put(that.apiUrl + '?id=' + key, values));
+
+        //  const dataToUpdate = { id: key, ...values }; // Combine id with all other values
+        //  return lastValueFrom(
+        //    that.http.put(`${that.apiUrl}?id=${key}`, dataToUpdate)
+        //  );
       },
       remove: (key: any) => {
         return new Promise<void>((resolve, reject) => {

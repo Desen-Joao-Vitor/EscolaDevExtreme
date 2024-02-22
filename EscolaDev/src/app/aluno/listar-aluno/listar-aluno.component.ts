@@ -1,8 +1,8 @@
-import { response } from 'express';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AlunosService } from '../alunos-service';
 import { DxDataGridComponent } from 'devextreme-angular';
 import CustomStore from 'devextreme/data/custom_store';
+import ODataStore from 'devextreme/data/odata/store';
 
 @Component({
   selector: 'app-listar-aluno',
@@ -16,24 +16,42 @@ export class ListarAlunoComponent implements OnInit {
   dataSource: CustomStore;
   selectedRows!: number;
 
+  //editar
+  store!: ODataStore;
+
   // Cadastro
   estados!: string[];
+  data!: any[];
 
   constructor(private service: AlunosService) {
     this.dataSource = service.getDataSource();
+
+    //editar
+    this.store = new ODataStore({
+      key: 'id',
+      keyType: 'Int32',
+      // Other ODataStore properties go here
+    });
   }
   ngOnInit(): void {}
 
-  delete(id: any) {
+  delete() {
     if (Array.isArray(this.selectedRows)) {
-      this.selectedRows.forEach((row: any) => {
-        this.dataSource.remove(row.id);
+      this.selectedRows.forEach((id: any) => {
+        this.service.getDataSource().remove(id);
       });
       console.log('ola');
       // this.dataGrid.instance.refresh();
     }
   }
-  formatarCPF() {}
+  editar(): any {
+    const that = this;
+    console.log('ola');
+
+    // if (that.selectedRows. !== null) {
+    //   this.selectedRows.toArray.forEach((id: any) => {});
+    // }
+  }
 
   onSelectionChanged(data: any) {
     this.selectedRows = data.selectedRowKeys;
@@ -41,7 +59,7 @@ export class ListarAlunoComponent implements OnInit {
     console.log(this.selectedRows);
   }
 
-  registrarCep(event: any, form: any) {
+  /* registrarCep(event: any, form: any) {
     const cep = event.target.value.replace(/\D/g, '');
     debugger;
     /*if (cep !== null && cep !== '') {
@@ -49,6 +67,22 @@ export class ListarAlunoComponent implements OnInit {
         .ConsultarCep(cep)
         .subscribe //(dados: any) => this.dadosEndereco(dados)
         ();
-    }*/
+    }
+  }*/
+
+  formatarCPF(data: any) {
+    debugger;
+    const that = this;
+    // Remove caracteres não numéricos
+    const numerosCpf = that.data.values.arguments.replace(/\D/g, '');
+
+    // Limita o comprimento do CPF para 11 dígitos
+    const cpfFormatado = numerosCpf.slice(0, 11);
+
+    // Formata o CPF com pontos e traço
+    this.data = cpfFormatado.replace(
+      /(\d{3})(\d{3})(\d{3})(\d{2})/,
+      '$1.$2.$3-$4'
+    );
   }
 }
