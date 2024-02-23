@@ -98,6 +98,6 @@ export class AlunosService {
   }
 
   ConsultarCep(cep: any): Observable<any> {
-    return this.http.get(`//viacep.com.br/ws/${cep}/json`);
+    return this.http.get(`//viacep.com.br/ws/${cep}/json/`);
   }
 }

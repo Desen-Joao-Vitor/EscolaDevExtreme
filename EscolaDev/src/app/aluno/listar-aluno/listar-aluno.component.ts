@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { AlunosService } from '../alunos-service';
 import { DxDataGridComponent } from 'devextreme-angular';
 import CustomStore from 'devextreme/data/custom_store';
-import ODataStore from 'devextreme/data/odata/store';
 
 @Component({
   selector: 'app-listar-aluno',
@@ -10,28 +9,18 @@ import ODataStore from 'devextreme/data/odata/store';
   styleUrls: ['./listar-aluno.component.scss'],
 })
 export class ListarAlunoComponent implements OnInit {
-  // Delete
   @ViewChild('dataGrid', { static: false })
   dataGrid!: DxDataGridComponent;
   dataSource: CustomStore;
   selectedRows!: number;
-
-  //editar
-  store!: ODataStore;
-
-  // Cadastro
   estados!: string[];
   data!: any[];
+  cepField: any;
+  cidadeField: any;
+  menssageErro = ' ';
 
   constructor(private service: AlunosService) {
     this.dataSource = service.getDataSource();
-
-    //editar
-    this.store = new ODataStore({
-      key: 'id',
-      keyType: 'Int32',
-      // Other ODataStore properties go here
-    });
   }
   ngOnInit(): void {}
 
@@ -41,37 +30,32 @@ export class ListarAlunoComponent implements OnInit {
         this.service.getDataSource().remove(id);
       });
       console.log('ola');
-      // this.dataGrid.instance.refresh();
+      this.service.getDataSource();
     }
-  }
-  editar(): any {
-    const that = this;
-    console.log('ola');
-
-    // if (that.selectedRows. !== null) {
-    //   this.selectedRows.toArray.forEach((id: any) => {});
-    // }
   }
 
   onSelectionChanged(data: any) {
     this.selectedRows = data.selectedRowKeys;
     console.log(data);
-    console.log(this.selectedRows);
   }
 
-  /* registrarCep(event: any, form: any) {
-    const cep = event.target.value.replace(/\D/g, '');
-    debugger;
-    /*if (cep !== null && cep !== '') {
-      return this.service
-        .ConsultarCep(cep)
-        .subscribe //(dados: any) => this.dadosEndereco(dados)
-        ();
-    }
-  }*/
+  registarCep() {
+    // if (this.cepField.length < 9) {
+    //   this.menssageErro = 'Cep deve conter no  minimo 8 caracteres ';
+    //   return this.menssageErro;
+    // } else {
+    //   this.service.ConsultarCep(this.cepField.value).subscribe(
+    //     (data) => {
+    //       console.log(data);
+    //     },
+    //     (error) => {
+    //       console.error('Erro ao consultar CEP:', error);
+    //     }
+    //   );
+    // }
+  }
 
   formatarCPF(data: any) {
-    debugger;
     const that = this;
     // Remove caracteres não numéricos
     const numerosCpf = that.data.values.arguments.replace(/\D/g, '');
@@ -84,5 +68,38 @@ export class ListarAlunoComponent implements OnInit {
       /(\d{3})(\d{3})(\d{3})(\d{2})/,
       '$1.$2.$3-$4'
     );
+  }
+  onEditorPreparing(e: any) {
+    const that = this;
+    if (e.parentType === 'dataRow') {
+      const defaultFnc = e.editorOptions.onValueChanged;
+
+      switch (e.dataField) {
+        case 'cep':
+          {
+            this.cepField = e;
+            const fnc = (ev: any) => {
+              defaultFnc(ev);
+              this.cepField = ev;
+              this.registarCep();
+              console.log(this.cidadeField);
+              this.cidadeField.editorOptions.value = 'Rio Verde';
+            };
+            e.editorOptions.onValueChanged = fnc.bind(this);
+          }
+          break;
+
+        case 'cidade':
+          {
+            this.cidadeField = e;
+            const fnc = (ev: any) => {
+              defaultFnc(ev);
+              this.cidadeField = ev;
+            };
+            e.editorOptions.onValueChanged = fnc.bind(this);
+          }
+          break;
+      }
+    }
   }
 }
