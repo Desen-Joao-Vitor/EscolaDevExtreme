@@ -13,10 +13,10 @@ export class DisciplinasComponent implements OnInit {
   constructor(private disciplinaService: DisciplinasService) {}
 
   ngOnInit(): void {
-    this.getdisciplina();
+    this.getDisciplina();
   }
 
-  getdisciplina(): void {
+  getDisciplina(): void {
     this.disciplinaService.getDisciplinas().subscribe(
       (data: any) => {
         this.disciplina = data.data;

@@ -25,8 +25,14 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'aluno',
-    component: ListarAlunoComponent,
+    path: 'Alunos',
+    loadChildren: () =>
+      import('./aluno/aluno.module').then((m) => m.AlunoModule),
+  },
+  {
+    path: 'Professor',
+    loadChildren: () =>
+      import('./professor/professor.module').then((m) => m.ProfessorModule),
   },
 ];
 

@@ -8,6 +8,20 @@ import DataSource from 'devextreme/data/data_source';
   styleUrl: './menu.component.scss',
 })
 export class MenuComponent implements OnInit {
-  constructor() {}
-  ngOnInit(): void {}
+  disciplina: any[] = [];
+  constructor(private service: DisciplinasService) {}
+
+  getDisciplinas(): void {
+    this.service.getDisciplinas().subscribe(
+      (data: any) => {
+        this.disciplina = data.data;
+      },
+      (error: any) => {
+        console.error('Erro ao obter matrículas:', error);
+      }
+    );
+  }
+  ngOnInit(): void {
+    this.getDisciplinas();
+  }
 }

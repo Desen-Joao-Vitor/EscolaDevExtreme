@@ -3,6 +3,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { AlunosService } from '../alunos-service';
 import { DxDataGridComponent } from 'devextreme-angular';
 import CustomStore from 'devextreme/data/custom_store';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-listar-aluno',
@@ -22,24 +23,22 @@ export class ListarAlunoComponent implements OnInit {
   cidadeField: any;
   menssageErro = ' ';
 
-  constructor(private service: AlunosService) {
+  constructor(private service: AlunosService, private http: HttpClient) {
     this.dataSource = service.getDataSource();
   }
   ngOnInit(): void {}
 
-  delete() {
+  async delete() {
     if (Array.isArray(this.selectedRows)) {
       this.selectedRows.forEach((id: any) => {
         this.service.getDataSource().remove(id);
       });
-      console.log('ola');
-      this.service.getDataSource();
+      window.location.reload();
     }
   }
 
   onSelectionChanged(data: any) {
     this.selectedRows = data.selectedRowKeys;
-    console.log(data);
   }
 
   registarCep() {
@@ -58,24 +57,14 @@ export class ListarAlunoComponent implements OnInit {
     }
   }
 
-  formatarCPF() {
-    if (this.cpfField.value.length == 12) {
-      console.log(this.cpfField.value);
-      const that = this;
-      // Remove caracteres não numéricos
-      const numerosCpf = this.cpfField.value.replace(/\D/g, '');
+  consultarCpf() {
+    // Chama a função de formatação de CPF
+    const cpfFormatado = this.service.formatarCpf(this.cpfField.value);
 
-      // Limita o comprimento do CPF para 11 dígitos
-      const cpfFormatado = numerosCpf.slice(0, 11);
-
-      // Formata o CPF com pontos e traço
-      this.cpfField = cpfFormatado.replace(
-        /(\d{3})(\d{3})(\d{3})(\d{2})/,
-        '$1.$2.$3-$4'
-      );
-      this.cpfField.componet.component.cellValue(0, 'cpf', this.cpfField);
-    }
+    // Atualiza o valor na tela com o CPF formatado
+    this.cpfField.component.option('value', cpfFormatado);
   }
+
   onEditorPreparing(e: any) {
     const that = this;
     if (e.parentType === 'dataRow') {
@@ -110,7 +99,7 @@ export class ListarAlunoComponent implements OnInit {
           const fnc = (ev: any) => {
             defaultFnc(ev);
             this.cpfField = ev;
-            this.formatarCPF();
+            this.consultarCpf();
           };
           e.editorOptions.onValueChanged = fnc.bind(this);
         }

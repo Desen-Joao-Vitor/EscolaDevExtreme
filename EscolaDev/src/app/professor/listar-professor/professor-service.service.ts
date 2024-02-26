@@ -3,15 +3,12 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, lastValueFrom } from 'rxjs';
 import CustomStore from 'devextreme/data/custom_store';
 
-// Estados
-const estados: string[] = [];
-
 @Injectable({
   providedIn: 'root',
 })
-export class AlunosService {
+export class ProfessorServiceService {
   private apiUrl =
-    'http://localhost/API-Universidade/universidade-api/alunos.php';
+    'http://localhost/API-Universidade/universidade-api/professor.php';
   protected dataSource: CustomStore;
   dataChanged: EventEmitter<void> = new EventEmitter<void>();
 
@@ -90,10 +87,6 @@ export class AlunosService {
 
   getDataSource() {
     return this.dataSource;
-  }
-
-  getState() {
-    return estados;
   }
 
   formatarCpf(cpf: any): Observable<any> {

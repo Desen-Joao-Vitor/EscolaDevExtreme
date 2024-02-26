@@ -1,1 +1,56 @@
-<p>listar-professor works!</p>
+<div class="container" id="data-grid-demo">
+  <dx-data-grid id="dataGrid" [dataSource]="dataSource" [showBorders]="true"
+    (onSelectionChanged)="onSelectionChanged($event)" (onEditorPreparing)="onEditorPreparing($event)">
+
+    <dxo-selection mode="multiple"></dxo-selection>
+
+    <dxo-paging [enabled]="false"></dxo-paging>
+    <dxo-editing mode="popup" [allowUpdating]="true" [allowAdding]="true" [allowDeleting]="true">
+      <dxo-popup title="Cadastro de Aluno" [showTitle]="true" [width]="900" [height]="'auto'"
+        [position]="{ my: 'center', at: 'center' }">
+      </dxo-popup>
+
+      <dxo-form>
+        <dxi-item dataField="nome"></dxi-item>
+        <dxi-item dataField="cpf"></dxi-item>
+        <dxi-item dataField="cep"></dxi-item>
+        <dxi-item dataField="estado"></dxi-item>
+        <dxi-item dataField="cidade"></dxi-item>
+        <dxi-item dataField="bairro"></dxi-item>
+        <dxi-item dataField="rua"></dxi-item>
+        <dxi-item dataField="numero"></dxi-item>
+        <dxi-item dataField="complemento"></dxi-item>
+        <dxi-item dataField="observacao"></dxi-item>
+      </dxo-form>
+    </dxo-editing>
+
+
+    <dxi-column dataField="nome" caption="Nome"></dxi-column>
+    <dxi-column dataField="cpf" caption="CPF"></dxi-column>
+
+    <dxi-column dataField="cep" caption="CEP"></dxi-column>
+    <dxi-column dataField="estado" caption="UF"></dxi-column>
+    <dxi-column dataField="cidade"></dxi-column>
+
+
+    <dxi-column dataField="bairro"></dxi-column>
+    <dxi-column dataField="rua"></dxi-column>
+    <dxi-column dataField="numero" caption="Número"></dxi-column>
+
+    <dxi-column dataField="complemento"></dxi-column>
+    <dxi-column dataField="observacao" caption="Observação"></dxi-column>
+
+
+    <dxo-toolbar>
+
+      <dxi-item name="addRowButton" showText="always">
+      </dxi-item>
+      <dxi-item location="after">
+        <dx-button (click)="delete()" icon="trash" [disabled]="!selectedRows" text="Excluir registro do aluno">
+        </dx-button>
+      </dxi-item>
+    </dxo-toolbar>
+
+  </dx-data-grid>
+
+</div>

@@ -17,11 +17,6 @@ export class DisciplinasService {
     return this.http.get(this.apiUrl); // Chama a URL diretamente sem filtro
   }
 
-  /* getDisciplinas(filtro?: string): Observable<any> {
-    const url = filtro ? `${this.apiUrl}?filtro=${filtro}` : this.apiUrl;
-    return this.http.get(url);
-  }*/
-
   adddisciplinas(disciplinasData: any): Observable<any> {
     return this.http.post(this.apiUrl, disciplinasData);
   }

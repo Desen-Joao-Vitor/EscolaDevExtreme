@@ -1,21 +1,32 @@
-<div class="row mt-4">
-  <!-- Calendário -->
-  <div class="col-md-6">
-    <div class="card">
-      <div class="card-header">Calendário</div>
-      <div class="card-body">
-        <!-- Adicione aqui o componente de calendário, por exemplo, usando DevExtreme Scheduler -->
-        <!-- Certifique-se de importar os módulos e estilos necessários -->
-        <dx-scheduler></dx-scheduler>
+<div class="container mt-4">
+  <div class="row">
+    <!-- Calendário -->
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">Calendário</div>
+        <div class="card-body">
+          <!-- Adicione aqui o componente de calendário -->
+          <!-- Por exemplo, usando DevExtreme Scheduler -->
+          <!-- Certifique-se de importar os módulos e estilos necessários -->
+          <dx-scheduler></dx-scheduler>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- Espaço para disciplinas -->
-  <div class="col-md-6">
-    <div class="card">
-      <div class="card-header">Disciplinas</div>
-      <div class="card-body">
+    <!-- Espaço para disciplinas -->
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">Disciplinas</div>
+        <div class="card-body">
+          <dx-data-grid [dataSource]="disciplina" [showBorders]="true" [allowColumnResizing]="true"
+            [columnAutoWidth]="true">
+            <dxo-paging [pageSize]="20"></dxo-paging>
+
+            <dxi-column dataField="id_disciplina" caption="ID"></dxi-column>
+            <dxi-column dataField="nome" caption="Nome"></dxi-column>
+            <dxi-column dataField="carga_horaria" caption="Carga Horária"></dxi-column>
+          </dx-data-grid>
+        </div>
       </div>
     </div>
   </div>

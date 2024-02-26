@@ -8,9 +8,8 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   constructor(private router: Router) {}
-  title = 'EscolaDev';
   redirectToLogin() {
-    this.router.navigate(['/login']);
+    this.router.navigate(['/Login']);
   }
   navega(event: any) {
     const selectedRoute = event.target.value;

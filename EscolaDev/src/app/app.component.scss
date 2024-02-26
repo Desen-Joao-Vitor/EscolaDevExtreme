@@ -9,18 +9,35 @@ button {
   font-size: 16px;
   cursor: pointer;
 }
-.left {
-  width: 13%;
-  height: 93.9vh;
-  background-color: #3e7070;
-  position: absolute;
-  top: 58px;
+.px-3.py-2.text-bg-dark.border-bottom {
+  width: 99vw;
+  height: 75px;
+  margin-left: -11px !important;
 }
-.rigth {
-  width: 13%;
-  height: 93.9vh;
-  background-color: #3e7070;
+.d-flex.flex-wrap.align-items-center.justify-content-center.justify-content-lg-start {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  left: 587px;
+  top: -40px;
+}
+button.btn.btn-light.text-dark.me-2 {
+  position: relative;
+  top: -2px;
+  right: -6px;
+  width: 100px;
+}
+.Conteudo {
+  height: max-content;
+  margin-top: 30px;
+}
+.final {
+  width: 100vw;
+  display: flex;
   position: absolute;
-  top: 58px;
-  right: 0px;
+  bottom: 0px;
+}
+footer.bg-dark.text-white.text-center.p-3.mt-4 {
+  margin-left: -11px !important;
+  width: 100vw;
 }

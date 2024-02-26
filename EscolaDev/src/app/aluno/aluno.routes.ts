@@ -5,7 +5,7 @@ import { ListarAlunoComponent } from './listar-aluno/listar-aluno.component';
 
 const routes: Routes = [
   { path: '', component: ListarAlunoComponent },
-  { path: 'aluno/listar', component: ListarAlunoComponent },
+  { path: 'Alunos/cadastrados', component: ListarAlunoComponent },
 ];
 
 @NgModule({
