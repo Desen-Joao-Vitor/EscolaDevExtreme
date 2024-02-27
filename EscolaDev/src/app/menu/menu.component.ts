@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DisciplinasService } from '../Disciplinas/disciplinas.service';
 import DataSource from 'devextreme/data/data_source';
+import CustomStore from 'devextreme/data/custom_store';
 
 @Component({
   selector: 'app-menu',
@@ -8,20 +9,10 @@ import DataSource from 'devextreme/data/data_source';
   styleUrl: './menu.component.scss',
 })
 export class MenuComponent implements OnInit {
-  disciplina: any[] = [];
-  constructor(private service: DisciplinasService) {}
+  dataSource: CustomStore;
+  constructor(private service: DisciplinasService) {
+    this.dataSource = service.getDataSource();
+  }
 
-  getDisciplinas(): void {
-    this.service.getDisciplinas().subscribe(
-      (data: any) => {
-        this.disciplina = data.data;
-      },
-      (error: any) => {
-        console.error('Erro ao obter matrículas:', error);
-      }
-    );
-  }
-  ngOnInit(): void {
-    this.getDisciplinas();
-  }
+  ngOnInit(): void {}
 }

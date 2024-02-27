@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { EventEmitter, Injectable } from '@angular/core';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Observable, lastValueFrom } from 'rxjs';
+import CustomStore from 'devextreme/data/custom_store';
 
 @Injectable({
   providedIn: 'root',
@@ -8,26 +9,81 @@ import { Observable } from 'rxjs';
 export class DisciplinasService {
   private apiUrl =
     'http://localhost/API-Universidade/universidade-api/disciplina.php';
-  private apiDelet =
-    'http://localhost/API-Universidade/universidade-api/disciplina.php?id=';
+  protected dataSource: CustomStore;
+  dataChanged: EventEmitter<void> = new EventEmitter<void>();
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    const that = this;
+    const isNotEmpty = (value: any[]) => value !== undefined && value !== null;
+    this.dataSource = new CustomStore({
+      key: 'id',
+      byKey: (key) => {
+        return lastValueFrom(that.http.get(this.apiUrl + '?id=' + key));
+      },
 
-  getDisciplinas(): Observable<any> {
-    return this.http.get(this.apiUrl); // Chama a URL diretamente sem filtro
+      async load(loadOptions: any) {
+        const url = that.apiUrl;
+        const paramNames = [
+          'skip',
+          'take',
+          'requireTotalCount',
+          'requireGroupCount',
+          'sort',
+          'filter',
+          'totalSummary',
+          'group',
+          'groupSummary',
+        ];
+
+        let params = new HttpParams();
+
+        paramNames
+          .filter((paramName) => isNotEmpty(loadOptions[paramName]))
+          .forEach((paramName) => {
+            params = params.set(
+              paramName,
+              JSON.stringify(loadOptions[paramName])
+            );
+          });
+
+        try {
+          const result: any = await lastValueFrom(
+            that.http.get(url, { params })
+          );
+
+          return {
+            data: result.data,
+            totalCount: result.totalCount,
+            summary: result.summary,
+            groupCount: result.groupCount,
+          };
+        } catch (err) {
+          throw new Error('Data Loading Error');
+        }
+      },
+      insert(values) {
+        return lastValueFrom(that.http.post(that.apiUrl, values));
+      },
+      update(key, values) {
+        return lastValueFrom(that.http.put(that.apiUrl + '?id=' + key, values));
+      },
+      remove: (id: any) => {
+        return new Promise<void>((resolve, reject) => {
+          that.http.delete(that.apiUrl + '?id=' + id).subscribe(
+            (response) => {
+              resolve();
+              that.dataChanged.emit();
+            },
+            (error) => {
+              reject(error);
+            }
+          );
+        });
+      },
+    });
   }
 
-  adddisciplinas(disciplinasData: any): Observable<any> {
-    return this.http.post(this.apiUrl, disciplinasData);
-  }
-
-  updatedisciplinas(id: number, disciplinasData: any): Observable<any> {
-    const url = `${this.apiUrl}?id=${id}`;
-    return this.http.put(url, disciplinasData);
-  }
-
-  deletedisciplinas(id: number): Observable<any> {
-    const url = `${this.apiDelet}${id}`;
-    return this.http.delete(url);
+  getDataSource() {
+    return this.dataSource;
   }
 }

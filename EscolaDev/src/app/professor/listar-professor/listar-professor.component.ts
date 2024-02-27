@@ -35,7 +35,7 @@ export class ListarProfessorComponent implements OnInit {
       this.selectedRows.forEach((id: any) => {
         this.service.getDataSource().remove(id);
       });
-      // window.location.reload();
+      window.location.reload();
     }
   }
 
@@ -97,15 +97,17 @@ export class ListarProfessorComponent implements OnInit {
           }
           break;
 
-        case 'cpf': {
-          this.cpfField = e;
-          const fnc = (ev: any) => {
-            defaultFnc(ev);
-            this.cpfField = ev;
-            this.consultarCpf();
-          };
-          e.editorOptions.onValueChanged = fnc.bind(this);
-        }
+        case 'cpf':
+          {
+            this.cpfField = e;
+            const fnc = (ev: any) => {
+              defaultFnc(ev);
+              this.cpfField = ev;
+              this.consultarCpf();
+            };
+            e.editorOptions.onValueChanged = fnc.bind(this);
+          }
+          break;
       }
     }
   }
