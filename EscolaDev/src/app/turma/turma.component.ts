@@ -1,24 +1,25 @@
-import { Component, OnInit } from '@angular/core';
-import { DisciplinasService } from '../disciplinas.service';
-import { __asyncValues } from 'tslib';
+import { Component } from '@angular/core';
 import CustomStore from 'devextreme/data/custom_store';
+import { Turma, TurmaService } from './turma.service';
 
 @Component({
-  selector: 'app-disciplinas',
-  templateUrl: './disciplina.component.html',
-  styleUrls: ['./disciplina.componet.scss'],
+  selector: 'app-turma',
+  templateUrl: './turma.component.html',
+  styleUrl: './turma.component.scss',
 })
-export class DisciplinasComponent {
+export class TurmaComponent {
   dataSource: CustomStore; // service
+  turma: Turma[];
   selectedRows!: number;
-  nomeDisciplina: any;
-  cargaHorariaDisciplina: any;
+  nomeTurma: any;
   message: any;
 
-  constructor(private service: DisciplinasService) {
+  constructor(private service: TurmaService) {
     this.dataSource = service.getDataSource(); //comunicação de interação com o banco
-  }
+    this.turma = service.getTurmas(); // /Aplicando nomes de turmos que são autorizados a coloca
 
+    console.log(this.turma);
+  }
   // Evento de selecionar o id da coluna
   onSelectionChanged(data: any) {
     this.selectedRows = data.selectedRowKeys;
@@ -34,16 +35,15 @@ export class DisciplinasComponent {
   }
 
   validarNome() {
-    if (this.nomeDisciplina.value.length <= 5) {
+    if (this.nomeTurma.value.length <= 5) {
       this.message =
         'ERROR!! Nome da disciplina deve ter pelo menos 6 caracteres.';
       console.error(this.message);
-    } else if (this.nomeDisciplina.value.trim() === '') {
+    } else if (this.nomeTurma.value.trim() === '') {
       this.message = ' ERROR!! O campo não pode conter somente espaços ';
       console.error(this.message);
     }
   }
-
   onEditorPreparing(e: any) {
     if (e.parentType === 'dataRow') {
       const defaulfnc = e.editorOptions.onValueChanged;
@@ -51,10 +51,10 @@ export class DisciplinasComponent {
       switch (e.dataField) {
         case 'nome':
           {
-            this.nomeDisciplina = e;
+            this.nomeTurma = e;
             const fnc = (ev: any) => {
               defaulfnc(ev);
-              this.nomeDisciplina = ev;
+              this.nomeTurma = ev;
               this.validarNome();
             };
             e.editorOptions.onValueChanged = fnc.bind(this);

@@ -12,6 +12,8 @@ import { DisciplinasService } from './Disciplinas/disciplinas.service';
 
 import { AlunosService } from './aluno/alunos-service';
 import { AlunoModule } from './aluno/aluno.module';
+import { TurmaModule } from './turma/turma.module';
+import { TurmaService } from './turma/turma.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,9 +29,10 @@ import { AlunoModule } from './aluno/aluno.module';
     //Modulos aplicação
     MenuModule,
     LoginModule,
+    TurmaModule,
     AlunoModule,
   ],
-  providers: [DisciplinasService, AlunosService],
+  providers: [DisciplinasService, AlunosService, TurmaService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
