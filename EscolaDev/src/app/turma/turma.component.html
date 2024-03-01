@@ -12,13 +12,13 @@
         [position]="{my:'center', at: 'center '}"></dxo-popup>
 
       <dxo-form>
-        <dxi-item dataField="nome_turma"></dxi-item>
+        <dxi-item dataField="nome"></dxi-item>
         <dxi-item dataField="turno"></dxi-item>
       </dxo-form>
-
     </dxo-editing>
+
     <dxi-column dataField="id" [width]="50" caption="ID"></dxi-column>
-    <dxi-column dataField="nome_turma" caption="Nome da turma"></dxi-column>
+    <dxi-column dataField="nome" caption="Nome da turma"></dxi-column>
     <dxi-column dataField="turno" caption="Turno" [width]="150"></dxi-column>
 
     <dxo-toolbar>
@@ -27,6 +27,5 @@
         <dx-button (click)="delete()" icon="trash" [disabled]="!selectedRows" text="Excluir disciplinas"></dx-button>
       </dxi-item>
     </dxo-toolbar>
-
   </dx-data-grid>
 </div>

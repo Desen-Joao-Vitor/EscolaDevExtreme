@@ -98,6 +98,7 @@
     "logradouro",
     "Matemática",
     "Matricula",
+    "MATUTINO",
     "menor",
     "menssage",
     "modificada",
@@ -109,6 +110,7 @@
     "necessárias",
     "necessário",
     "Nenhum",
+    "NOTURNO",
     "numéricos",
     "numero",
     "Número",
@@ -153,11 +155,14 @@
     "tela",
     "Teste",
     "texto",
+    "tipo",
     "Todos",
     "traço",
     "Tratamento",
+    "tuno",
     "Turma",
     "Turmas",
+    "Turno",
     "único",
     "Usuário",
     "Validação",
@@ -166,6 +171,7 @@
     "verdadeiro",
     "Verificar",
     "Verifique",
+    "VESPERTINO",
     "Westmoreland"
   ]
 }
