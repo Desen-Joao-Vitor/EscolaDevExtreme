@@ -5,13 +5,17 @@ import { ListarProfessorComponent } from './listar-professor/listar-professor.co
 import { FormsModule } from '@angular/forms';
 import {
   DxButtonModule,
+  DxCheckBoxModule,
   DxDataGridModule,
   DxDropDownBoxModule,
   DxFormModule,
   DxSelectBoxModule,
   DxTemplateModule,
 } from 'devextreme-angular';
-import { DxiItemModule } from 'devextreme-angular/ui/nested';
+import {
+  DxiItemModule,
+  DxoFilterRowModule,
+} from 'devextreme-angular/ui/nested';
 
 @NgModule({
   declarations: [ListarProfessorComponent],
@@ -29,6 +33,8 @@ import { DxiItemModule } from 'devextreme-angular/ui/nested';
     DxDataGridModule,
     DxTemplateModule,
     DxDropDownBoxModule,
+    DxoFilterRowModule,
+    DxCheckBoxModule,
   ],
 })
 export class ProfessorModule {}

@@ -1,6 +1,10 @@
 <div class="container" id="data-grid-demo">
+
   <dx-data-grid id="dataGrid" [dataSource]="dataSource" [showBorders]="true"
     (onSelectionChanged)="onSelectionChanged($event)" (onEditorPreparing)="onEditorPreparing($event)">
+
+
+
 
     <dxo-selection mode="multiple"></dxo-selection>
 
@@ -11,7 +15,7 @@
       </dxo-popup>
 
       <dxo-form>
-        <dxi-item dataField="nome"></dxi-item>
+        <dxi-item dataField="nome" [width]="200"></dxi-item>
         <dxi-item dataField="cpf"></dxi-item>
         <dxi-item dataField="cep"></dxi-item>
         <dxi-item dataField="estado"></dxi-item>
@@ -24,8 +28,10 @@
       </dxo-form>
     </dxo-editing>
 
-
-    <dxi-column dataField="nome" caption="Nome"></dxi-column>
+    <dxo-filter-row [visible]="showFilterRow" [applyFilter]="currentFilter"></dxo-filter-row>
+    <dxo-header-filter [visible]="showHeaderFilter"></dxo-header-filter>
+    <dxo-search-panel [visible]="true" [width]="240" placeholder="Search..."></dxo-search-panel>
+    <dxi-column dataField="nome" [width]="200" caption="Nome"></dxi-column>
     <dxi-column dataField="cpf" caption="CPF"></dxi-column>
 
     <dxi-column dataField="cep" caption="CEP"></dxi-column>
@@ -33,12 +39,12 @@
     <dxi-column dataField="cidade"></dxi-column>
 
 
-    <dxi-column dataField="bairro"></dxi-column>
-    <dxi-column dataField="rua"></dxi-column>
-    <dxi-column dataField="numero" caption="Número"></dxi-column>
+    <dxi-column dataField="bairro" [filterOperations]="false"></dxi-column>
+    <dxi-column dataField="rua" [filterOperations]="false"></dxi-column>
+    <dxi-column dataField="numero" [filterOperations]="false" caption="Número"></dxi-column>
 
-    <dxi-column dataField="complemento"></dxi-column>
-    <dxi-column dataField="observacao" caption="Observação"></dxi-column>
+    <dxi-column dataField="complemento" [filterOperations]="false"></dxi-column>
+    <dxi-column dataField="observacao" [filterOperations]="false" caption="Observação"></dxi-column>
 
 
     <dxo-toolbar>

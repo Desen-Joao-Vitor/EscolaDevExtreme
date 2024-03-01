@@ -12,6 +12,8 @@ import {
   DxTemplateModule,
 } from 'devextreme-angular';
 import { FormsModule } from '@angular/forms';
+import { AlunosService } from './alunos-service';
+import { MatriculaService } from './matricula.service';
 
 @NgModule({
   declarations: [ListarAlunoComponent],
@@ -31,5 +33,6 @@ import { FormsModule } from '@angular/forms';
     DxDropDownBoxModule,
   ],
   exports: [ListarAlunoComponent],
+  providers: [AlunosService, MatriculaService],
 })
 export class AlunoModule {}

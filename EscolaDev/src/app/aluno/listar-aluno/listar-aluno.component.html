@@ -4,6 +4,14 @@
 
     <dxo-selection mode="multiple"></dxo-selection>
 
+    <dxo-editing mode="popup">
+      <dxo-popup class="popup" title="Gerar matrícula" [showTitle]="true" [width]="900" [height]="'auto'">
+        <!-- Conteúdo da nova popup -->
+        <!-- Por exemplo, um formulário para gerar matrícula -->
+      </dxo-popup>
+    </dxo-editing>
+
+
     <dxo-paging [enabled]="false"></dxo-paging>
     <dxo-editing mode="popup" [allowUpdating]="true" [allowAdding]="true" [allowDeleting]="true">
       <dxo-popup title="Cadastro de Aluno" [showTitle]="true" [width]="900" [height]="'auto'"
@@ -49,8 +57,26 @@
         <dx-button (click)="delete()" icon="trash" [disabled]="!selectedRows" text="Excluir registro do aluno">
         </dx-button>
       </dxi-item>
+      <dxi-item location="after">
+        <dx-button icon="add" text="Gerar matrícula" (click)="gerarMatricula()" [disabled]="!selectedRows">
+        </dx-button>
+      </dxi-item>
     </dxo-toolbar>
 
+    <dxo-editing mode="popup">
+      <dxo-popup *ngIf="matriculaPopupVisible" class="popup" title="Gerar matrícula" [showTitle]="true" [width]="900"
+        [height]="'auto'" [(visible)]="matriculaPopupVisible">
+        <!-- Conteúdo da nova popup -->
+        <dx-form>
+          <dxi-item dataField="nome"></dxi-item>
+        </dx-form>
+        <!-- Por exemplo, um formulário para gerar matrícula -->
+      </dxo-popup>
+      <!-- ... Seu código existente ... -->
+    </dxo-editing>
+
+
   </dx-data-grid>
+
 
 </div>

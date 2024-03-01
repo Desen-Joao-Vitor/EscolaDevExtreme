@@ -22,6 +22,11 @@ export class ListarProfessorComponent implements OnInit {
   cidadeField: any;
   menssageErro = ' ';
 
+  // filtro
+  showFilterRow: boolean = true;
+  currentFilter: any;
+  showHeaderFilter: any;
+
   constructor(
     private service: ProfessorServiceService,
     private http: HttpClient
@@ -29,6 +34,14 @@ export class ListarProfessorComponent implements OnInit {
     this.dataSource = service.getDataSource();
   }
   ngOnInit(): void {}
+
+  onContentReady(e: any) {
+    // Mantenha uma referência à instância do DataGrid
+    const dataGrid = e.component;
+
+    // Configure a função de filtro
+    this.currentFilter = dataGrid.getCombinedFilter();
+  }
 
   async delete() {
     if (Array.isArray(this.selectedRows)) {

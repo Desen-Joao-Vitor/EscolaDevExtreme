@@ -4,6 +4,7 @@ import { AlunosService } from '../alunos-service';
 import { DxDataGridComponent } from 'devextreme-angular';
 import CustomStore from 'devextreme/data/custom_store';
 import { HttpClient } from '@angular/common/http';
+import { MatriculaService } from '../matricula.service';
 
 @Component({
   selector: 'app-listar-aluno',
@@ -14,6 +15,7 @@ export class ListarAlunoComponent implements OnInit {
   @ViewChild('dataGrid', { static: false })
   dataGrid!: DxDataGridComponent;
   dataSource: CustomStore;
+  dataMatricula: CustomStore;
   selectedRows!: number;
   estados!: string[];
   data!: any[];
@@ -22,9 +24,17 @@ export class ListarAlunoComponent implements OnInit {
   cpfField: any;
   cidadeField: any;
   menssageErro = ' ';
+  //popup
+  popupVisible = false;
+  matriculaPopupVisible: boolean = false;
 
-  constructor(private service: AlunosService, private http: HttpClient) {
+  constructor(
+    private service: AlunosService,
+    serviceMatricula: MatriculaService,
+    private http: HttpClient
+  ) {
     this.dataSource = service.getDataSource();
+    this.dataMatricula = serviceMatricula.getDataSource();
   }
   ngOnInit(): void {}
 
@@ -36,9 +46,14 @@ export class ListarAlunoComponent implements OnInit {
       window.location.reload();
     }
   }
+  // gerar matricula
+  gerarMatricula() {
+    this.matriculaPopupVisible = true;
+  }
 
   onSelectionChanged(data: any) {
     this.selectedRows = data.selectedRowKeys;
+    console.log(data);
   }
 
   registarCep() {
@@ -56,7 +71,6 @@ export class ListarAlunoComponent implements OnInit {
       );
     }
   }
-
   consultarCpf() {
     // Chama a função de formatação de CPF
     const cpfFormatado = this.service.formatarCpf(this.cpfField.value);
