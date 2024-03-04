@@ -4,7 +4,6 @@ import { AlunosService } from '../alunos-service';
 import { DxDataGridComponent } from 'devextreme-angular';
 import CustomStore from 'devextreme/data/custom_store';
 import { HttpClient } from '@angular/common/http';
-import { MatriculaService } from '../matricula.service';
 
 @Component({
   selector: 'app-listar-aluno',
@@ -15,7 +14,7 @@ export class ListarAlunoComponent implements OnInit {
   @ViewChild('dataGrid', { static: false })
   dataGrid!: DxDataGridComponent;
   dataSource: CustomStore;
-  dataMatricula: CustomStore;
+  bookButtonOptions: any;
   selectedRows!: number;
   estados!: string[];
   data!: any[];
@@ -24,20 +23,12 @@ export class ListarAlunoComponent implements OnInit {
   cpfField: any;
   cidadeField: any;
   menssageErro = ' ';
-  //popup
-  popupVisible = false;
-  matriculaPopupVisible: boolean = false;
 
-  constructor(
-    private service: AlunosService,
-    serviceMatricula: MatriculaService,
-    private http: HttpClient
-  ) {
+  constructor(private service: AlunosService) {
     this.dataSource = service.getDataSource();
-    this.dataMatricula = serviceMatricula.getDataSource();
   }
-  ngOnInit(): void {}
 
+  ngOnInit(): void {}
   async delete() {
     if (Array.isArray(this.selectedRows)) {
       this.selectedRows.forEach((id: any) => {
@@ -47,15 +38,11 @@ export class ListarAlunoComponent implements OnInit {
     }
   }
   // gerar matricula
-  gerarMatricula() {
-    this.matriculaPopupVisible = true;
-  }
 
   onSelectionChanged(data: any) {
     this.selectedRows = data.selectedRowKeys;
     console.log(data);
   }
-
   registarCep() {
     if (this.cepField.value.length == 8) {
       this.service.ConsultarCep(this.cepField.value).subscribe(

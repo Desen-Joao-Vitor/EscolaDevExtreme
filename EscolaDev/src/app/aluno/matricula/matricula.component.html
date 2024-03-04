@@ -1,0 +1,17 @@
+<div class="container">
+
+  <div class="matricula"></div>
+  <div class="alunos">
+    <dx-data-grid id="dataGrid" [dataSource]="dataAluno" [showBorders]="true" [width]="500">
+      <dxo-selection mode="multiple"></dxo-selection>
+
+      <dxi-column dataField="nome" caption="Nome"></dxi-column>
+      <dxi-column dataField="cpf" caption="CPF"></dxi-column>
+    </dx-data-grid>
+  </div>
+  <div class="matricula">
+
+  </div>
+
+
+</div>

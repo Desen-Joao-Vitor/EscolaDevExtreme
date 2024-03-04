@@ -14,6 +14,8 @@ import { AlunosService } from './aluno/alunos-service';
 import { AlunoModule } from './aluno/aluno.module';
 import { TurmaModule } from './turma/turma.module';
 import { TurmaService } from './turma/turma.service';
+import { MatriculaComponent } from './aluno/matricula/matricula.component';
+import { MatriculaModule } from './aluno/matricula/matricula.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -30,7 +32,7 @@ import { TurmaService } from './turma/turma.service';
     MenuModule,
     LoginModule,
     TurmaModule,
-    AlunoModule,
+    MatriculaModule,
   ],
   providers: [DisciplinasService, AlunosService, TurmaService],
   bootstrap: [AppComponent],

@@ -6,9 +6,8 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'aluno/delete',
+    redirectTo: '',
   },
-
   {
     path: 'Menu',
     loadChildren: () => import('./menu/menu.module').then((m) => m.MenuModule),
@@ -17,6 +16,13 @@ const routes: Routes = [
     path: 'Alunos',
     loadChildren: () =>
       import('./aluno/aluno.module').then((m) => m.AlunoModule),
+  },
+  {
+    path: 'Alunos/matriculas',
+    loadChildren: () =>
+      import('./aluno/matricula/matricula.module').then(
+        (m) => m.MatriculaModule
+      ),
   },
   {
     path: 'Professor',

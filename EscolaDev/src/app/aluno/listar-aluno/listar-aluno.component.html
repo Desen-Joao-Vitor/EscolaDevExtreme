@@ -4,32 +4,25 @@
 
     <dxo-selection mode="multiple"></dxo-selection>
 
-    <dxo-editing mode="popup">
-      <dxo-popup class="popup" title="Gerar matrícula" [showTitle]="true" [width]="900" [height]="'auto'">
-        <!-- Conteúdo da nova popup -->
-        <!-- Por exemplo, um formulário para gerar matrícula -->
-      </dxo-popup>
-    </dxo-editing>
-
-
+    <!--Formulario cadastro aluno-->
     <dxo-paging [enabled]="false"></dxo-paging>
     <dxo-editing mode="popup" [allowUpdating]="true" [allowAdding]="true" [allowDeleting]="true">
       <dxo-popup title="Cadastro de Aluno" [showTitle]="true" [width]="900" [height]="'auto'"
         [position]="{ my: 'center', at: 'center' }">
-      </dxo-popup>
 
-      <dxo-form>
-        <dxi-item dataField="nome"></dxi-item>
-        <dxi-item dataField="cpf"></dxi-item>
-        <dxi-item dataField="cep"></dxi-item>
-        <dxi-item dataField="estado"></dxi-item>
-        <dxi-item dataField="cidade"></dxi-item>
-        <dxi-item dataField="bairro"></dxi-item>
-        <dxi-item dataField="rua"></dxi-item>
-        <dxi-item dataField="numero"></dxi-item>
-        <dxi-item dataField="complemento"></dxi-item>
-        <dxi-item dataField="observacao"></dxi-item>
-      </dxo-form>
+        <dxo-form>
+          <dxi-item dataField="nome"></dxi-item>
+          <dxi-item dataField="cpf"></dxi-item>
+          <dxi-item dataField="cep"></dxi-item>
+          <dxi-item dataField="estado"></dxi-item>
+          <dxi-item dataField="cidade"></dxi-item>
+          <dxi-item dataField="bairro"></dxi-item>
+          <dxi-item dataField="rua"></dxi-item>
+          <dxi-item dataField="numero"></dxi-item>
+          <dxi-item dataField="complemento"></dxi-item>
+          <dxi-item dataField="observacao"></dxi-item>
+        </dxo-form>
+      </dxo-popup>
     </dxo-editing>
 
 
@@ -48,35 +41,11 @@
     <dxi-column dataField="complemento"></dxi-column>
     <dxi-column dataField="observacao" caption="Observação"></dxi-column>
 
-
-    <dxo-toolbar>
-
-      <dxi-item name="addRowButton" showText="always">
-      </dxi-item>
-      <dxi-item location="after">
-        <dx-button (click)="delete()" icon="trash" [disabled]="!selectedRows" text="Excluir registro do aluno">
-        </dx-button>
-      </dxi-item>
-      <dxi-item location="after">
-        <dx-button icon="add" text="Gerar matrícula" (click)="gerarMatricula()" [disabled]="!selectedRows">
-        </dx-button>
-      </dxi-item>
-    </dxo-toolbar>
-
-    <dxo-editing mode="popup">
-      <dxo-popup *ngIf="matriculaPopupVisible" class="popup" title="Gerar matrícula" [showTitle]="true" [width]="900"
-        [height]="'auto'" [(visible)]="matriculaPopupVisible">
-        <!-- Conteúdo da nova popup -->
-        <dx-form>
-          <dxi-item dataField="nome"></dxi-item>
-        </dx-form>
-        <!-- Por exemplo, um formulário para gerar matrícula -->
-      </dxo-popup>
-      <!-- ... Seu código existente ... -->
-    </dxo-editing>
-
-
+    <dxi-item name="addRowButton" showText="always">
+    </dxi-item>
+    <dxi-item location="after">
+      <dx-button (click)="delete()" icon="trash" [disabled]="!selectedRows" text="Excluir registro do aluno">
+      </dx-button>
+    </dxi-item>
   </dx-data-grid>
-
-
 </div>
