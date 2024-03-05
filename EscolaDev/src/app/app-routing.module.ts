@@ -13,7 +13,7 @@ const routes: Routes = [
     loadChildren: () => import('./menu/menu.module').then((m) => m.MenuModule),
   },
   {
-    path: 'Alunos',
+    path: 'Alunos/Cadastrados',
     loadChildren: () =>
       import('./aluno/aluno.module').then((m) => m.AlunoModule),
   },

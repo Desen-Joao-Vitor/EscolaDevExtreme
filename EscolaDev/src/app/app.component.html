@@ -10,11 +10,11 @@
               Home
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link text-white " routerLinkActive="Active" [routerLink]="['Alunos']">
-              Alunos
-            </a>
-          </li>
+          <select class="nav-link text-white" routerLinkActive="Active" (change)="navega($event)">
+            <option class="text-black" value="">Alunos</option>
+            <option class="text-black" value="Alunos/Cadastrados">Registro de Alunos</option>
+            <option class="text-black" value="Alunos/matriculas">Gerar Matricula</option>
+          </select>
           <li class="nav-item">
             <a class="nav-link text-white" routerLinkActive="Active" [routerLink]="['Professor']">
               Professores
