@@ -4,6 +4,7 @@ import { AlunosService } from '../alunos-service';
 import { DxDataGridComponent } from 'devextreme-angular';
 import CustomStore from 'devextreme/data/custom_store';
 import { HttpClient } from '@angular/common/http';
+import e from 'cors';
 
 @Component({
   selector: 'app-listar-aluno',
@@ -37,11 +38,11 @@ export class ListarAlunoComponent implements OnInit {
       window.location.reload();
     }
   }
-  // gerar matricula
 
   onSelectionChanged(data: any) {
     this.selectedRows = data.selectedRowKeys;
     console.log(data);
+    console.log();
   }
   registarCep() {
     if (this.cepField.value.length == 8) {
@@ -79,6 +80,7 @@ export class ListarAlunoComponent implements OnInit {
               defaultFnc(ev);
               this.cepField = ev;
               this.registarCep();
+              console.log('oi');
             };
             e.editorOptions.onValueChanged = fnc.bind(this);
           }

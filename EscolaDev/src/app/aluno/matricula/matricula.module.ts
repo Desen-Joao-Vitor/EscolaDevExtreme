@@ -1,9 +1,16 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 import { MatriculaComponent } from './matricula.component';
 import { MatriculaRoutesModule } from './matricula-componernt.routes';
-import { DxButtonModule, DxDataGridModule, DxDropDownBoxModule, DxFormModule, DxSelectBoxModule, DxTemplateModule } from 'devextreme-angular';
+import {
+  DxButtonModule,
+  DxDataGridModule,
+  DxDropDownBoxModule,
+  DxFormModule,
+  DxSelectBoxModule,
+  DxTemplateModule,
+} from 'devextreme-angular';
 import { DxiItemModule } from 'devextreme-angular/ui/nested';
 
 @NgModule({
@@ -21,5 +28,6 @@ import { DxiItemModule } from 'devextreme-angular/ui/nested';
   ],
   declarations: [MatriculaComponent],
   exports: [MatriculaComponent],
+  providers: [DatePipe],
 })
 export class MatriculaModule {}

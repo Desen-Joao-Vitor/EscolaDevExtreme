@@ -3,31 +3,12 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { lastValueFrom } from 'rxjs';
 import CustomStore from 'devextreme/data/custom_store';
 
-export class Turma {
-  ID!: number;
-  nometurno!: string;
-}
-const turmas: Turma[] = [
-  {
-    ID: 1,
-    nometurno: 'Matutino',
-  },
-  {
-    ID: 2,
-    nometurno: 'Vespertino',
-  },
-  {
-    ID: 3,
-    nometurno: 'Noturno',
-  },
-];
-
 @Injectable({
   providedIn: 'root',
 })
-export class TurmaService {
+export class GetsitucaomatriculaService {
   private apiUrl =
-    'http://localhost/API-Universidade/universidade-api/turma.php';
+    'http://localhost/API-Universidade/universidade-api/situacao.php';
 
   protected dataSource: CustomStore;
   dataChanged: EventEmitter<void> = new EventEmitter<void>();
@@ -36,7 +17,7 @@ export class TurmaService {
     const that = this;
     const isNotEmpty = (value: any[]) => value !== undefined && value !== null;
     this.dataSource = new CustomStore({
-      key: 'id_turma',
+      key: 'id_situacao',
       byKey: (key) => {
         return lastValueFrom(that.http.get(this.apiUrl + '?id=' + key));
       },
@@ -105,8 +86,5 @@ export class TurmaService {
 
   getDataSource() {
     return this.dataSource;
-  }
-  getTurmas(): Turma[] {
-    return turmas;
   }
 }

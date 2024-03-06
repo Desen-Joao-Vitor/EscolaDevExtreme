@@ -1,40 +1,54 @@
 <div class="container">
   <form action="">
-
-    <dx-form id="form" [formData]="dataAluno">
-      <dxi-item itemType="group" [colCount]="1" caption="Gerar matricula">
-
-
-        <dxi-item itemType="group" [colCount]="1">
-          <!--Mostar Aluno-->
-          <dxi-item editorType="dxSelectBox" caption="Selecione o aluno">
-            <dx-select-box id="selectbox" displayExpr="nome" [width]="300" [dataSource]="dataAluno" valueExpr="id"
-              [inputAttr]="{ 'aria-label': 'Select Employee' }" (onSelectionChanged)="onAlunoSelectionChanged($event)"
-              (onEditorPreparing)="onEditorPreparing($event)">
-            </dx-select-box>
-          </dxi-item>
-          <dxi-item dataField="id"> </dxi-item>
-          <dxi-item dataField="nome_aluno"></dxi-item>
-          <dxi-item dataField="cpf_aluno"></dxi-item>
-        </dxi-item>
-
-        <!--Mostar matricula-->
-        <dxi-item editorType="dxSelectBox" caption="Selecione o Turma">
-          <dx-select-box [dataSource]="dataTurma" id="selectbox" displayExpr="nome" [width]="300"
-            [inputAttr]="{ 'aria-label': 'Select Employee' }" (onValueChanged)="onTurmaSelectionChanged($event)">
-            <dxi-item dataField="nome"></dxi-item>
+    <dx-form [formData]="formAluno">
+      <dxi-item itemType="group" [colCount]="3" (onSelectionChanged)="onAlunoSelectionChanged($event)">
+        <!-- Mostrar Aluno -->
+        <dxi-item editorType="dxSelectBox" caption="Selecione o aluno">
+          <dx-select-box id="selectbox" displayExpr="nome" [dataSource]="dataAluno" [value]="selectedAlunoId"
+            (onValueChanged)="onAlunoSelectionChanged($event)">
           </dx-select-box>
-          <dxo-label template="Selecione a Turma"></dxo-label>
+          <dxo-label template="Selecione o aluno"></dxo-label>
         </dxi-item>
-
-        <dxi-item itemType="group" [colCount]="1">
-          <dxi-item dataField="situacao" caption="Situação" [width]="200"></dxi-item>
-          <dxi-item dataField="HireDate" editorType="dxDateBox">
-            <dxi-validation-rule type="required" message="Hire date is required"></dxi-validation-rule>
-            <dxo-label template="date"></dxo-label>
-          </dxi-item>
-        </dxi-item>
+        <dxi-item disabled="true" dataField="id" caption="ID"></dxi-item>
+        <dxi-item disabled="true" dataField="cpf" caption="CPF"></dxi-item>
       </dxi-item>
     </dx-form>
+    <br>
+    <dx-form [formData]="formTurma">
+      <dxi-item itemType="group" [colCount]="3" (onSelectionChanged)="onTurmaSelectionChanged($event)">
+        <!-- Mostrar Aluno -->
+        <dxi-item editorType="dxSelectBox" caption="Selecione o Turma">
+          <dx-select-box id="selectbox" displayExpr="nome" [dataSource]="dataTurma" [value]="selectedTurmaId"
+            (onValueChanged)="onTurmaSelectionChanged($event)">
+          </dx-select-box>
+          <dxo-label template="Selecione a turma"></dxo-label>
+        </dxi-item>
+        <dxi-item disabled="true" dataField="id"></dxi-item>
+        <dxo-label template="ID Turma"></dxo-label>
+        <dxi-item disabled="true" dataField="turno">
+          <dxo-label template="Turno"></dxo-label>
+        </dxi-item>
+      </dxi-item>
+      <dxi-item itemType="group" [colCount]="4">
+
+        <dxi-item editorType="dxSelectBox" caption="Selecione o Turma">
+          <dx-select-box id="selectbox" displayExpr="situacao" [dataSource]="dataSituacaoMatricula"
+            [value]="selectedSituacaoId" (onValueChanged)="onSituacaoSelectionChanged($event)">
+          </dx-select-box>
+          <dxo-label template="Situação"></dxo-label>
+        </dxi-item>
+
+        <dxi-item dataField="date" editorType="dxDateBox">
+          <dxi-validation-rule type="required" message="Hire date is required"></dxi-validation-rule>
+          <dxo-label template="Data alteração"></dxo-label>
+        </dxi-item>
+      </dxi-item>
+
+    </dx-form>
+
+    <dx-button class="btn btn-warning" icon="add" text="Gerar Matricula" style="margin-top: 15px;"
+      (onClick)="onGerarMatricula()">
+    </dx-button>
   </form>
+
 </div>

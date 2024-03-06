@@ -1,71 +1,98 @@
 import { AlunosService } from './../alunos-service';
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { TurmaService } from '../../turma/turma.service';
 import CustomStore from 'devextreme/data/custom_store';
 import { MatriculaService } from './matricula-services';
-import e from 'cors';
+import { TurmaService } from '../../turma/turma.service';
+import { GetsitucaomatriculaService } from '../../Apis/getsitucaomatricula/getsitucaomatricula.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-matricula',
   templateUrl: './matricula.component.html',
 })
 export class MatriculaComponent implements OnInit {
+  //Service
   dataAluno: CustomStore;
   dataTurma: CustomStore;
   dataMatricula: CustomStore;
+  dataSituacaoMatricula: CustomStore;
 
-  //dados do aluno
+  //rescrever campo
+  formAluno: any = {};
+  formTurma: any = {};
 
-  dataIdAluno: any;
-  dataNomeAluno: any;
-  dataCpfAluno: any;
+  //formatar data
+  dataAtual: Date = new Date();
+  // dados do aluno
+  dadosAluno: any = {};
+  dadosTurma: any = {};
+  selectedAlunoId: any;
+  selectedTurmaId: any;
+  selectedSituacaoId: any;
 
-  // id selecionados
-  selectedAlunoId!: number;
-  selecteTurmaId!: number;
-
-  //Aplicação
+  // Aplicação
   constructor(
-    private http: HttpClient,
     serviceAluno: AlunosService,
     serviceTurma: TurmaService,
-    serviceMatricula: MatriculaService
+    serviceMatricula: MatriculaService,
+    serviceSituacaoMatricula: GetsitucaomatriculaService,
+    private datePipe: DatePipe
   ) {
     this.dataAluno = serviceAluno.getDataSource();
     this.dataTurma = serviceTurma.getDataSource();
     this.dataMatricula = serviceMatricula.getDataSource();
+    this.dataSituacaoMatricula = serviceSituacaoMatricula.getDataSource();
   }
+
   ngOnInit(): void {}
-  onAlunoSelectionChanged(data: any) {
-    this.selectedAlunoId = data.selectedItem;
-    console.log(this.selectedAlunoId);
-    console.log(data);
-  }
-  onTurmaSelectionChanged(data: any) {
-    this.selecteTurmaId = data.selectedItem;
-    console.log('Turma selecionada', this.selecteTurmaId);
-    console.log(this.selectedAlunoId);
+
+  onAlunoSelectionChanged(event: any) {
+    this.selectedAlunoId = event.value;
+
+    // Preencher diretamente os dados do aluno no formData
+    this.dadosAluno = this.dataAluno.byKey(this.selectedAlunoId);
+
+    this.formAluno = {
+      id: this.selectedAlunoId.id,
+      nome: this.selectedAlunoId.nome,
+      cpf: this.selectedAlunoId.cpf,
+      // Adicione outros campos conforme necessário
+    };
   }
 
-  onEditorPreparing(e: any) {
-    const that = this;
-    if (e.parentType === 'dataRow') {
-      const defaultFnc = e.editorOptions.onValueChanged;
+  onTurmaSelectionChanged(event: any) {
+    this.selectedTurmaId = event.value;
+    // Preencher diretamente os dados do aluno no formData
+    this.dadosTurma = this.dataTurma.byKey(this.selectedTurmaId);
+    this.formTurma = {
+      id: this.selectedTurmaId.id_turma,
+      turno: this.selectedTurmaId.nome_turno,
+      // Adicione outros campos conforme necessário
+    };
+  }
+  onSituacaoSelectionChanged(event: any) {
+    this.selectedSituacaoId = event.value;
+  }
 
-      switch (e.dataField) {
-        case 'dxSelectBox':
-          {
-            this.dataIdAluno = e;
-            const fnc = (ev: any) => {
-              defaultFnc(ev);
-              this.dataIdAluno = ev;
-              console.log('oi');
-            };
-            e.editorOptions.onValueChanged = fnc.bind(this);
-          }
-          break;
-      }
-    }
+  formataDate() {
+    this.dataAtual = this.formTurma.date;
+    this.formTurma.date = this.datePipe.transform(this.dataAtual, 'yyyy/MM/dd');
+  }
+
+  onGerarMatricula() {
+    this.formataDate();
+    const matriculaData = {
+      alunoId: this.selectedAlunoId.id,
+      turmaId: this.selectedTurmaId.id_turma,
+      situacao: this.selectedSituacaoId.id_situacao,
+      dataAlteracao: this.formTurma.date,
+    };
+    console.log(matriculaData);
+
+    // Chame o serviço para inserir os dados no banco de dados
+    this.dataMatricula.insert(matriculaData).then(() => {
+      console.log('Matrícula gerada com sucesso!');
+      // Adicione qualquer lógica adicional após a inserção, se necessário
+    });
   }
 }

@@ -19,7 +19,7 @@ export class MatriculaService {
     const that = this;
     const isNotEmpty = (value: any[]) => value !== undefined && value !== null;
     this.dataSource = new CustomStore({
-      key: 'id',
+      key: 'id_matricula',
       byKey: (key) => {
         return lastValueFrom(that.http.get(this.apiUrl + '?id=' + key));
       },
