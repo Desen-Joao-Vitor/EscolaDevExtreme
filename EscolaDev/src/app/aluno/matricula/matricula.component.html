@@ -1,54 +1,49 @@
-<div class="container">
-  <form action="">
-    <dx-form [formData]="formAluno">
-      <dxi-item itemType="group" [colCount]="3" (onSelectionChanged)="onAlunoSelectionChanged($event)">
-        <!-- Mostrar Aluno -->
-        <dxi-item editorType="dxSelectBox" caption="Selecione o aluno">
-          <dx-select-box id="selectbox" displayExpr="nome" [dataSource]="dataAluno" [value]="selectedAlunoId"
-            (onValueChanged)="onAlunoSelectionChanged($event)">
-          </dx-select-box>
-          <dxo-label template="Selecione o aluno"></dxo-label>
-        </dxi-item>
-        <dxi-item disabled="true" dataField="id" caption="ID"></dxi-item>
-        <dxi-item disabled="true" dataField="cpf" caption="CPF"></dxi-item>
-      </dxi-item>
-    </dx-form>
-    <br>
-    <dx-form [formData]="formTurma">
-      <dxi-item itemType="group" [colCount]="3" (onSelectionChanged)="onTurmaSelectionChanged($event)">
-        <!-- Mostrar Aluno -->
-        <dxi-item editorType="dxSelectBox" caption="Selecione o Turma">
-          <dx-select-box id="selectbox" displayExpr="nome" [dataSource]="dataTurma" [value]="selectedTurmaId"
-            (onValueChanged)="onTurmaSelectionChanged($event)">
-          </dx-select-box>
-          <dxo-label template="Selecione a turma"></dxo-label>
-        </dxi-item>
-        <dxi-item disabled="true" dataField="id"></dxi-item>
-        <dxo-label template="ID Turma"></dxo-label>
-        <dxi-item disabled="true" dataField="turno">
-          <dxo-label template="Turno"></dxo-label>
-        </dxi-item>
-      </dxi-item>
-      <dxi-item itemType="group" [colCount]="4">
+<div class="container" id="data-grid-demo">
+  <dx-data-grid id="dataGrid" [dataSource]="dataMatricula" [showBorders]="true"
+    (onSelectionChanged)="onSelectionChanged($event)" (onEditorPreparing)="onEditorPreparing($event)" >
 
-        <dxi-item editorType="dxSelectBox" caption="Selecione o Turma">
-          <dx-select-box id="selectbox" displayExpr="situacao" [dataSource]="dataSituacaoMatricula"
-            [value]="selectedSituacaoId" (onValueChanged)="onSituacaoSelectionChanged($event)">
-          </dx-select-box>
-          <dxo-label template="Situação"></dxo-label>
-        </dxi-item>
+    <dxo-selection mode="multiple"></dxo-selection>
 
-        <dxi-item dataField="date" editorType="dxDateBox">
-          <dxi-validation-rule type="required" message="Hire date is required"></dxi-validation-rule>
-          <dxo-label template="Data alteração"></dxo-label>
-        </dxi-item>
-      </dxi-item>
+    <!--Formulario cadastro aluno-->
+    <dxo-paging [enabled]="false"></dxo-paging>
+    <dxo-editing mode="popup" [allowUpdating]="true" [allowAdding]="true" [allowDeleting]="true">
+      <dxo-popup title="Cadastro de Aluno" [showTitle]="true" [width]="900" [height]="'auto'">
+      </dxo-popup>
 
-    </dx-form>
+        <dxo-form>
+          <dxi-item dataField="nome_aluno"></dxi-item>
+          <dxi-item dataField="nome_turma"></dxi-item>
+          <dxi-item dataField="situacao"></dxi-item>
+          <dxi-item dataField="data_alteracao"></dxi-item>
+        </dxo-form>
+    </dxo-editing>
 
-    <dx-button class="btn btn-warning" icon="add" text="Gerar Matricula" style="margin-top: 15px;"
-      (onClick)="onGerarMatricula()">
-    </dx-button>
-  </form>
 
+    <dxi-column dataField="nome_aluno" caption="Nome">
+      <dxo-lookup [dataSource]="dataAluno" valueExpr="id_aluno" displayExpr="nome">
+      </dxo-lookup>
+    </dxi-column>
+    <dxi-column dataField="cpf" caption="CPF"></dxi-column>
+
+    <dxi-column dataField="nome_turma" caption="Nome turma ">
+      <dxo-lookup [dataSource]="dataTurma" valueExpr="id_turma" displayExpr="nome">
+      </dxo-lookup>
+    </dxi-column>
+
+    <dxi-column dataField="data_alteracao" caption="Data alteração" dataType="date">
+
+    </dxi-column>
+    <dxi-column dataField="situacao" caption="Situação">
+      <dxo-lookup [dataSource]="dataSituacaoMatricula" valueExpr="id_situacao" displayExpr="nome_situacao">
+      </dxo-lookup>
+    </dxi-column>
+
+    <dxi-item name="addRowButton" showText="always">
+    </dxi-item>
+    <dxi-item location="after">
+      <dx-button (click)="delete()" icon="trash" [disabled]="!selectedRows" text="Excluir registro do aluno">
+      </dx-button>
+    </dxi-item>
+
+  </dx-data-grid>
 </div>

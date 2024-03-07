@@ -62,25 +62,7 @@ export class GetsitucaomatriculaService {
           throw new Error('Data Loading Error');
         }
       },
-      insert(values) {
-        return lastValueFrom(that.http.post(that.apiUrl, values));
-      },
-      update(key, values) {
-        return lastValueFrom(that.http.put(that.apiUrl + '?id=' + key, values));
-      },
-      remove: (id: any) => {
-        return new Promise<void>((resolve, reject) => {
-          that.http.delete(that.apiUrl + '?id=' + id).subscribe(
-            (response) => {
-              resolve();
-              that.dataChanged.emit();
-            },
-            (error) => {
-              reject(error);
-            }
-          );
-        });
-      },
+
     });
   }
 

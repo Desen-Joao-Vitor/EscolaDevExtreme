@@ -67,6 +67,7 @@ export class ListarAlunoComponent implements OnInit {
     this.cpfField.component.option('value', cpfFormatado);
   }
 
+
   onEditorPreparing(e: any) {
     const that = this;
     if (e.parentType === 'dataRow') {

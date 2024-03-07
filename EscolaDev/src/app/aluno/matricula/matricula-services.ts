@@ -10,6 +10,8 @@ const estados: string[] = [];
   providedIn: 'root',
 })
 export class MatriculaService {
+  date:  Date = new Date() ;
+
   private apiUrl =
     'http://localhost/API-Universidade/universidade-api/matricula.php';
   protected dataSource: CustomStore;
@@ -94,5 +96,9 @@ export class MatriculaService {
 
   getState() {
     return estados;
+  }
+  formatarData(data: any):  Observable<any> {
+    const dataAtual = data ;
+    return dataAtual.transform(data, 'dd/MM/yyyy');
   }
 }
