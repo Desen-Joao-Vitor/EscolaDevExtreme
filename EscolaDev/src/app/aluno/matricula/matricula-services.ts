@@ -97,8 +97,5 @@ export class MatriculaService {
   getState() {
     return estados;
   }
-  formatarData(data: any):  Observable<any> {
-    const dataAtual = data ;
-    return dataAtual.transform(data, 'dd/MM/yyyy');
-  }
+
 }

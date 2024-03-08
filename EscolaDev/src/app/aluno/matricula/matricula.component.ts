@@ -7,39 +7,42 @@ import { GetsitucaomatriculaService } from '../../Apis/getsitucaomatricula/getsi
 import { DatePipe } from '@angular/common';
 import { SelectionChangedEvent } from 'devextreme/ui/data_grid';
 import { DxDataGridComponent } from 'devextreme-angular';
+import { empty } from 'rxjs';
 
 @Component({
   selector: 'app-matricula',
   templateUrl: './matricula.component.html',
 })
-export class MatriculaComponent implements OnInit {
+export class MatriculaComponent  {
   @ViewChild('dataGrid', { static: false })
   dataGrid!: DxDataGridComponent;
   //Service
-  dataAluno: CustomStore;
-  dataTurma: CustomStore;
+  dataAluno: any;
+  dataTurma: any;
+  dataSituacaoMatricula:any;
   dataMatricula: CustomStore;
-  dataSituacaoMatricula: CustomStore;
-
   selectedRows!: number;
-  dataAtual: any;
-
-
+  //OnEditorPreparing
+  campoAluno: any
+  suaData: Date = new Date();
   // Aplicação
   constructor(
-   private serviceAluno: AlunosService,
-   private serviceTurma: TurmaService,
-   private serviceMatricula: MatriculaService,
-   private serviceSituacaoMatricula: GetsitucaomatriculaService,
-    private datePipe: DatePipe
+    // select
+   serviceAluno: AlunosService,
+   serviceTurma: TurmaService,
+   serviceSituacaoMatricula: GetsitucaomatriculaService,
+
+   // Dados
+   serviceMatricula: MatriculaService,
+   private datePipe: DatePipe
   ) {
+    //select
+    this.dataSituacaoMatricula = serviceSituacaoMatricula.getDataSource();
     this.dataAluno = serviceAluno.getDataSource();
     this.dataTurma = serviceTurma.getDataSource();
+    //dados
     this.dataMatricula = serviceMatricula.getDataSource();
-    this.dataSituacaoMatricula = serviceSituacaoMatricula.getDataSource();
   }
-  ngOnInit(): void {}
-
   onSelectionChanged(data: any) {
     console.log(data);
   }
@@ -51,33 +54,51 @@ export class MatriculaComponent implements OnInit {
       window.location.reload();
     }
   }
-  formataDate() {
-  const dataFormatada =  this.serviceMatricula.formatarData(this.dataAtual);
-
-   this.dataAtual.component.option('value', dataFormatada);
-
+  formatarData(): any {
+    if (this.suaData instanceof Date) {
+      const dataFormatada = this.datePipe.transform(this.suaData, 'yyyy/MM/dd');
+      console.log(dataFormatada);
+      return dataFormatada;
+    } else {
+      console.error('Valor inválido para formatação de data:', this.suaData);
+      return null;
   }
-
+}
+alterarCampo(){
+  if(empty(this.campoAluno)){
+console.log(this.onSelectionChanged(this.dataAluno));
+  }
+}
   onEditorPreparing(e: any) {
-    const that = this;
     if (e.parentType === 'dataRow') {
       const defaultFnc = e.editorOptions.onValueChanged;
 
       switch (e.dataField) {
         case 'data_alteracao':
           {
-            this.dataAtual = e.value;
+            this.suaData = e.value;
+
             const fnc = (ev: any) => {
               defaultFnc(ev);
-              this.dataAtual= ev;
-              console.log('oi');
-              this.formataDate()
+              this.suaData = ev;
+              this.formatarData();
             };
+
             e.editorOptions.onValueChanged = fnc.bind(this);
           }
           break;
-        }
+          case 'idAluno':
+            {
+              this.campoAluno = e.value;
+              const fnc = (ev: any) => {
+                defaultFnc(ev);
+                this.campoAluno = ev;
+              this.alterarCampo();
+              };
+
+              e.editorOptions.onValueChanged = fnc.bind(this);
+            }
       }
     }
-
+  }
 }

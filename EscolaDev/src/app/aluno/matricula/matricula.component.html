@@ -1,49 +1,51 @@
 <div class="container" id="data-grid-demo">
-  <dx-data-grid id="dataGrid" [dataSource]="dataMatricula" [showBorders]="true"
+  <dx-data-grid id="dataGrid" [dataSource]="dataMatricula"  [showBorders]="true"
     (onSelectionChanged)="onSelectionChanged($event)" (onEditorPreparing)="onEditorPreparing($event)" >
 
     <dxo-selection mode="multiple"></dxo-selection>
 
     <!--Formulario cadastro aluno-->
-    <dxo-paging [enabled]="false"></dxo-paging>
-    <dxo-editing mode="popup" [allowUpdating]="true" [allowAdding]="true" [allowDeleting]="true">
-      <dxo-popup title="Cadastro de Aluno" [showTitle]="true" [width]="900" [height]="'auto'">
-      </dxo-popup>
+    <dxo-paging [enabled]="true"></dxo-paging>
+    <dxo-editing mode="popup"[allowUpdating]="true"[allowDeleting]="true" [allowAdding]="true">
+      <dxo-popup
+      title="Cadastro Matricula"
+      [showTitle]="true"
+      [width]="700"
+      [height]="525"
+    >
+    </dxo-popup>
+    <dxo-form>
+      <dxi-item itemType="group" [colCount]="2" [colSpan]="2">
+        <dxi-item dataField="idAluno"></dxi-item>
+        <dxi-item dataField="cpf" [editorOptions]="{  disabled: true }"></dxi-item>
+      </dxi-item>
 
-        <dxo-form>
-          <dxi-item dataField="nome_aluno"></dxi-item>
-          <dxi-item dataField="nome_turma"></dxi-item>
-          <dxi-item dataField="situacao"></dxi-item>
-          <dxi-item dataField="data_alteracao"></dxi-item>
-        </dxo-form>
+
+      <dxi-item itemType="group" [colCount]="2" [colSpan]="2">
+        <dxi-item dataField="idTurma"></dxi-item>
+      <dxi-item dataField="idSituacao"></dxi-item>
+      </dxi-item>
+      <dxi-item dataField="data_alteracao"></dxi-item>
+    </dxo-form>
     </dxo-editing>
 
-
-    <dxi-column dataField="nome_aluno" caption="Nome">
-      <dxo-lookup [dataSource]="dataAluno" valueExpr="id_aluno" displayExpr="nome">
-      </dxo-lookup>
-    </dxi-column>
-    <dxi-column dataField="cpf" caption="CPF"></dxi-column>
-
-    <dxi-column dataField="nome_turma" caption="Nome turma ">
-      <dxo-lookup [dataSource]="dataTurma" valueExpr="id_turma" displayExpr="nome">
-      </dxo-lookup>
+    <dxi-column dataField="idAluno" caption="Aluno">
+      <dxo-lookup [dataSource]="dataAluno" displayExpr="nome" valueExpr="id"></dxo-lookup>
     </dxi-column>
 
-    <dxi-column dataField="data_alteracao" caption="Data alteração" dataType="date">
+    <dxi-column dataField="cpf" caption="CPF" ></dxi-column>
 
-    </dxi-column>
-    <dxi-column dataField="situacao" caption="Situação">
-      <dxo-lookup [dataSource]="dataSituacaoMatricula" valueExpr="id_situacao" displayExpr="nome_situacao">
+    <dxi-column dataField="idTurma" caption="Turma">
+      <dxo-lookup [dataSource]="dataTurma" displayExpr="nome" valueExpr="id_turma" >
       </dxo-lookup>
     </dxi-column>
 
-    <dxi-item name="addRowButton" showText="always">
-    </dxi-item>
-    <dxi-item location="after">
-      <dx-button (click)="delete()" icon="trash" [disabled]="!selectedRows" text="Excluir registro do aluno">
-      </dx-button>
-    </dxi-item>
+    <dxi-column dataField="data_alteracao" caption="Data " dataType="date"></dxi-column>
+
+    <dxi-column dataField="idSituacao" caption="Situação">
+      <dxo-lookup [dataSource]="dataSituacaoMatricula"displayExpr="situacao" valueExpr="id_situacao" >
+      </dxo-lookup>
+    </dxi-column>
 
   </dx-data-grid>
 </div>
