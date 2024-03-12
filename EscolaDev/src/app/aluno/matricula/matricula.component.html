@@ -1,6 +1,5 @@
 <div class="container" id="data-grid-demo">
-  <dx-data-grid id="dataGrid" [dataSource]="dataMatricula"  [showBorders]="true"
-    (onSelectionChanged)="onSelectionChanged($event)" (onEditorPreparing)="onEditorPreparing($event)" >
+  <dx-data-grid id="dataGrid" [dataSource]="dataMatricula"  [showBorders]="true" (onEditorPreparing)="onEditorPreparing($event)">
 
     <dxo-selection mode="multiple"></dxo-selection>
 
@@ -8,16 +7,13 @@
     <dxo-paging [enabled]="true"></dxo-paging>
     <dxo-editing mode="popup"[allowUpdating]="true"[allowDeleting]="true" [allowAdding]="true">
       <dxo-popup
-      title="Cadastro Matricula"
-      [showTitle]="true"
-      [width]="700"
-      [height]="525"
-    >
+      title="Cadastro Matricula"  [showTitle]="true" [width]="700"[height]="525">
     </dxo-popup>
     <dxo-form>
-      <dxi-item itemType="group" [colCount]="2" [colSpan]="2">
-        <dxi-item dataField="idAluno"></dxi-item>
-        <dxi-item dataField="cpf" [editorOptions]="{  disabled: true }"></dxi-item>
+      <dxi-item itemType="group" [colCount]="2" [colSpan]="2" >
+        <dxi-item dataField="idAluno" editorType="dxSelectBox" [editorOptions]="{ valueExpr: 'id', displayExpr: 'nome', dataSource: dataAluno}" [colSpan]="2"></dxi-item>
+
+        <dxi-item dataField="cpf"  [editorOptions]="{  disabled: true }"></dxi-item>
       </dxi-item>
 
 
@@ -25,7 +21,7 @@
         <dxi-item dataField="idTurma"></dxi-item>
       <dxi-item dataField="idSituacao"></dxi-item>
       </dxi-item>
-      <dxi-item dataField="data_alteracao"></dxi-item>
+      <dxi-item dataField="data_alteracao" editorType="dxDateBox" editorOptions="{displayFormat: 'yyyy-mm-dd'}"></dxi-item>
     </dxo-form>
     </dxo-editing>
 
@@ -33,14 +29,15 @@
       <dxo-lookup [dataSource]="dataAluno" displayExpr="nome" valueExpr="id"></dxo-lookup>
     </dxi-column>
 
-    <dxi-column dataField="cpf" caption="CPF" ></dxi-column>
+    <dxi-column dataField="cpf"  caption="CPF" ></dxi-column>
 
     <dxi-column dataField="idTurma" caption="Turma">
       <dxo-lookup [dataSource]="dataTurma" displayExpr="nome" valueExpr="id_turma" >
       </dxo-lookup>
     </dxi-column>
 
-    <dxi-column dataField="data_alteracao" caption="Data " dataType="date"></dxi-column>
+    <dxi-column dataField="data_alteracao" caption="Data " dataType="date" format="dd/MM/yyyy">
+    </dxi-column>
 
     <dxi-column dataField="idSituacao" caption="Situação">
       <dxo-lookup [dataSource]="dataSituacaoMatricula"displayExpr="situacao" valueExpr="id_situacao" >

@@ -62,7 +62,6 @@ export class ListarAlunoComponent implements OnInit {
   consultarCpf() {
     // Chama a função de formatação de CPF
     const cpfFormatado = this.service.formatarCpf(this.cpfField.value);
-
     // Atualiza o valor na tela com o CPF formatado
     this.cpfField.component.option('value', cpfFormatado);
   }
@@ -81,7 +80,6 @@ export class ListarAlunoComponent implements OnInit {
               defaultFnc(ev);
               this.cepField = ev;
               this.registarCep();
-              console.log('oi');
             };
             e.editorOptions.onValueChanged = fnc.bind(this);
           }
@@ -97,16 +95,17 @@ export class ListarAlunoComponent implements OnInit {
             e.editorOptions.onValueChanged = fnc.bind(this);
           }
           break;
-
-        case 'cpf': {
-          this.cpfField = e;
-          const fnc = (ev: any) => {
-            defaultFnc(ev);
-            this.cpfField = ev;
-            this.consultarCpf();
-          };
-          e.editorOptions.onValueChanged = fnc.bind(this);
-        }
+        case 'cpf':
+          {
+            this.cpfField = e;
+            const fnc = (ev: any) => {
+              defaultFnc(ev);
+              this.cpfField = ev;
+              this.consultarCpf()
+            };
+            e.editorOptions.onValueChanged = fnc.bind(this);
+          }
+          break;
       }
     }
   }

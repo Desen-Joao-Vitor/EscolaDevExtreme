@@ -1,6 +1,6 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable, lastValueFrom } from 'rxjs';
+import { Observable, catchError, lastValueFrom, map, throwError } from 'rxjs';
 import CustomStore from 'devextreme/data/custom_store';
 
 // Estados
@@ -10,8 +10,7 @@ const estados: string[] = [];
   providedIn: 'root',
 })
 export class AlunosService {
-  private apiUrl =
-    'http://localhost/API-Universidade/universidade-api/alunos.php';
+  private apiUrl = 'http://localhost/API-Universidade/universidade-api/alunos.php';
   protected dataSource: CustomStore;
   dataChanged: EventEmitter<void> = new EventEmitter<void>();
 
@@ -23,7 +22,6 @@ export class AlunosService {
       byKey: (key) => {
         return lastValueFrom(that.http.get(this.apiUrl + '?id=' + key));
       },
-
       async load(loadOptions: any) {
         const url = that.apiUrl;
         const paramNames = [
@@ -87,7 +85,14 @@ export class AlunosService {
       },
     });
   }
-
+  public get(): Observable<any> {
+    return this.http.get<any>(this.apiUrl).pipe(
+      map((data) => data),
+      catchError((error: any) => {
+        return throwError(error);
+      })
+    );
+  }
   getDataSource() {
     return this.dataSource;
   }
@@ -109,5 +114,8 @@ export class AlunosService {
 
   ConsultarCep(cep: any): Observable<any> {
     return this.http.get(`//viacep.com.br/ws/${cep}/json/`);
+  }
+  getAlunoDetalhes(alunoId: any): Observable<any> {
+    return this.http.get(`${this.apiUrl}?id=${alunoId}`);
   }
 }

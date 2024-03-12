@@ -1,6 +1,6 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { lastValueFrom } from 'rxjs';
+import { Observable, catchError, lastValueFrom, map, throwError } from 'rxjs';
 import CustomStore from 'devextreme/data/custom_store';
 
 export class Turma {
@@ -102,7 +102,14 @@ export class TurmaService {
       },
     });
   }
-
+  public get(): Observable<any> {
+    return this.http.get<any>(this.apiUrl).pipe(
+      map((data) => data),
+      catchError((error: any) => {
+        return throwError(error);
+      })
+    );
+  }
   getDataSource() {
     return this.dataSource;
   }
