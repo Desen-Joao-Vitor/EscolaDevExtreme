@@ -1,19 +1,19 @@
 <div class="container" id="data-grid-demo">
-  <dx-data-grid id="dataGrid" [dataSource]="dataMatricula"  [showBorders]="true" (onEditorPreparing)="onEditorPreparing($event)">
+  <dx-data-grid id="dataGrid" [dataSource]="dataMatricula"  [showBorders]="true"  (onEditorPreparing)="onEditorPreparing($event)">
 
-    <dxo-selection mode="multiple"></dxo-selection>
 
     <!--Formulario cadastro aluno-->
     <dxo-paging [enabled]="true"></dxo-paging>
     <dxo-editing mode="popup"[allowUpdating]="true"[allowDeleting]="true" [allowAdding]="true">
       <dxo-popup
-      title="Cadastro Matricula"  [showTitle]="true" [width]="700"[height]="525">
+      title="Cadastro Matricula"  [showTitle]="true" [width]="700"[height]="350">
     </dxo-popup>
     <dxo-form>
       <dxi-item itemType="group" [colCount]="2" [colSpan]="2" >
         <dxi-item dataField="idAluno" editorType="dxSelectBox" [editorOptions]="{ valueExpr: 'id', displayExpr: 'nome', dataSource: dataAluno}" [colSpan]="2"></dxi-item>
 
         <dxi-item dataField="cpf"  [editorOptions]="{  disabled: true }"></dxi-item>
+       <dxi-item dataField="data_alteracao" editorType="dxDateBox" editorOptions="{displayFormat: 'yyyy-mm-dd'}"></dxi-item>
       </dxi-item>
 
 
@@ -21,7 +21,7 @@
         <dxi-item dataField="idTurma"></dxi-item>
       <dxi-item dataField="idSituacao"></dxi-item>
       </dxi-item>
-      <dxi-item dataField="data_alteracao" editorType="dxDateBox" editorOptions="{displayFormat: 'yyyy-mm-dd'}"></dxi-item>
+
     </dxo-form>
     </dxo-editing>
 
