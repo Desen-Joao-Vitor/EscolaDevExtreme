@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AlunosRoutesModule } from './aluno.routes';
-import { ListarAlunoComponent } from './listar-aluno/listar-aluno.component';
+import { AlunosRoutesModule } from '../alunos.routes';
+import { CadastroComponent } from './cadastro.component';
 import { DxiItemModule } from 'devextreme-angular/ui/nested';
 import {
   DxButtonModule,
@@ -12,10 +12,10 @@ import {
   DxTemplateModule,
 } from 'devextreme-angular';
 import { FormsModule } from '@angular/forms';
-import { AlunosService } from './alunos-service';
+import { AlunosService } from './cadastro-service';
 
 @NgModule({
-  declarations: [ListarAlunoComponent],
+  declarations: [CadastroComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -31,7 +31,7 @@ import { AlunosService } from './alunos-service';
     DxTemplateModule,
     DxDropDownBoxModule,
   ],
-  exports: [ListarAlunoComponent],
+  exports: [CadastroComponent],
   providers: [AlunosService],
 })
 export class AlunoModule {}

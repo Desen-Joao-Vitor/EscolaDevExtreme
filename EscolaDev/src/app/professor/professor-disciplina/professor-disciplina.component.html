@@ -1,0 +1,34 @@
+<div id="data-grid-demo" class="container">
+  <dx-data-grid id="gridContainer" [dataSource]="dataVinculo" keyExpr="ID" [showBorders]="true" (onEditorPreparing)="onEditorPreparing($event)">
+    <dxo-paging [enabled]="false"></dxo-paging>
+    <dxo-editing mode="popup" [allowUpdating]="true" [allowAdding]="true" [allowDeleting]="true">
+    <dxo-popup title="Atribuir disciplina a professor " [showTitle]="true" [width]="700" [height]="350">
+    </dxo-popup>
+
+    <dxo-form>
+
+      <dxi-item itemType="group" [colCount]="1"[colSpan]="2">
+        <dxi-item dataField="id_professor">
+        </dxi-item><dxi-item dataField="id_disciplina"></dxi-item>
+      </dxi-item>
+      <dxi-item itemType="group" [colCount]="2" [colSpan]="2">
+        <dxi-item dataField="CPF" [editorOptions]="{  disabled: true }"></dxi-item>
+        <dxi-item dataField="carga_horaria" [editorOptions]="{  disabled: true }"></dxi-item>
+      </dxi-item>
+
+
+    </dxo-form>
+    </dxo-editing>
+
+    <dxi-column dataField="id_professor" caption="Professor" [width]="350">
+    <dxo-lookup [dataSource]="dataProfessor" displayExpr="nome" valueExpr="id"></dxo-lookup>
+
+    </dxi-column>
+    <dxi-column dataField="CPF" [width]="150">
+    </dxi-column>
+    <dxi-column dataField="id_disciplina" [width]="170" caption="Disciplina">
+    <dxo-lookup [dataSource]="dataDisciplina" displayExpr="nome" valueExpr="id"></dxo-lookup></dxi-column>
+    <dxi-column dataField="carga_horaria" caption="Carga Horária" [width]="120"></dxi-column>
+
+  </dx-data-grid>
+</div>

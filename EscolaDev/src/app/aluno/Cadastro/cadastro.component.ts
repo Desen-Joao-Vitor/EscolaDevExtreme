@@ -1,17 +1,15 @@
-import { lastValueFrom } from 'rxjs';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { AlunosService } from '../alunos-service';
+import { AlunosService } from './cadastro-service';
 import { DxDataGridComponent } from 'devextreme-angular';
 import CustomStore from 'devextreme/data/custom_store';
-import { HttpClient } from '@angular/common/http';
-import e from 'cors';
+
 
 @Component({
   selector: 'app-listar-aluno',
-  templateUrl: './listar-aluno.component.html',
-  styleUrls: ['./listar-aluno.component.scss'],
+  templateUrl: './cadastro.component.html',
+  styleUrls: ['./cadastro.component.scss'],
 })
-export class ListarAlunoComponent implements OnInit {
+export class CadastroComponent implements OnInit {
   @ViewChild('dataGrid', { static: false })
   dataGrid!: DxDataGridComponent;
   dataSource: CustomStore;
@@ -66,7 +64,6 @@ export class ListarAlunoComponent implements OnInit {
     this.cpfField.component.option('value', cpfFormatado);
   }
 
-
   onEditorPreparing(e: any) {
     const that = this;
     if (e.parentType === 'dataRow') {
@@ -101,7 +98,7 @@ export class ListarAlunoComponent implements OnInit {
             const fnc = (ev: any) => {
               defaultFnc(ev);
               this.cpfField = ev;
-              this.consultarCpf()
+              this.consultarCpf();
             };
             e.editorOptions.onValueChanged = fnc.bind(this);
           }

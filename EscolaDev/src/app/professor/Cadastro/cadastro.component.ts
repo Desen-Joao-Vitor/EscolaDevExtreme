@@ -6,10 +6,10 @@ import { ProfessorServiceService } from './professor-service.service';
 
 @Component({
   selector: 'app-listar-professor',
-  templateUrl: './listar-professor.component.html',
-  styleUrl: './listar-professor.component.scss',
+  templateUrl: './cadastro.component.html',
+  styleUrl: './cadastro.component.scss',
 })
-export class ListarProfessorComponent implements OnInit {
+export class CadastroProfessorComponent implements OnInit {
   @ViewChild('dataGrid', { static: false })
   dataGrid!: DxDataGridComponent;
   dataSource: CustomStore;
@@ -58,7 +58,7 @@ export class ListarProfessorComponent implements OnInit {
   }
 
   registarCep() {
-    if (this.cepField.value.length == 8) {
+    if (this.cepField.value.length < 10) {
       this.service.ConsultarCep(this.cepField.value).subscribe(
         (data) => {
           this.cidadeField.component.cellValue(0, 'cidade', data.localidade);

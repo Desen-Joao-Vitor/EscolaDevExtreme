@@ -1,14 +1,19 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable, catchError, lastValueFrom, map, throwError } from 'rxjs';
+import { Observable, catchError, lastValueFrom, throwError } from 'rxjs';
 import CustomStore from 'devextreme/data/custom_store';
+import map from 'devextreme/ui/map';
+
+// Estados
+const estados: string[] = [];
 
 @Injectable({
   providedIn: 'root',
 })
-export class DisciplinasService {
+export class ProfessorDisciplinaService {
+
   private apiUrl =
-    'http://localhost/API-Universidade/universidade-api/disciplina.php';
+    'http://localhost/API-Universidade/universidade-api/professor_disciplina.php';
   protected dataSource: CustomStore;
   dataChanged: EventEmitter<void> = new EventEmitter<void>();
 
@@ -63,13 +68,15 @@ export class DisciplinasService {
       },
       insert(values) {
         return lastValueFrom(that.http.post(that.apiUrl, values));
+        that.dataChanged.emit();
       },
       update(key, values) {
         return lastValueFrom(that.http.put(that.apiUrl + '?id=' + key, values));
+        that.dataChanged.emit();
       },
-      remove: (id: any) => {
+      remove: (key: any) => {
         return new Promise<void>((resolve, reject) => {
-          that.http.delete(that.apiUrl + '?id=' + id).subscribe(
+          that.http.delete(that.apiUrl + '?id=' + key).subscribe(
             (response) => {
               resolve();
               that.dataChanged.emit();
@@ -85,14 +92,5 @@ export class DisciplinasService {
 
   getDataSource() {
     return this.dataSource;
-  }
-
-  public get(): Observable<any> {
-    return this.http.get<any>(this.apiUrl).pipe(
-      map((data) => data),
-      catchError((error: any) => {
-        return throwError(error);
-      })
-    );
   }
 }

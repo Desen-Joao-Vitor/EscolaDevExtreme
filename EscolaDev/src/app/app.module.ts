@@ -10,8 +10,8 @@ import { DxDataGridModule, DxSchedulerModule } from 'devextreme-angular';
 import { HttpClientModule } from '@angular/common/http';
 import { DisciplinasService } from './Disciplinas/disciplinas.service';
 
-import { AlunosService } from './aluno/alunos-service';
-import { AlunoModule } from './aluno/aluno.module';
+import { AlunosService } from './aluno/Cadastro/cadastro-service';
+import { AlunoModule } from './aluno/Cadastro/cadastro.module';
 import { TurmaModule } from './turma/turma.module';
 import { TurmaService } from './turma/turma.service';
 import { MatriculaComponent } from './aluno/matricula/matricula.component';

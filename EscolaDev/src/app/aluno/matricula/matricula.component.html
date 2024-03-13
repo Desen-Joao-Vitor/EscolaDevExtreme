@@ -10,7 +10,7 @@
     </dxo-popup>
     <dxo-form>
       <dxi-item itemType="group" [colCount]="2" [colSpan]="2" >
-        <dxi-item dataField="idAluno" editorType="dxSelectBox" [editorOptions]="{ valueExpr: 'id', displayExpr: 'nome', dataSource: dataAluno}" [colSpan]="2"></dxi-item>
+        <dxi-item dataField="id_aluno" editorType="dxSelectBox" [editorOptions]="{ valueExpr: 'id', displayExpr: 'nome', dataSource: dataAluno}" [colSpan]="2"></dxi-item>
 
         <dxi-item dataField="cpf"  [editorOptions]="{  disabled: true }"></dxi-item>
        <dxi-item dataField="data_alteracao" editorType="dxDateBox" editorOptions="{displayFormat: 'yyyy-mm-dd'}"></dxi-item>
@@ -18,20 +18,20 @@
 
 
       <dxi-item itemType="group" [colCount]="2" [colSpan]="2">
-        <dxi-item dataField="idTurma"></dxi-item>
-      <dxi-item dataField="idSituacao"></dxi-item>
+        <dxi-item dataField="id_turma"></dxi-item>
+      <dxi-item dataField="id_situacao"></dxi-item>
       </dxi-item>
 
     </dxo-form>
     </dxo-editing>
 
-    <dxi-column dataField="idAluno" caption="Aluno">
+    <dxi-column dataField="id_aluno" caption="Aluno">
       <dxo-lookup [dataSource]="dataAluno" displayExpr="nome" valueExpr="id"></dxo-lookup>
     </dxi-column>
 
     <dxi-column dataField="cpf"  caption="CPF" ></dxi-column>
 
-    <dxi-column dataField="idTurma" caption="Turma">
+    <dxi-column dataField="id_turma" caption="Turma">
       <dxo-lookup [dataSource]="dataTurma" displayExpr="nome" valueExpr="id_turma" >
       </dxo-lookup>
     </dxi-column>
@@ -39,7 +39,7 @@
     <dxi-column dataField="data_alteracao" caption="Data " dataType="date" format="dd/MM/yyyy">
     </dxi-column>
 
-    <dxi-column dataField="idSituacao" caption="Situação">
+    <dxi-column dataField="id_situacao" caption="Situação">
       <dxo-lookup [dataSource]="dataSituacaoMatricula"displayExpr="situacao" valueExpr="id_situacao" >
       </dxo-lookup>
     </dxi-column>

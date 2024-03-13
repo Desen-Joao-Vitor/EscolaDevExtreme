@@ -1,6 +1,6 @@
 import { Routes, Router, RouterModule } from '@angular/router';
 
-import { DisciplinasComponent } from '../disciplinas-pag/disciplinas.component';
+import { DisciplinasComponent } from './disciplinas.component';
 import { NgModule } from '@angular/core';
 
 const routes: Routes = [

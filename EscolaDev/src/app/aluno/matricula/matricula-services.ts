@@ -95,7 +95,4 @@ export class MatriculaService {
     return this.dataSource;
   }
 
-  getState() {
-    return estados;
-  }
 }

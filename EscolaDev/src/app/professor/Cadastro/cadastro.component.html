@@ -16,7 +16,7 @@
 
       <dxo-form>
         <dxi-item dataField="nome" [width]="200"></dxi-item>
-        <dxi-item dataField="cpf"></dxi-item>
+        <dxi-item dataField="cpf" ></dxi-item>
         <dxi-item dataField="cep"></dxi-item>
         <dxi-item dataField="estado"></dxi-item>
         <dxi-item dataField="cidade"></dxi-item>
@@ -28,23 +28,20 @@
       </dxo-form>
     </dxo-editing>
 
-    <dxo-filter-row [visible]="showFilterRow" [applyFilter]="currentFilter"></dxo-filter-row>
-    <dxo-header-filter [visible]="showHeaderFilter"></dxo-header-filter>
-    <dxo-search-panel [visible]="true" [width]="240" placeholder="Search..."></dxo-search-panel>
     <dxi-column dataField="nome" [width]="200" caption="Nome"></dxi-column>
-    <dxi-column dataField="cpf" caption="CPF"></dxi-column>
+    <dxi-column dataField="cpf" caption="CPF"[width]="150 "></dxi-column>
 
     <dxi-column dataField="cep" caption="CEP"></dxi-column>
-    <dxi-column dataField="estado" caption="UF"></dxi-column>
+    <dxi-column dataField="estado" caption="UF" [width]="40"></dxi-column>
     <dxi-column dataField="cidade"></dxi-column>
 
 
-    <dxi-column dataField="bairro" [filterOperations]="false"></dxi-column>
-    <dxi-column dataField="rua" [filterOperations]="false"></dxi-column>
-    <dxi-column dataField="numero" [filterOperations]="false" caption="Número"></dxi-column>
+    <dxi-column dataField="bairro" ></dxi-column>
+    <dxi-column dataField="rua" ></dxi-column>
+    <dxi-column dataField="numero"  caption="Número" [width]="80"></dxi-column>
 
-    <dxi-column dataField="complemento" [filterOperations]="false"></dxi-column>
-    <dxi-column dataField="observacao" [filterOperations]="false" caption="Observação"></dxi-column>
+    <dxi-column dataField="complemento" ></dxi-column>
+    <dxi-column dataField="observacao"  caption="Observação"></dxi-column>
 
 
     <dxo-toolbar>

@@ -15,11 +15,11 @@
             <option class="text-black" value="Alunos/Cadastrados">Registro de Alunos</option>
             <option class="text-black" value="Alunos/matriculas">Gerar Matricula</option>
           </select>
-          <li class="nav-item">
-            <a class="nav-link text-white" routerLinkActive="Active" [routerLink]="['Professor']">
-              Professores
-            </a>
-          </li>
+          <select class="nav-link text-white" routerLinkActive="Active" (change)="navega($event)">
+            <option class="text-black" value="">Professores</option>
+            <option class="text-black" value="Professor/Cadastrados">Registro de Professores</option>
+            <option class="text-black" value="Professor/Vircular-Disciplina">Vincular disciplinas</option>
+          </select>
           <li class="nav-item">
             <a class="nav-link text-white" routerLinkActive="Active" [routerLink]="['Turmas']">
               Turmas

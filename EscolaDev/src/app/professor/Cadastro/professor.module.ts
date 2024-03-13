@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProfessorRoutesModule } from './professor.routes';
-import { ListarProfessorComponent } from './listar-professor/listar-professor.component';
+import { CadastroProfessorComponent } from './cadastro.component';
 import { FormsModule } from '@angular/forms';
 import {
   DxButtonModule,
@@ -18,7 +18,7 @@ import {
 } from 'devextreme-angular/ui/nested';
 
 @NgModule({
-  declarations: [ListarProfessorComponent],
+  declarations: [CadastroProfessorComponent],
   imports: [
     CommonModule,
     FormsModule,

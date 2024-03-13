@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ListarAlunoComponent } from './aluno/listar-aluno/listar-aluno.component';
+import { CadastroComponent } from './aluno/Cadastro/cadastro.component';
 
 const routes: Routes = [
   {
@@ -15,7 +15,7 @@ const routes: Routes = [
   {
     path: 'Alunos/Cadastrados',
     loadChildren: () =>
-      import('./aluno/aluno.module').then((m) => m.AlunoModule),
+      import('./aluno/Cadastro/cadastro.module').then((m) => m.AlunoModule),
   },
   {
     path: 'Alunos/matriculas',
@@ -25,9 +25,18 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'Professor',
+    path: 'Professor/Cadastrados',
     loadChildren: () =>
-      import('./professor/professor.module').then((m) => m.ProfessorModule),
+      import('./professor/Cadastro/professor.module').then(
+        (m) => m.ProfessorModule
+      ),
+  },
+  {
+    path: 'Professor/Vircular-Disciplina',
+    loadChildren: () =>
+      import(
+        './professor/professor-disciplina/professor-disciplina.module'
+      ).then((m) => m.ProfessorDisciplinaModule),
   },
   {
     path: 'Turmas',
@@ -37,7 +46,7 @@ const routes: Routes = [
   {
     path: 'Disciplina',
     loadChildren: () =>
-      import('./Disciplinas/disciplinas-pag/disciplinas.module').then(
+      import('./Disciplinas/Cadastro/disciplinas.module').then(
         (m) => m.DisciplinasModule
       ),
   },

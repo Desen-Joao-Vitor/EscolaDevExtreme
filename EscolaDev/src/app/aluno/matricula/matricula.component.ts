@@ -1,4 +1,4 @@
-import { AlunosService } from './../alunos-service';
+import { AlunosService } from '../Cadastro/cadastro-service';
 import { Component,  ViewChild } from '@angular/core';
 import CustomStore from 'devextreme/data/custom_store';
 import { MatriculaService } from './matricula-services';
@@ -55,7 +55,7 @@ this.alunoCpf = serviceAluno.getDataSource();
       const defaultFnc = e.editorOptions.onValueChanged;
 
       switch (e.dataField) {
-        case 'idAluno': {
+        case 'id_aluno': {
           this.idAlunoField = e;
           const fnc = (ev: any) => {
             defaultFnc(ev);
@@ -78,11 +78,4 @@ this.alunoCpf = serviceAluno.getDataSource();
   }
 }
 
-// Assuming this.dataAluno is an instance of CustomStore
-//  if (this.dataAluno && typeof this.dataAluno.load === 'function') {
-//  this.dataAluno.load().then((res: any) => {
-//  e.component.cellValue(0, 'cpf', this.alunoSelect[0].cpf);              });
-//  } else {
-//  console.error('this.dataAluno does not have a valid load method');
-//  }
 
