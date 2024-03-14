@@ -1,3 +1,9 @@
+.px-3.py-2.text-bg-dark.border-bottom {
+  width: 100vw;
+  height: 75px;
+  margin-left: -12px !important;
+}
+
 .container {
   max-width: 600px;
   margin: 50px auto;
@@ -9,23 +15,19 @@ button {
   font-size: 16px;
   cursor: pointer;
 }
-.px-3.py-2.text-bg-dark.border-bottom {
-  width: 99vw;
-  height: 75px;
-  margin-left: -11px !important;
-}
+
 .d-flex.flex-wrap.align-items-center.justify-content-center.justify-content-lg-start {
   display: flex;
   flex-direction: row;
   position: relative;
-  left: 587px;
-  top: -40px;
+  left: 362px;
+  top: -44px;
 }
 button.btn.btn-light.text-dark.me-2 {
-  position: relative;
-  top: -2px;
-  right: -6px;
-  width: 100px;
+    position: relative;
+    top: -1px;
+    right: -28px;
+    width: 90px;
 }
 .Conteudo {
   height: max-content;

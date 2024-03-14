@@ -1,0 +1,26 @@
+<div class="container" id="data-grid-demo">
+  <dx-data-grid id="dataGrid" [dataSource]="dataAlunoNotas" [showBorders]="true"
+  >
+
+    <dxo-selection mode="multiple"></dxo-selection>
+
+    <!--Formulario cadastro aluno-->
+    <dxo-paging [enabled]="false"></dxo-paging>
+    <dxo-editing mode="popup" [allowUpdating]="true" [allowAdding]="true" [allowDeleting]="true">
+      <dxo-popup title="Cadastro de Aluno" [showTitle]="true" [width]="900" [height]="'auto'"
+        [position]="{ my: 'center', at: 'center' }">
+
+        <dxo-form>
+
+        </dxo-form>
+      </dxo-popup>
+    </dxo-editing>
+
+
+
+    <dxi-item name="addRowButton" showText="always">
+    </dxi-item>
+
+
+  </dx-data-grid>
+</div>

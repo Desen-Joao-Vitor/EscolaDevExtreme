@@ -11,11 +11,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { DisciplinasService } from './Disciplinas/disciplinas.service';
 
 import { AlunosService } from './aluno/Cadastro/cadastro-service';
-import { AlunoModule } from './aluno/Cadastro/cadastro.module';
 import { TurmaModule } from './turma/turma.module';
 import { TurmaService } from './turma/turma.service';
-import { MatriculaComponent } from './aluno/matricula/matricula.component';
 import { MatriculaModule } from './aluno/matricula/matricula.module';
+import { AlunoNotasModule } from './aluno/aluno-notas/aluno-notas.module';
+import { AlunosNotasService } from './aluno/aluno-notas/aluno-notas.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -33,8 +33,9 @@ import { MatriculaModule } from './aluno/matricula/matricula.module';
     LoginModule,
     TurmaModule,
     MatriculaModule,
+
   ],
-  providers: [DisciplinasService, AlunosService, TurmaService],
+  providers: [DisciplinasService, AlunosService, TurmaService ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

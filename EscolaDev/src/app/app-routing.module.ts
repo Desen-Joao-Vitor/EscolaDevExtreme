@@ -6,7 +6,7 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: '',
+    redirectTo: 'Aunos/Notas',
   },
   {
     path: 'Menu',
@@ -48,6 +48,13 @@ const routes: Routes = [
     loadChildren: () =>
       import('./Disciplinas/Cadastro/disciplinas.module').then(
         (m) => m.DisciplinasModule
+      ),
+  },
+  {
+    path: 'Notas',
+    loadChildren: () =>
+      import('./aluno/aluno-notas/aluno-notas.module').then(
+        (m) => m.AlunoNotasModule
       ),
   },
   {
