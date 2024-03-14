@@ -8,11 +8,11 @@
     <dxo-form>
 
       <dxi-item itemType="group" [colCount]="1"[colSpan]="2">
-        <dxi-item dataField="id_professor">
-        </dxi-item><dxi-item dataField="id_disciplina"></dxi-item>
+        <dxi-item dataField="id_professor"></dxi-item>
+        <dxi-item dataField="CPF" [editorOptions]="{  disabled: true  }"></dxi-item>
       </dxi-item>
-      <dxi-item itemType="group" [colCount]="2" [colSpan]="2">
-        <dxi-item dataField="CPF" [editorOptions]="{  disabled: true }"></dxi-item>
+      <dxi-item itemType="group" [colCount]="1" [colSpan]="2">
+        <dxi-item dataField="id_disciplina"></dxi-item>
         <dxi-item dataField="carga_horaria" [editorOptions]="{  disabled: true }"></dxi-item>
       </dxi-item>
 
@@ -31,4 +31,5 @@
     <dxi-column dataField="carga_horaria" caption="Carga Horária" [width]="120"></dxi-column>
 
   </dx-data-grid>
+
 </div>

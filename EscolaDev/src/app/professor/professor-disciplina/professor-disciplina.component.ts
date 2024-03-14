@@ -13,17 +13,19 @@ import { ProfessorServiceService } from '../Cadastro/professor-service.service';
 export class ProfessorDisciplinaComponent {
   @ViewChild('dataGrid', { static: false })
   dataGrid!: DxDataGridComponent;
-  //Variaveis
+  //DadaSource
   dataVinculo: CustomStore;
-  professorCpf: any;
+  dataProfessor: any;
+  dataDisciplina: any;
+  disciplinaCargaHoraria: any;
   //OnEditorPreparing
   nomeField: any;
   idAlunoField: any;
+  disciplinaField: any;
+  professorCpf: any;
+  // Ddados
   alunoSelect: any;
-
-  //Services
-  dataProfessor: any;
-  dataDisciplina: any;
+  disciplinaSelect: any;
 
   constructor(
     servicesVinculo: ProfessorDisciplinaService,
@@ -34,44 +36,59 @@ export class ProfessorDisciplinaComponent {
     serviceProfessor.get().subscribe((res) => {
       this.dataProfessor = res.data;
     });
-    this.professorCpf = serviceProfessor.getDataSource()
+    this.professorCpf = serviceProfessor.getDataSource();
     // Disciplina
     serviceDisciplina.get().subscribe((res) => {
       this.dataDisciplina = res.data;
     });
-    // dada virculo
+    this.disciplinaCargaHoraria = serviceDisciplina.getDataSource();
+
+    // Matricula
     this.dataVinculo = servicesVinculo.getDataSource();
   }
+  //popup
   onEditorPreparing(e: any) {
     if (e.parentType === 'dataRow') {
       const defaultFnc = e.editorOptions.onValueChanged;
 
       switch (e.dataField) {
-        case 'id_professor': {
-          this.idAlunoField = e;
+        case 'id_professor':
+          {
+            this.idAlunoField = e;
+            const fnc = (ev: any) => {
+              defaultFnc(ev);
+              this.idAlunoField = ev;
+
+              this.professorCpf.load().then((res: any) => {
+                this.alunoSelect = res.data.filter(
+                  (f: any) => f.id == this.idAlunoField.value
+                );
+                e.component.cellValue(0, 'CPF', this.alunoSelect[0].cpf);
+              });
+            };
+            e.editorOptions.onValueChanged = fnc.bind(this);
+          }
+          break;
+        case 'id_disciplina': {
+          this.disciplinaField = e;
           const fnc = (ev: any) => {
             defaultFnc(ev);
-            this.idAlunoField = ev;
-            console.log(this.dataProfessor);
+            this.disciplinaField = ev;
 
-            this.professorCpf.load().then((res: any) => {
-              this.alunoSelect = res.data.filter(
-                (f: any) => f.id == this.idAlunoField.value
+            this.disciplinaCargaHoraria.load().then((res: any) => {
+              this.disciplinaSelect = res.data.filter(
+                (f: any) => f.id == this.disciplinaField.value
               );
-              e.component.cellValue(0, 'CPF', this.alunoSelect[0].cpf);
+              e.component.cellValue(
+                0,
+                'carga_horaria',
+                this.disciplinaSelect[0].carga_horaria
+              );
             });
           };
           e.editorOptions.onValueChanged = fnc.bind(this);
         }
-          break;
-/*case 'id_disciplina':{
-  idProfessorF =e ;
-  const fnc = (ev: any) => {
-            defaultFnc(ev);
-            this.idAlunoField = ev;
-             console.log(this.dataProfessor);
-}
-*/      }
+      }
     }
   }
 }
