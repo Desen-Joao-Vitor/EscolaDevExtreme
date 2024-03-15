@@ -13,7 +13,7 @@
         <dxi-item dataField="id_aluno" editorType="dxSelectBox" [editorOptions]="{ valueExpr: 'id', displayExpr: 'nome', dataSource: dataAluno}" [colSpan]="2"></dxi-item>
 
         <dxi-item dataField="cpf"  [editorOptions]="{  disabled: true }"></dxi-item>
-       <dxi-item dataField="data_alteracao" editorType="dxDateBox" editorOptions="{displayFormat: 'yyyy-mm-dd'}"></dxi-item>
+       <dxi-item dataField="data_alteracao" editorType="dxDateBox" [editorOptions]="{displayFormat: 'yyyy-mm-dd'}"></dxi-item>
       </dxi-item>
 
 
@@ -36,7 +36,7 @@
       </dxo-lookup>
     </dxi-column>
 
-    <dxi-column dataField="data_alteracao" caption="Data " dataType="date" format="dd/MM/yyyy">
+    <dxi-column dataField="data_alteracao" caption="Data " dataType="date" format="yyyy-mm-dd">
     </dxi-column>
 
     <dxi-column dataField="id_situacao" caption="Situação">

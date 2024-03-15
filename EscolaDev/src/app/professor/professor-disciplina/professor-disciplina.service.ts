@@ -1,8 +1,7 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable, catchError, lastValueFrom, throwError } from 'rxjs';
+import { Observable, catchError, lastValueFrom, map, throwError } from 'rxjs';
 import CustomStore from 'devextreme/data/custom_store';
-import map from 'devextreme/ui/map';
 
 // Estados
 const estados: string[] = [];
@@ -11,7 +10,6 @@ const estados: string[] = [];
   providedIn: 'root',
 })
 export class ProfessorDisciplinaService {
-
   private apiUrl =
     'http://localhost/API-Universidade/universidade-api/professor_disciplina.php';
   protected dataSource: CustomStore;
@@ -92,5 +90,13 @@ export class ProfessorDisciplinaService {
 
   getDataSource() {
     return this.dataSource;
+  }
+  public get(): Observable<any> {
+    return this.http.get<any>(this.apiUrl).pipe(
+      map((data) => data),
+      catchError((error: any) => {
+        return throwError(error);
+      })
+    );
   }
 }
