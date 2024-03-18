@@ -1,8 +1,6 @@
 <div class="container" id="data-grid-demo">
-  <dx-data-grid id="dataGrid" [dataSource]="dataSource" [showBorders]="true"
-    (onSelectionChanged)="onSelectionChanged($event)" (onEditorPreparing)="onEditorPreparing($event)">
+  <dx-data-grid id="dataGrid" [dataSource]="dataSource" [showBorders]="true" (onEditorPreparing)="onEditorPreparing($event)">
 
-    <dxo-selection mode="multiple"></dxo-selection>
 
     <!--Formulario cadastro aluno-->
     <dxo-paging [enabled]="false"></dxo-paging>
@@ -41,12 +39,7 @@
     <dxi-column dataField="complemento"></dxi-column>
     <dxi-column dataField="observacao" caption="Observação"></dxi-column>
 
-    <dxi-item name="addRowButton" showText="always">
-    </dxi-item>
-    <dxi-item location="after">
-      <dx-button (click)="delete()" icon="trash" [disabled]="!selectedRows" text="Excluir registro do aluno">
-      </dx-button>
-    </dxi-item>
+    <dxi-item name="addRowButton" showText="always"></dxi-item>
 
   </dx-data-grid>
 </div>

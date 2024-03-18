@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 
 const routes: Routes = [
   { path: '', component: MenuComponent },
-  { path: 'Menu', component: MenuComponent },
+  { path: 'Home', component: MenuComponent },
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

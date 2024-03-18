@@ -1,11 +1,10 @@
 <div class="container" id="data-grid-demo">
   <dx-data-grid id="dataGrid" [dataSource]="dataAlunoNotas" [showBorders]="true"(onEditorPreparing)="onEditorPreparing($event)">
 
-
     <!--Formulario cadastro aluno-->
     <dxo-paging [enabled]="false"></dxo-paging>
     <dxo-editing mode="popup" [allowUpdating]="true" [allowAdding]="true" [allowDeleting]="true">
-      <dxo-popup title="Cadastro de Aluno" [showTitle]="true" [width]="900" [height]="500"
+      <dxo-popup title="Gerar nota aluno" [showTitle]="true" [width]="900" [height]="500"
         [position]="{ my: 'center', at: 'center' }">
       </dxo-popup>
 
@@ -24,7 +23,8 @@
 
           <!--Mostrar dados do vinculo-->
           <dxi-item itemType="group" [colCount]="1" [colSpan]="2">
-           <dxi-item dataField="professor"  [editorOptions]="{disabled:true}"></dxi-item>
+            <!--Mostrar valores existentes na seleção-->
+            <dxi-item dataField="professor"  [editorOptions]="{disabled:true}"></dxi-item>
             <dxi-item dataField="cpf_professor" [editorOptions]="{disabled:true}"></dxi-item>
             <dxi-item dataField="disciplina" [editorOptions]="{  disabled: true }"></dxi-item>
           </dxi-item>
@@ -45,15 +45,15 @@
 
     <!--Dados Aluno-->
     <dxi-column dataField="" caption="Aluno">
-    <dxi-column dataField="id_matricula" caption="Nome">
-      <dxo-lookup [dataSource]="dataMatricula" displayExpr="nome" valueExpr="id_matricula"></dxo-lookup>
-    </dxi-column>
-    <dxi-column dataField="cpf_aluno" caption="CPF"></dxi-column>
+      <dxi-column dataField="id_matricula" caption="Nome">
+        <dxo-lookup [dataSource]="dataMatricula" displayExpr="nome" valueExpr="id_matricula"></dxo-lookup>
+      </dxi-column>
+      <dxi-column dataField="cpf_aluno" caption="CPF"></dxi-column>
     </dxi-column>
 
     <!--Dados do professor-->
     <dxi-column dataField="" caption="Professor">
-      <dxi-column dataField="professor" caption="Nome"></dxi-column>
+      <dxi-column dataField="professor" caption="Professor"></dxi-column>
       <dxi-column dataField="cpf_professor" caption="CPF"></dxi-column>
     </dxi-column>
 
@@ -65,11 +65,10 @@
 
     <!--Dados da nota_aluno-->
     <dxi-column dataField="" caption="Nota">
-    <dxi-column dataField="valor" caption="Nota" ></dxi-column>]
-    <dxi-column dataField="data_lancamento" caption="Data lancamento" dataType="date" format="dd/MM/yyyy"></dxi-column>
+       <dxi-column dataField="valor" caption="Nota" ></dxi-column>]
+       <dxi-column dataField="data_lancamento" caption="Data lancamento" dataType="date" format="dd/MM/yyyy"></dxi-column>
     </dxi-column>
+
     <dxi-item name="addRowButton" showText="always"></dxi-item>
-
   </dx-data-grid>
-
 </div>

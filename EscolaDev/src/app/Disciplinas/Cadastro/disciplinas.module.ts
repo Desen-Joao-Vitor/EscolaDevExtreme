@@ -11,7 +11,7 @@ import {
 import { DisciplinaRoutes } from './disciplina.routes';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { AlunosRoutesModule } from '../../aluno/alunos.routes';
+import { AlunosRoutesModule } from '../../aluno/Cadastro/alunos.routes';
 
 @NgModule({
   imports: [

@@ -3,7 +3,7 @@ import { Component,  ViewChild } from '@angular/core';
 import CustomStore from 'devextreme/data/custom_store';
 import { MatriculaService } from './matricula-services';
 import { TurmaService } from '../../turma/turma.service';
-import { GetsitucaomatriculaService } from '../../Apis/getsitucaomatricula/getsitucaomatricula.service';
+import { GetsitucaomatriculaService } from '../../Apis/getsitucaomatricula/extracaoTabelaSituacao.service';
 import { DxDataGridComponent } from 'devextreme-angular';
 
 
@@ -21,7 +21,7 @@ export class MatriculaComponent {
   dataTurma: any;
   dataSituacaoMatricula: any;
   dataMatricula: CustomStore;
-  //OnEditorPreparing
+  //Nome
   nomeField: any;
   idAlunoField: any;
   alunoSelect: any;
@@ -77,5 +77,3 @@ this.alunoCpf = serviceAluno.getDataSource();
     }
   }
 }
-
-

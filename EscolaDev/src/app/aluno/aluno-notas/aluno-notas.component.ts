@@ -1,9 +1,9 @@
 import { ProfessorDisciplinaService } from './../../professor/professor-disciplina/professor-disciplina.service';
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { AlunosNotasService } from './aluno-notas.service';
 import { MatriculaService } from '../matricula/matricula-services';
 import CustomStore from 'devextreme/data/custom_store';
-import { AlunosService } from '../Cadastro/cadastro-service';
+import { DxDataGridComponent } from 'devextreme-angular';
 
 @Component({
   selector: 'app-aluno-notas',
@@ -11,25 +11,37 @@ import { AlunosService } from '../Cadastro/cadastro-service';
   styleUrls: ['./alunos-notas.component.scss'],
 })
 export class AlunoNotasComponent {
+  @ViewChild('dataGrid', { static: false })
+  dataGrid!: DxDataGridComponent;
   //Data Souce
   dataAlunoNotas: CustomStore;
   dataMatricula: any;
   dataProfessorDisciplina: any;
+  dataVinculos: any; //Tras dados da Professor Disciplina
 
-  //onEditorPreparing
+  //Campo vinculo
+  idVinculoField: any;
+  idSelectVinculos: any;
+  dadosVinculos: any;
+
+  // Campo selecionar matricula
   idAlunoField: any;
-  alunoCpf: any;
   alunoSelect: any;
+  alunoCpf: any;
 
   constructor(
     serviceAlunoNotas: AlunosNotasService,
     serviceMatricula: MatriculaService,
-    serviceAluno: AlunosService,
+    serviceVinculo: ProfessorDisciplinaService, // DataSource de Professor Disciplina
     serviceProfessorDisciplina: ProfessorDisciplinaService
   ) {
     //Aluno
     this.alunoCpf = serviceMatricula.getDataSource();
-
+    //Vinculo
+    this.dataVinculos = serviceVinculo.getDataSource();
+    serviceProfessorDisciplina.get().subscribe((res: any) => {
+      this.dadosVinculos = res.data;
+    });
     //Matricula
     serviceMatricula.get().subscribe((res) => {
       this.dataMatricula = res.data;
@@ -49,24 +61,55 @@ export class AlunoNotasComponent {
 
       switch (e.dataField) {
         case 'id_matricula':
-           {
-          this.idAlunoField = e;
+          {
+            this.idAlunoField = e;
+            const fnc = (ev: any) => {
+              defaultFnc(ev);
+              this.idAlunoField = ev;
+
+              this.alunoCpf.load().then((res: any) => {
+                this.alunoSelect = res.data.filter(
+                  (f: any) => f.id == this.idAlunoField.value
+                );
+                e.component.cellValue(
+                  0,
+                  'cpf_aluno',
+                  this.dataMatricula[0].cpf
+                );
+              });
+            };
+            e.editorOptions.onValueChanged = fnc.bind(this);
+          }
+          break;
+        //Vinculo
+        case 'id_professor_disciplina': {
+          this.idVinculoField = e;
           const fnc = (ev: any) => {
             defaultFnc(ev);
-            this.idAlunoField = ev;
-            console.log(this.dataMatricula);
+            this.idVinculoField = ev;
 
-
-            this.alunoCpf.load().then((res: any) => {
-              this.alunoSelect = res.data.filter(
-                (f: any) => f.id == this.idAlunoField.value
+            this.dataVinculos.load().then((res: any) => {
+              this.idSelectVinculos = res.data.filter(
+                (f: any) => f.id == this.idVinculoField.value
               );
-              console.log(this.alunoSelect)
-              e.component.cellValue(0, 'cpf_aluno', this.alunoSelect[0].cpf);
+              e.component.cellValue(
+                0,
+                'cpf_professor',
+                this.dataProfessorDisciplina[0].CPF
+              );
+              e.component.cellValue(
+                0,
+                'professor',
+                this.dataProfessorDisciplina[0].professor
+              );
+              e.component.cellValue(
+                0,
+                'disciplina',
+                this.dataProfessorDisciplina[0].disciplina
+              );
             });
           };
           e.editorOptions.onValueChanged = fnc.bind(this);
-          break;
         }
       }
     }

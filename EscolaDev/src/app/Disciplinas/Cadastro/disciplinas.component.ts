@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DisciplinasService } from '../disciplinas.service';
+import { DisciplinasService } from './disciplinas.service';
 import { __asyncValues } from 'tslib';
 import CustomStore from 'devextreme/data/custom_store';
 

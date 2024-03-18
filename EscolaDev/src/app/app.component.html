@@ -6,7 +6,7 @@
 
         <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small nav-bar">
           <li class="nav-item">
-            <a class="nav-link text-secondary" routerLinkActive="Active" [routerLink]="['home']">
+            <a class="nav-link text-secondary" routerLinkActive="Active" [routerLink]="['Home']">
               Home
             </a>
           </li>
@@ -14,6 +14,7 @@
             <option class="text-black" value="">Alunos</option>
             <option class="text-black" value="Alunos/Cadastrados">Registro de Alunos</option>
             <option class="text-black" value="Alunos/matriculas">Gerar Matricula</option>
+            <option class="text-black" value="Alunos/Notas">Notas</option>
           </select>
           <select class="nav-link text-white" routerLinkActive="Active" (change)="navega($event)">
             <option class="text-black" value="">Professores</option>
@@ -28,11 +29,6 @@
           <li>
             <a class="nav-link text-white" routerLinkActive="Active" [routerLink]="['Disciplina']">
               Disciplina
-            </a>
-          </li>
-          <li>
-            <a class="nav-link text-white" routerLinkActive="Active" [routerLink]="['Notas']">
-              Notas
             </a>
           </li>
           <li class="nav-item">

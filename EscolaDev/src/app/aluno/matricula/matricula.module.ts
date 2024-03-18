@@ -16,7 +16,10 @@ import { DxiItemModule } from 'devextreme-angular/ui/nested';
 @NgModule({
   imports: [
     CommonModule,
-    MatriculaRoutesModule, // DevExtreme
+
+    //Aplicação
+    MatriculaRoutesModule,
+     // DevExtreme
     DxButtonModule,
     DxDataGridModule,
     DxiItemModule,

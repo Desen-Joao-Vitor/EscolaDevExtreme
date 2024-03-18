@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AlunosRoutesModule } from '../alunos.routes';
+import { AlunosRoutesModule } from './alunos.routes';
 import { CadastroComponent } from './cadastro.component';
 import { DxiItemModule } from 'devextreme-angular/ui/nested';
 import {

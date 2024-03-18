@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { DxDataGridComponent } from 'devextreme-angular';
 import { ProfessorDisciplinaService } from './professor-disciplina.service';
 import CustomStore from 'devextreme/data/custom_store';
-import { DisciplinasService } from '../../Disciplinas/disciplinas.service';
+import { DisciplinasService } from '../../Disciplinas/Cadastro/disciplinas.service';
 import { ProfessorServiceService } from '../Cadastro/professor-service.service';
 
 @Component({

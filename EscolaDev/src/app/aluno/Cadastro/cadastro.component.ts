@@ -9,39 +9,24 @@ import CustomStore from 'devextreme/data/custom_store';
   templateUrl: './cadastro.component.html',
   styleUrls: ['./cadastro.component.scss'],
 })
-export class CadastroComponent implements OnInit {
+export class CadastroComponent {
+  //Alunos
   @ViewChild('dataGrid', { static: false })
   dataGrid!: DxDataGridComponent;
   dataSource: CustomStore;
-  bookButtonOptions: any;
-  selectedRows!: number;
-  estados!: string[];
-  data!: any[];
-  cepField: any;
 
+  //Variavel
+  data!: any[];
+
+  //Dados do Cep
+  cepField: any;
   cpfField: any;
   cidadeField: any;
-  menssageErro = ' ';
 
   constructor(private service: AlunosService) {
     this.dataSource = service.getDataSource();
   }
 
-  ngOnInit(): void {}
-  async delete() {
-    if (Array.isArray(this.selectedRows)) {
-      this.selectedRows.forEach((id: any) => {
-        this.service.getDataSource().remove(id);
-      });
-      window.location.reload();
-    }
-  }
-
-  onSelectionChanged(data: any) {
-    this.selectedRows = data.selectedRowKeys;
-    console.log(data);
-    console.log();
-  }
   registarCep() {
     if (this.cepField.value.length == 8) {
       this.service.ConsultarCep(this.cepField.value).subscribe(
