@@ -1,14 +1,8 @@
 .px-3.py-2.text-bg-dark.border-bottom {
   width: 100vw;
   height: 75px;
-  margin-left: -12px !important;
 }
 
-.container {
-  max-width: 600px;
-  margin: 50px auto;
-  text-align: center;
-}
 
 button {
   padding: 10px;
@@ -17,11 +11,10 @@ button {
 }
 
 .d-flex.flex-wrap.align-items-center.justify-content-center.justify-content-lg-start {
-  display: flex;
-  flex-direction: row;
-  position: relative;
-  left: 362px;
-  top: -44px;
+display: flex;
+justify-content: center;
+margin-top: 5px;
+
 }
 button.btn.btn-light.text-dark.me-2 {
     position: relative;
@@ -30,8 +23,7 @@ button.btn.btn-light.text-dark.me-2 {
     width: 90px;
 }
 .Conteudo {
-  height: max-content;
-  margin-top: 30px;
+  margin-top: -1px !important;
 }
 .final {
   width: 100vw;
@@ -40,6 +32,12 @@ button.btn.btn-light.text-dark.me-2 {
   bottom: 0px;
 }
 footer.bg-dark.text-white.text-center.p-3.mt-4 {
-  margin-left: -11px !important;
   width: 100vw;
+}
+//Pag
+
+.container-fluid {
+  width: 100vw;
+  height: 100vh;
+  --bs-gutter-x: 0;
 }
