@@ -10,7 +10,7 @@ import CustomStore from 'devextreme/data/custom_store';
 
 export class AlunosNotasService {
   private apiUrl =
-    'http://localhost/API-Universidade/universidade-api/nota.php';
+    'http://localhost/API-Universidade/universidade-api/Alunos/nota.php';
   protected dataSource: CustomStore;
   dataChanged: EventEmitter<void> = new EventEmitter<void>();
 

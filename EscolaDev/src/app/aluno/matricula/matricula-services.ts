@@ -11,7 +11,7 @@ const estados: string[] = [];
 })
 export class MatriculaService {
   private apiUrl =
-    'http://localhost/API-Universidade/universidade-api/matricula.php';
+    'http://localhost/API-Universidade/universidade-api/Alunos/matricula.php';
   protected dataSource: CustomStore;
   dataChanged: EventEmitter<void> = new EventEmitter<void>();
 

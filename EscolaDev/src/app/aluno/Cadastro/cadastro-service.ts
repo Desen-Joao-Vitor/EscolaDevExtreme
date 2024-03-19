@@ -10,7 +10,7 @@ const estados: string[] = [];
   providedIn: 'root',
 })
 export class AlunosService {
-  private apiUrl = 'http://localhost/API-Universidade/universidade-api/alunos.php';
+  private apiUrl = 'http://localhost/API-Universidade/universidade-api/Alunos/alunos.php';
   protected dataSource: CustomStore;
   dataChanged: EventEmitter<void> = new EventEmitter<void>();
 

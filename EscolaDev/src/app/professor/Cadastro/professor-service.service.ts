@@ -8,7 +8,7 @@ import CustomStore from 'devextreme/data/custom_store';
 })
 export class ProfessorServiceService {
   private apiUrl =
-    'http://localhost/API-Universidade/universidade-api/professor.php';
+    'http://localhost/API-Universidade/universidade-api/Professor/professor.php';
   protected dataSource: CustomStore;
   dataChanged: EventEmitter<void> = new EventEmitter<void>();
 

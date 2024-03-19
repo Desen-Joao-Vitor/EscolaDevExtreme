@@ -11,7 +11,7 @@ const estados: string[] = [];
 })
 export class ProfessorDisciplinaService {
   private apiUrl =
-    'http://localhost/API-Universidade/universidade-api/professor_disciplina.php';
+    'http://localhost/API-Universidade/universidade-api/Professor/professor_disciplina.php';
   protected dataSource: CustomStore;
   dataChanged: EventEmitter<void> = new EventEmitter<void>();
 
