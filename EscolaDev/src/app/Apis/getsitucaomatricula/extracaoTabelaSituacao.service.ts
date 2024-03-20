@@ -8,7 +8,7 @@ import CustomStore from 'devextreme/data/custom_store';
 })
 export class GetsitucaomatriculaService {
   private apiUrl =
-    'http://localhost/API-Universidade/universidade-api/situacao.php';
+    'http://localhost/API-Universidade/universidade-api/Apis-Opcao/situacao.php';
 
   protected dataSource: CustomStore;
   dataChanged: EventEmitter<void> = new EventEmitter<void>();

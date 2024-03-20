@@ -16,9 +16,11 @@ import { TurmaService } from './turma/turma.service';
 import { MatriculaModule } from './aluno/matricula/matricula.module';
 import { AlunoNotasModule } from './aluno/aluno-notas/aluno-notas.module';
 import { AlunosNotasService } from './aluno/aluno-notas/aluno-notas.service';
+import { LoginApiComponent } from './Conect-Ais/Login/login-api/login-api.component';
+import { AttComponent } from './Conect-Ais/att/att.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, LoginApiComponent, AttComponent],
   imports: [
     AppRoutingModule,
     //Aplicação
