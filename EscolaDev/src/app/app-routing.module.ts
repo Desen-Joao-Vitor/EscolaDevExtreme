@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CadastroComponent } from './aluno/Cadastro/cadastro.component';
 
 const routes: Routes = [
   {
@@ -8,6 +7,10 @@ const routes: Routes = [
     pathMatch: 'full',
     redirectTo: 'Aunos/Notas',
   },
+{  //Administrador
+    path:'admin',
+    loadChildren: () => import('./Conect-Ais/login-api/login-api.module').then((m) => m.LoginApiModule)
+},
   // Usario deve Fazer login antes de realizar qualquer alteração
   {
     path: 'Login',

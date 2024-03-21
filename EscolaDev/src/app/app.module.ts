@@ -14,13 +14,10 @@ import { AlunosService } from './aluno/Cadastro/cadastro-service';
 import { TurmaModule } from './turma/turma.module';
 import { TurmaService } from './turma/turma.service';
 import { MatriculaModule } from './aluno/matricula/matricula.module';
-import { AlunoNotasModule } from './aluno/aluno-notas/aluno-notas.module';
-import { AlunosNotasService } from './aluno/aluno-notas/aluno-notas.service';
-import { LoginApiComponent } from './Conect-Ais/Login/login-api/login-api.component';
-import { AttComponent } from './Conect-Ais/att/att.component';
+import { LoginApiModule } from './Conect-Ais/login-api/login-api.module';
 
 @NgModule({
-  declarations: [AppComponent, LoginApiComponent, AttComponent],
+  declarations: [AppComponent,],
   imports: [
     AppRoutingModule,
     //Aplicação
@@ -35,6 +32,7 @@ import { AttComponent } from './Conect-Ais/att/att.component';
     LoginModule,
     TurmaModule,
     MatriculaModule,
+    LoginApiModule,
 
   ],
   providers: [DisciplinasService, AlunosService, TurmaService ],

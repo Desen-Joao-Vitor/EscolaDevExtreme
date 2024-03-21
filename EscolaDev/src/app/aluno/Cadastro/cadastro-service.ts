@@ -4,7 +4,6 @@ import { Observable, catchError, lastValueFrom, map, throwError } from 'rxjs';
 import CustomStore from 'devextreme/data/custom_store';
 
 // Estados
-const estados: string[] = [];
 
 @Injectable({
   providedIn: 'root',
@@ -97,9 +96,7 @@ export class AlunosService {
     return this.dataSource;
   }
 
-  getState() {
-    return estados;
-  }
+
 
   formatarCpf(cpf: any): Observable<any> {
     // Remove caracteres não numéricos
