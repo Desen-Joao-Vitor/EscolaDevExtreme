@@ -5,12 +5,17 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'Aunos/Notas',
+    redirectTo: 'admin',
   },
-{  //Administrador
-    path:'admin',
-    loadChildren: () => import('./Conect-Ais/login-api/login-api.module').then((m) => m.LoginApiModule)
-},
+  //Administrador
+  {
+    path: 'admin',
+    loadChildren: () =>
+      import('./Conect-Ais/login-api/login-api.module').then(
+        (m) => m.LoginApiModule
+      ),
+  },
+
   // Usario deve Fazer login antes de realizar qualquer alteração
   {
     path: 'Login',

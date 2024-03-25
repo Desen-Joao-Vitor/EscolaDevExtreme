@@ -9,7 +9,8 @@ import CustomStore from 'devextreme/data/custom_store';
   providedIn: 'root',
 })
 export class AlunosService {
-  private apiUrl = 'http://localhost/API-Universidade/universidade-api/Alunos/alunos.php';
+  private apiUrl =
+    'http://localhost/API-Universidade/universidade-api/Alunos/alunos.php';
   protected dataSource: CustomStore;
   dataChanged: EventEmitter<void> = new EventEmitter<void>();
 
@@ -61,6 +62,7 @@ export class AlunosService {
           throw new Error('Data Loading Error');
         }
       },
+
       insert(values) {
         return lastValueFrom(that.http.post(that.apiUrl, values));
         that.dataChanged.emit();
@@ -95,8 +97,6 @@ export class AlunosService {
   getDataSource() {
     return this.dataSource;
   }
-
-
 
   formatarCpf(cpf: any): Observable<any> {
     // Remove caracteres não numéricos

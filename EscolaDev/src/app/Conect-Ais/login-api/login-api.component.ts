@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { LoginApiRoutesModule } from './login-api.modulos.routes';
+import { Component, OnInit } from '@angular/core';
 import { LoginApiService } from './login-api.service';
 
 @Component({
@@ -8,24 +7,20 @@ import { LoginApiService } from './login-api.service';
   styleUrl: './login-api.component.scss',
 })
 export class LoginApiComponent {
-  apiService: any;
+  //  apiService: any;
+  credenciais = {}; // dados do formulario
 
-  constructor(private serviceLoginApi: LoginApiService) {
-    this.apiService = serviceLoginApi.getDataSource();
-  }
+  constructor(private serviceLoginApi: LoginApiService) {}
 
-  onSelectionChanged(data: any): void {
-    console.log(data);
-
-    /*this.serviceLoginApi.login(data).subscribe(
-     (response: any) => {
-       console.log(response);
-
-     },
-     (error: any) => {
-       console.log('Erro ao fazer login:', error);
-     }
-   );
-  }*/
+  login() {
+    console.log(this.credenciais);
+    this.serviceLoginApi.login(this.credenciais).subscribe(
+      (response: any) => {
+        console.log(response);
+      },
+      (error: any) => {
+        console.log('Erro ao fazer login:', error);
+      }
+    );
   }
 }

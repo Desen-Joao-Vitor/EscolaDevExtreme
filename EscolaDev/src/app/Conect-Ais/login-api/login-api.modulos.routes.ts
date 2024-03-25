@@ -4,7 +4,7 @@ import { LoginApiComponent } from './login-api.component';
 
 const routes: Routes = [
   { path: '', component: LoginApiComponent },
-  { path: 'Administrador', component: LoginApiComponent },
+  { path: 'admin', component: LoginApiComponent },
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],
