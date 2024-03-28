@@ -10,7 +10,7 @@ import CustomStore from 'devextreme/data/custom_store';
 })
 export class LoginApiService {
   private apiUrl =
-    'http://localhost/api-universidade/universidade-api/login.php';
+    'http://localhost/api-universidade/universidade-api/Conexao/login.php';
   protected dataSource: CustomStore;
   dataChanged: EventEmitter<void> = new EventEmitter<void>();
 
