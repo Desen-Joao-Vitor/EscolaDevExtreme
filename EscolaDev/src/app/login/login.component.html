@@ -1,28 +1,13 @@
-<!--
-Login
-<div class="inicio">
-    <form (ngSubmit)="login()" #loginForm="ngForm">
-      <div class="formulario">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required [(ngModel)]="usuario.email">
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required [(ngModel)]="usuario.senha">
-        <div *ngIf="errorMessage" style="color: red; margin-top: 10px;">{{ errorMessage }}</div>
-        <div *ngIf="Sussesso" style="color: rgb(0, 225, 255); margin-top: 10px;">{{ Sussesso }}</div>
-        <button type="submit">Login</button>
-      </div>
-    </form>
-</div>
--->
 <div class="pag">
 
   <div class="carrocel">
-    <h3>ooooooooo</h3>
   </div>
 
   <div class="login">
 
     <div class="img"></div>
+
+
 
     <div class="info">
       <h4 style="color: cadetblue; margin-left: -15px;">Bem vindo!!</h4>
@@ -30,18 +15,18 @@ Login
       <p>Acesse agora maior plataforma de gerrencia de educacional</p>
     </div>
 
-    <form (ngSubmit)="login()" #loginForm="ngForm">
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required [(ngModel)]="usuario.email">
 
-      <label for="password">Password:</label>
-      <input type="password" id="password" name="password" required [(ngModel)]="usuario.senha">
+    <dx-form id="form" [formData]="dataUsuariosLogin" width="50%" >
+      <dxi-item class="item-form" itemType="group" [colCount]="1">
+        <dxi-item dataField="usuario" ></dxi-item>
+        <dxi-item dataField="password" [editorOptions]="{mode: 'password'}"></dxi-item>
+      </dxi-item>
 
-      <div class="message" style="width: 100%;">
-        <div *ngIf="errorMessage" style="color: red; margin-top: 10px;">{{ errorMessage }}</div>
-        <div *ngIf="Sussesso" style="color: rgb(0, 225, 255); margin-top: 10px;">{{ Sussesso }}</div>
-      </div>
-      <button type="submit"  class="btn btn-success" style="width: 100px;">Entrar</button>
-    </form>
+      <dxi-item name="loginRowButton" showText="Entrar">
+        <dx-button  (click)="Entrar()" class="btn btn-success" style="width: 100px;">Entrar</dx-button>
+      </dxi-item>
+
+    </dx-form>
+
   </div>
 </div>
