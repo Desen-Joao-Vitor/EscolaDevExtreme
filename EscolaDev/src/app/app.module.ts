@@ -15,9 +15,10 @@ import { TurmaModule } from './turma/turma.module';
 import { TurmaService } from './turma/turma.service';
 import { MatriculaModule } from './aluno/matricula/matricula.module';
 import { LoginApiModule } from './Conect-Ais/login-api/login-api.module';
+import { GuardRoutes } from './AuthGuard/authguard';
 
 @NgModule({
-  declarations: [AppComponent,],
+  declarations: [AppComponent],
   imports: [
     AppRoutingModule,
     //Aplicação
@@ -33,9 +34,8 @@ import { LoginApiModule } from './Conect-Ais/login-api/login-api.module';
     TurmaModule,
     MatriculaModule,
     LoginApiModule,
-
   ],
-  providers: [DisciplinasService, AlunosService, TurmaService ],
+  providers: [DisciplinasService, AlunosService, TurmaService, GuardRoutes],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

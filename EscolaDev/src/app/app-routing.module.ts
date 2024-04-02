@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { GuardRoutes } from './AuthGuard/authguard';
 
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'admin',
+    redirectTo: 'Login',
   },
   //Administrador
   {
@@ -26,6 +27,7 @@ const routes: Routes = [
   {
     path: 'Home',
     loadChildren: () => import('./menu/menu.module').then((m) => m.MenuModule),
+
   },
 
   // Alunos

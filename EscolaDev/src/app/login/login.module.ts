@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login.component';
 import { LoginRoutes } from './login.routes';
-import { DxButtonModule, DxFormModule } from 'devextreme-angular';
+import { DxButtonModule, DxDataGridModule, DxFormModule } from 'devextreme-angular';
 
 @NgModule({
   declarations: [LoginComponent],

@@ -85,9 +85,10 @@ export class LoginService {
   }
   getDataSource() {
     return this.dataSource;
+
   }
-  verificarLogin(dadosLogin: any): Observable<any> {
+  verificarLogin(data:any):any {
     // Envie os dados do formulário para a API e retorne a resposta
-    return this.http.post<any>(this.apiUrl, dadosLogin);
+    return lastValueFrom(this.http.post(this.apiUrl, data));
   }
 }

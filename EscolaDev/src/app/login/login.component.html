@@ -1,32 +1,24 @@
 <div class="pag">
-
   <div class="carrocel">
   </div>
-
   <div class="login">
-
     <div class="img"></div>
-
-
-
     <div class="info">
       <h4 style="color: cadetblue; margin-left: -15px;">Bem vindo!!</h4>
-
       <p>Acesse agora maior plataforma de gerrencia de educacional</p>
     </div>
-
-
-    <dx-form id="form" [formData]="dataUsuariosLogin" width="50%" >
-      <dxi-item class="item-form" itemType="group" [colCount]="1">
-        <dxi-item dataField="usuario" ></dxi-item>
-        <dxi-item dataField="password" [editorOptions]="{mode: 'password'}"></dxi-item>
+  <form  (submit)="submitForm()" >
+    <dx-form width="50%" >
+      <dxi-item dataField="usuario" name="usuario">
+        <input type="text" [(ngModel)]="dataUsuario.usuario" name="usuario" required>
       </dxi-item>
-
+      <dxi-item dataField="password">
+        <input type="password" [(ngModel)]="dataUsuario.password" name="password" required>
+      </dxi-item>
       <dxi-item name="loginRowButton" showText="Entrar">
-        <dx-button  (click)="Entrar()" class="btn btn-success" style="width: 100px;">Entrar</dx-button>
+        <button type="submit" class="btn btn-success" style="width: 100px;">Entrar</button>
       </dxi-item>
-
     </dx-form>
-
+  </form>
   </div>
 </div>
