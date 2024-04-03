@@ -1,16 +1,16 @@
 import { ProfessorDisciplinaService } from './../../professor/professor-disciplina/professor-disciplina.service';
 import { Component, ViewChild } from '@angular/core';
 import { AlunosNotasService } from './aluno-notas.service';
-import { MatriculaService } from '../matricula/matricula-services';
+import { MatriculaService } from '../matricula/matricula.services';
 import CustomStore from 'devextreme/data/custom_store';
 import { DxDataGridComponent } from 'devextreme-angular';
 
 @Component({
   selector: 'app-aluno-notas',
   templateUrl: './aluno-notas.component.html',
-  styleUrls: ['./alunos-notas.component.scss'],
+  styleUrls: ['aluno-notas.component.scss'],
 })
-export class AlunoNotasComponent {
+export class NotasComponent {
   @ViewChild('dataGrid', { static: false })
   dataGrid!: DxDataGridComponent;
   //Data Souce

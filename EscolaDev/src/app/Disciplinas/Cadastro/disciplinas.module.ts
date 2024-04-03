@@ -8,19 +8,15 @@ import {
   DxTabsModule,
   DxToolbarModule,
 } from 'devextreme-angular';
-import { DisciplinaRoutes } from './disciplina.routes';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { AlunosRoutesModule } from '../../aluno/Cadastro/alunos.routes';
 
 @NgModule({
   imports: [
+    //Aplicação
     CommonModule,
     FormsModule,
     HttpClientModule,
-    //Aplicação
-    DisciplinaRoutes,
-    AlunosRoutesModule,
     //DevExtreme
     DxDataGridModule,
     DxButtonModule,

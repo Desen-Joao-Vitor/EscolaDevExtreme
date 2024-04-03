@@ -5,14 +5,13 @@ import CustomStore from 'devextreme/data/custom_store';
 
 @Component({
   selector: 'app-menu',
-  templateUrl: './menu.component.html',
-  styleUrl: './menu.component.scss',
+  templateUrl: 'home.component.html',
+  styleUrl: 'home.component.scss',
 })
-export class MenuComponent implements OnInit {
+export class HomeComponent {
   dataSource: CustomStore;
   constructor(private service: DisciplinasService) {
     this.dataSource = service.getDataSource();
   }
 
-  ngOnInit(): void {}
 }

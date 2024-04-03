@@ -1,6 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { GuardRoutes } from './AuthGuard/authguard';
+import { CadastroComponent } from './aluno/Cadastro/cadastro.component';
+import { MatriculaComponent } from './aluno/matricula/matricula.component';
+import { NotasComponent } from './aluno/aluno-notas/aluno-notas.component';
+import { TurmaComponent } from './turma/turma.component';
+import { DisciplinasComponent } from './Disciplinas/Cadastro/disciplinas.component';
+import { HomeComponent } from './Home/home.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {
@@ -8,76 +14,38 @@ const routes: Routes = [
     pathMatch: 'full',
     redirectTo: 'Login',
   },
-  //Administrador
   {
     path: 'admin',
     loadChildren: () =>
-      import('./Conect-Ais/login-api/login-api.module').then(
+      import('./Apis/getsitucaomatricula/login-api/login-api.module').then(
         (m) => m.LoginApiModule
       ),
   },
-
-  // Usario deve Fazer login antes de realizar qualquer alteração
   {
     path: 'Login',
-    loadChildren: () =>
-      import('./login/login.module').then((m) => m.LoginModule),
+    component: LoginComponent,
   },
-  // Pagina de inicio
   {
     path: 'Home',
-    loadChildren: () => import('./menu/menu.module').then((m) => m.MenuModule),
-
-  },
-
-  // Alunos
-  {
-    path: 'Alunos/Cadastrados',
-    loadChildren: () =>
-      import('./aluno/Cadastro/cadastro.module').then((m) => m.AlunoModule),
+    component: HomeComponent,
   },
   {
-    path: 'Alunos/matriculas',
+    path: 'Alunos',
     loadChildren: () =>
-      import('./aluno/matricula/matricula.module').then(
-        (m) => m.MatriculaModule
-      ),
+      import('./aluno/aluno.module').then((m) => m.AlunoModuleModule),
   },
   {
-    path: 'Alunos/Notas',
+    path: 'Professores',
     loadChildren: () =>
-      import('./aluno/aluno-notas/aluno-notas.module').then(
-        (m) => m.AlunoNotasModule
-      ),
+      import('./professor/professor.module').then((m) => m.ProfessorModule),
   },
-  //Professores
-  {
-    path: 'Professor/Cadastrados',
-    loadChildren: () =>
-      import('./professor/Cadastro/professor.module').then(
-        (m) => m.ProfessorModule
-      ),
-  },
-  {
-    path: 'Professor/Vircular-Disciplina',
-    loadChildren: () =>
-      import(
-        './professor/professor-disciplina/professor-disciplina.module'
-      ).then((m) => m.ProfessorDisciplinaModule),
-  },
-  //Turmas
   {
     path: 'Turmas',
-    loadChildren: () =>
-      import('./turma/turma.module').then((m) => m.TurmaModule),
+    component: TurmaComponent,
   },
-  // Disciplinas
   {
     path: 'Disciplina',
-    loadChildren: () =>
-      import('./Disciplinas/Cadastro/disciplinas.module').then(
-        (m) => m.DisciplinasModule
-      ),
+    component: DisciplinasComponent,
   },
 ];
 

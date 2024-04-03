@@ -5,8 +5,8 @@ import CustomStore from 'devextreme/data/custom_store';
 
 @Component({
   selector: 'app-disciplinas',
-  templateUrl: './disciplina.component.html',
-  styleUrls: ['./disciplina.componet.scss'],
+  templateUrl: 'disciplina.component.html',
+  styleUrls: ['disciplina.componet.scss'],
 })
 export class DisciplinasComponent {
   dataSource: CustomStore; // service
@@ -19,19 +19,19 @@ export class DisciplinasComponent {
     this.dataSource = service.getDataSource(); //comunicação de interação com o banco
   }
 
-  // Evento de selecionar o id da coluna
-  onSelectionChanged(data: any) {
-    this.selectedRows = data.selectedRowKeys;
-  }
-  // realizar delete no banco
-  async delete() {
-    if (Array.isArray(this.selectedRows)) {
-      this.selectedRows.forEach((id: any) => {
-        this.service.getDataSource().remove(id);
-      });
-      window.location.reload();
-    }
-  }
+  // // Evento de selecionar o id da coluna
+  // onSelectionChanged(data: any) {
+  //   this.selectedRows = data.selectedRowKeys;
+  // }
+  // // realizar delete no banco
+  // async delete() {
+  //   if (Array.isArray(this.selectedRows)) {
+  //     this.selectedRows.forEach((id: any) => {
+  //       this.service.getDataSource().remove(id);
+  //     });
+  //     window.location.reload();
+  //   }
+  // }
 
   validarNome() {
     if (this.nomeDisciplina.value.length <= 5) {

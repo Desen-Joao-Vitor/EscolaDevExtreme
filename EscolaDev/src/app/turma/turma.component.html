@@ -1,9 +1,8 @@
 <div class="container" id=" data-grid-demo">
 
   <dx-data-grid id="dataGrid" [dataSource]="dataSource" [showBorders]="true" [width]="700"
-    (onSelectionChanged)="onSelectionChanged($event)" (onEditorPreparing)="onEditorPreparing($event)">
+    (onEditorPreparing)="onEditorPreparing($event)">
 
-    <dxo-selection mode="multiple"></dxo-selection>
 
     <dxo-paging [enabled]="false"></dxo-paging>
 
@@ -23,9 +22,7 @@
 
     <dxo-toolbar>
       <dxi-item name="addRowButton" showText="always"></dxi-item>
-      <dxi-item location="after">
-        <dx-button (click)="delete()" icon="trash" [disabled]="!selectedRows" text="Excluir disciplinas"></dx-button>
-      </dxi-item>
+
     </dxo-toolbar>
 
   </dx-data-grid>

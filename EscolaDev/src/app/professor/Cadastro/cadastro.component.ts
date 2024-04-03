@@ -2,14 +2,14 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { DxDataGridComponent } from 'devextreme-angular';
 import CustomStore from 'devextreme/data/custom_store';
 import { HttpClient } from '@angular/common/http';
-import { ProfessorServiceService } from './professor-service.service';
+import { ProfessorServiceService } from './professor.service.service';
 
 @Component({
   selector: 'app-listar-professor',
-  templateUrl: './cadastro.component.html',
-  styleUrl: './cadastro.component.scss',
+  templateUrl: 'cadastro.component.html',
+  styleUrl: 'cadastro.component.scss',
 })
-export class CadastroProfessorComponent implements OnInit {
+export class CadastroProfessorComponent{
   @ViewChild('dataGrid', { static: false })
   dataGrid!: DxDataGridComponent;
   dataSource: CustomStore;
@@ -33,7 +33,7 @@ export class CadastroProfessorComponent implements OnInit {
   ) {
     this.dataSource = service.getDataSource();
   }
-  ngOnInit(): void {}
+
 
   onContentReady(e: any) {
     // Mantenha uma referência à instância do DataGrid

@@ -10,16 +10,16 @@
             Home
           </a>
         </li>
-        <select class="nav-link text-white" routerLinkActive="Active" (change)="navega($event)">
+        <select class="nav-link text-white" routerLinkActive="Active" (change)="navegaAlunos($event)">
           <option class="text-black" value="">Alunos</option>
-          <option class="text-black" value="Alunos/Cadastrados">Registro de Alunos</option>
-          <option class="text-black" value="Alunos/matriculas">Gerar Matricula</option>
-          <option class="text-black" value="Alunos/Notas">Notas</option>
+          <option class="text-black" value="Cadastro">Registro de Alunos</option>
+          <option class="text-black" value="Matriculas">Gerar Matricula</option>
+          <option class="text-black" value="Notas">Notas</option>
         </select>
-        <select class="nav-link text-white" routerLinkActive="Active" (change)="navega($event)">
+        <select class="nav-link text-white" routerLinkActive="Active" (change)="navegaProfessor($event)">
           <option class="text-black" value="">Professores</option>
-          <option class="text-black" value="Professor/Cadastrados">Registro de Professores</option>
-          <option class="text-black" value="Professor/Vircular-Disciplina">Vincular disciplinas</option>
+          <option class="text-black" value="Cadastrados">Registro de Professores</option>
+          <option class="text-black" value="Vircular-Disciplina">Vincular disciplinas</option>
         </select>
         <li class="nav-item">
           <a class="nav-link text-white" routerLinkActive="Active" [routerLink]="['Turmas']">

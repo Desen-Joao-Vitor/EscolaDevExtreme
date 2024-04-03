@@ -3,19 +3,18 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
-import { MenuModule } from './menu/menu.module';
+import { HomeModule} from './Home/home.module';
 import { LoginModule } from './login/login.module';
 import { DxDataGridModule, DxSchedulerModule } from 'devextreme-angular';
 import { HttpClientModule } from '@angular/common/http';
 import { DisciplinasService } from './Disciplinas/Cadastro/disciplinas.service';
 
-import { AlunosService } from './aluno/Cadastro/cadastro-service';
 import { TurmaModule } from './turma/turma.module';
-import { TurmaService } from './turma/turma.service';
-import { MatriculaModule } from './aluno/matricula/matricula.module';
-import { LoginApiModule } from './Conect-Ais/login-api/login-api.module';
+import { LoginApiModule } from './Apis/getsitucaomatricula/login-api/login-api.module';
 import { GuardRoutes } from './AuthGuard/authguard';
+import { AlunoModuleModule } from './aluno/aluno.module';
+import { ProfessorModule } from './professor/professor.module';
+import { DisciplinasModule } from './Disciplinas/Cadastro/disciplinas.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,18 +23,19 @@ import { GuardRoutes } from './AuthGuard/authguard';
     //Aplicação
     BrowserModule,
     HttpClientModule,
-    FormsModule,
     //DevExtreme
     DxSchedulerModule,
     DxDataGridModule,
     //Modulos aplicação
-    MenuModule,
+    HomeModule,
+    AlunoModuleModule,
+    ProfessorModule,
     LoginModule,
     TurmaModule,
-    MatriculaModule,
+    DisciplinasModule,
     LoginApiModule,
   ],
-  providers: [DisciplinasService, AlunosService, TurmaService, GuardRoutes],
+  providers: [DisciplinasService, GuardRoutes],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

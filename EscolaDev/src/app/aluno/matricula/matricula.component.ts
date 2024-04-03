@@ -1,7 +1,7 @@
-import { AlunosService } from '../Cadastro/cadastro-service';
+import { AlunosService } from '../Cadastro/cadastro.service';
 import { Component,  ViewChild } from '@angular/core';
 import CustomStore from 'devextreme/data/custom_store';
-import { MatriculaService } from './matricula-services';
+import { MatriculaService } from './matricula.services';
 import { TurmaService } from '../../turma/turma.service';
 import { GetsitucaomatriculaService } from '../../Apis/getsitucaomatricula/extracaoTabelaSituacao.service';
 import { DxDataGridComponent } from 'devextreme-angular';

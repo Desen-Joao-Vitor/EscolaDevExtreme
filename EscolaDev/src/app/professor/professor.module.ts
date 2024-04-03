@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProfessorRoutesModule } from './professor.routes';
-import { CadastroProfessorComponent } from './cadastro.component';
-import { FormsModule } from '@angular/forms';
+import { CadastroComponent } from '../aluno/Cadastro/cadastro.component';
 import {
   DxButtonModule,
   DxCheckBoxModule,
@@ -16,17 +14,19 @@ import {
   DxiItemModule,
   DxoFilterRowModule,
 } from 'devextreme-angular/ui/nested';
+import { ProfessorRoutes } from './professor.routes';
+import { ProfessorDisciplinaComponent } from './professor-disciplina/professor-disciplina.component';
+import { FormsModule } from '@angular/forms';
+import { CadastroProfessorComponent } from './Cadastro/cadastro.component';
 
 @NgModule({
-  declarations: [CadastroProfessorComponent],
+  declarations: [CadastroProfessorComponent, ProfessorDisciplinaComponent],
   imports: [
+    //Aplicação
     CommonModule,
-    FormsModule,
-    //aplicação
-    ProfessorRoutesModule,
-    // DevExtreme
+    ProfessorRoutes,
+    //DevExtreme
     DxButtonModule,
-    DxDataGridModule,
     DxiItemModule,
     DxSelectBoxModule,
     DxFormModule,
@@ -35,6 +35,9 @@ import {
     DxDropDownBoxModule,
     DxoFilterRowModule,
     DxCheckBoxModule,
+    //Angular
+    FormsModule,
   ],
+  exports: [CadastroProfessorComponent, ProfessorDisciplinaComponent],
 })
 export class ProfessorModule {}

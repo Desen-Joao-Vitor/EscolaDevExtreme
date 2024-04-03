@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MenuComponent } from './menu.component';
-import { MenuRoutes } from './menu.routes';
+import { HomeComponent, } from './home.component';
 import { FormsModule } from '@angular/forms';
 import { DxDataGridModule, DxSchedulerModule } from 'devextreme-angular';
 
 @NgModule({
-  declarations: [MenuComponent],
+  declarations: [HomeComponent],
   imports: [
+    //Aplicação
     CommonModule,
     FormsModule,
-    MenuRoutes,
+    //DevExtreme
     DxSchedulerModule,
     DxDataGridModule,
   ],
-  exports: [MenuComponent],
+  exports: [HomeComponent],
 })
-export class MenuModule {}
+export class HomeModule {}

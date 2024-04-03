@@ -18,18 +18,18 @@ export class TurmaComponent {
     this.dataSource = service.getDataSource(); //comunicação de interação com o banco
   }
   // Evento de selecionar o id da coluna
-  onSelectionChanged(data: any) {
-    this.selectedRows = data.selectedRowKeys;
-  }
-  // realizar delete no banco
-  async delete() {
-    if (Array.isArray(this.selectedRows)) {
-      this.selectedRows.forEach((id: any) => {
-        this.service.getDataSource().remove(id);
-      });
-      window.location.reload();
-    }
-  }
+  // onSelectionChanged(data: any) {
+  //   this.selectedRows = data.selectedRowKeys;
+  // }
+  //  realizar delete no banco
+  //   async delete() {
+  //     if (Array.isArray(this.selectedRows)) {
+  //       this.selectedRows.forEach((id: any) => {
+  //         this.service.getDataSource().remove(id);
+  //       });
+  //       window.location.reload();
+  //     }
+  //   }
 
   validarNome() {
     if (this.nomeTurma.value.length < 1) {

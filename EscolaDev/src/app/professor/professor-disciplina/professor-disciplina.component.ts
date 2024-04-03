@@ -3,7 +3,7 @@ import { DxDataGridComponent } from 'devextreme-angular';
 import { ProfessorDisciplinaService } from './professor-disciplina.service';
 import CustomStore from 'devextreme/data/custom_store';
 import { DisciplinasService } from '../../Disciplinas/Cadastro/disciplinas.service';
-import { ProfessorServiceService } from '../Cadastro/professor-service.service';
+import { ProfessorServiceService } from '../Cadastro/professor.service.service';
 
 @Component({
   selector: 'app-professor-disciplina',
