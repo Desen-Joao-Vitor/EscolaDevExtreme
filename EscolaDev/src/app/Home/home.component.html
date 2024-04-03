@@ -1,10 +1,10 @@
-<div class="container mt-4">
+<div class="container mt-4 " >
   <div class="row">
     <!-- Calendário -->
-    <div class="col-md-6">
+    <div class="col-md-6 h-500">
       <div class="card">
         <div class="card-header">Calendário</div>
-        <div class="card-body">
+        <div class="card-body " >
           <!-- Adicione aqui o componente de calendário -->
           <!-- Por exemplo, usando DevExtreme Scheduler -->
           <!-- Certifique-se de importar os módulos e estilos necessários -->
@@ -17,12 +17,12 @@
     <div class="col-md-6">
       <div class="card">
         <div class="card-header">Disciplinas</div>
-        <div class="card-body">
+        <div class="card-body ">
           <dx-data-grid [dataSource]="dataSource" [showBorders]="true" [allowColumnResizing]="true"
-            [columnAutoWidth]="true">
+            [columnAutoWidth]="true" >
             <dxo-paging [pageSize]="20"></dxo-paging>
 
-            <dxi-column dataField="nome" caption="Nome"></dxi-column>
+            <dxi-column  dataField="nome" caption="Nome"></dxi-column>
             <dxi-column dataField="carga_horaria" caption="Carga Horária"></dxi-column>
           </dx-data-grid>
         </div>

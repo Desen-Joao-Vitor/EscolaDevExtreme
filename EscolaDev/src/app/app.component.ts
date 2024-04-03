@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -6,12 +6,18 @@ import { Router } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   constructor(private router: Router) {}
+  ngOnInit(): void {
+    document
+      .getElementById('navSelect')
+      ?.addEventListener('mouseover', function () {
+        this.focus;
+      });
+  }
   redirectToLogin() {
     this.router.navigate(['/Login']);
   }
-
   navegaAlunos(event: any) {
     const rotaSelecionada = event.target.value;
     this.router.navigate(['Alunos', rotaSelecionada]);

@@ -1,26 +1,27 @@
 <div class="container-fluid">
-<div class="px-3 py-2 text-bg-dark border-bottom">
-  <div class="container">
-    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"
-      style="color: aliceblue;">
+  <div class="px-3 py-2 text-bg-dark border-bottom">
+
+    <div class="home-nav">
 
       <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small nav-bar">
         <li class="nav-item">
-          <a class="nav-link text-secondary" routerLinkActive="Active" [routerLink]="['Home']">
-            Home
-          </a>
+          <a class="nav-link text-white" routerLinkActive="Active" [routerLink]="['Home']">Home</a>
         </li>
-        <select class="nav-link text-white" routerLinkActive="Active" (change)="navegaAlunos($event)">
-          <option class="text-black" value="">Alunos</option>
-          <option class="text-black" value="Cadastro">Registro de Alunos</option>
-          <option class="text-black" value="Matriculas">Gerar Matricula</option>
-          <option class="text-black" value="Notas">Notas</option>
-        </select>
-        <select class="nav-link text-white" routerLinkActive="Active" (change)="navegaProfessor($event)">
-          <option class="text-black" value="">Professores</option>
-          <option class="text-black" value="Cadastrados">Registro de Professores</option>
-          <option class="text-black" value="Vircular-Disciplina">Vincular disciplinas</option>
-        </select>
+        <li class="nav-item">
+          <select class="nav-link  text-white" routerLinkActive="Active" (change)="navegaAlunos($event)">
+            <option class="text-black" value="">Alunos</option>
+            <option class="text-black" value="Cadastro">Registro de Alunos</option>
+            <option class="text-black" value="Matriculas">Gerar Matricula</option>
+            <option class="text-black" value="Notas">Notas</option>
+          </select>
+        </li>
+        <li class="nav-item">
+          <select class="nav-link text-white" routerLinkActive="Active" (change)="navegaProfessor($event)">
+            <option class="text-black" value="">Professores</option>
+            <option class="text-black" value="Cadastrados">Registro de Professores</option>
+            <option class="text-black" value="Vircular-Disciplina">Vincular disciplinas</option>
+          </select>
+        </li>
         <li class="nav-item">
           <a class="nav-link text-white" routerLinkActive="Active" [routerLink]="['Turmas']">
             Turmas
@@ -38,11 +39,13 @@
               [routerLink]="['Login']">Login</button>
           </div>
         </li>
+
       </ul>
+
+
     </div>
   </div>
-</div>
-
+  <div class="container"></div>
   <div class="Conteudo">
     <router-outlet></router-outlet>
   </div>

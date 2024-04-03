@@ -88,7 +88,6 @@ export class LoginService {
 
   }
   verificarLogin(data:any):any {
-    // Envie os dados do formulário para a API e retorne a resposta
     return lastValueFrom(this.http.post(this.apiUrl, data));
   }
 }

@@ -7,6 +7,7 @@ import { TurmaComponent } from './turma/turma.component';
 import { DisciplinasComponent } from './Disciplinas/Cadastro/disciplinas.component';
 import { HomeComponent } from './Home/home.component';
 import { LoginComponent } from './login/login.component';
+import { LoginApiComponent } from './Apis/login-api/login-api.component';
 
 const routes: Routes = [
   {
@@ -16,10 +17,7 @@ const routes: Routes = [
   },
   {
     path: 'admin',
-    loadChildren: () =>
-      import('./Apis/getsitucaomatricula/login-api/login-api.module').then(
-        (m) => m.LoginApiModule
-      ),
+    component: LoginApiComponent,
   },
   {
     path: 'Login',

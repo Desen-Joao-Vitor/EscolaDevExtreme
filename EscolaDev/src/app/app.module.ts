@@ -10,7 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { DisciplinasService } from './Disciplinas/Cadastro/disciplinas.service';
 
 import { TurmaModule } from './turma/turma.module';
-import { LoginApiModule } from './Apis/getsitucaomatricula/login-api/login-api.module';
+import { LoginApiModule } from './Apis/login-api/login-api.module';
 import { GuardRoutes } from './AuthGuard/authguard';
 import { AlunoModuleModule } from './aluno/aluno.module';
 import { ProfessorModule } from './professor/professor.module';
